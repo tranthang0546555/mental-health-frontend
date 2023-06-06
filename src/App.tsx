@@ -1,35 +1,76 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./App.css";
+import Footer from "./components/Footer";
+import Header from "./components/Header/Header";
+import HomePage from "./pages/home";
+import Contact from "./pages/contact";
+import FAQ from "./pages/faq";
+import About from "./pages/about";
+import { ReactNode } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <HomePage />,
+    },
+    {
+      path: "/contact",
+      element: (
+        <InnerPage>
+          <Contact />
+        </InnerPage>
+      ),
+    },
+    {
+      path: "/faq",
+      element: (
+        <InnerPage>
+          <FAQ />
+        </InnerPage>
+      ),
+    },
+    {
+      path: "/about",
+      element: (
+        <InnerPage>
+          <About />
+        </InnerPage>
+      ),
+    },
+  ]);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Header />
+      <RouterProvider router={router} />
+      <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
+
+const InnerPage = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <>
+      <section className="breadcrumbs">
+        <div className="container">
+          <div className="d-flex justify-content-between align-items-center">
+            <h2>Inner Page</h2>
+            <ol>
+              <li>
+                <a href="/">Home</a>
+              </li>
+              <li>Inner Page</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section className="inner-page">
+        <div className="container">{children}</div>
+      </section>
+    </>
+  );
+};
