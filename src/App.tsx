@@ -2,30 +2,32 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header/Header";
-import HomePage from "./pages/home";
+import InnerPage from "./components/InnerPage";
+import About from "./pages/about";
 import Contact from "./pages/contact";
 import FAQ from "./pages/faq";
-import About from "./pages/about";
-import { ReactNode } from "react";
+import HomePage from "./pages/home";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
       element: <HomePage />,
+      id: "Home",
     },
     {
       path: "/contact",
       element: (
-        <InnerPage>
+        <InnerPage title="Contact">
           <Contact />
         </InnerPage>
       ),
+      id: "Contact",
     },
     {
       path: "/faq",
       element: (
-        <InnerPage>
+        <InnerPage title="FAQ">
           <FAQ />
         </InnerPage>
       ),
@@ -33,13 +35,13 @@ function App() {
     {
       path: "/about",
       element: (
-        <InnerPage>
+        <InnerPage title="About">
           <About />
         </InnerPage>
       ),
     },
   ]);
-
+  console.log("router", router);
   return (
     <>
       <Header />
@@ -50,27 +52,3 @@ function App() {
 }
 
 export default App;
-
-const InnerPage = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <>
-      <section className="breadcrumbs">
-        <div className="container">
-          <div className="d-flex justify-content-between align-items-center">
-            <h2>Inner Page</h2>
-            <ol>
-              <li>
-                <a href="/">Home</a>
-              </li>
-              <li>Inner Page</li>
-            </ol>
-          </div>
-        </div>
-      </section>
-
-      <section className="inner-page">
-        <div className="container">{children}</div>
-      </section>
-    </>
-  );
-};
