@@ -1,6 +1,7 @@
 import Count from "./Count";
 import Doctor from "./Doctor";
 import HeroSection from "./Hero";
+import Services from "./Services";
 import WhyUs from "./WhyUs";
 
 export default function HomePage() {
@@ -11,6 +12,7 @@ export default function HomePage() {
         <WhyUs />
         <Count />
         <Doctor />
+        <Services />
       </main>
     </>
   );
