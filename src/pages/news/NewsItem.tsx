@@ -1,3 +1,5 @@
+import { dateFormat } from "../../utils";
+
 export default function NewsItem({ data }: { data: News }) {
   const {
     _id,
@@ -32,13 +34,22 @@ export default function NewsItem({ data }: { data: News }) {
           </li>
           <li className="d-flex align-items-center">
             <i className="bi bi-clock"></i>{" "}
-            <a href="blog-details.html">
-              <time dateTime="2022-01-01">Jan 1, 2022</time>
+            <a href="#">
+              <time dateTime="2022-01-01">{dateFormat(createdAt)}</time>
             </a>
           </li>
+        </ul>
+        <ul>
           <li className="d-flex align-items-center">
-            <i className="bi bi-chat-dots"></i>{" "}
-            <a href="blog-details.html">{commentCount} Bình luận</a>
+            <i className="bi bi-eye" />
+            <a href="#">{viewCount || 0}</a>
+          </li>
+          <li className="d-flex align-items-center">
+            <i className="bi bi-hand-thumbs-up"></i>
+            <a href="#">{likeCount}</a>
+          </li>
+          <li className="d-flex align-items-center">
+            <i className="bi bi-chat-dots"></i> <a href="#">{commentCount}</a>
           </li>
         </ul>
       </div>

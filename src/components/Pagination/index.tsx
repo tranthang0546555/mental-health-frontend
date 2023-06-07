@@ -1,7 +1,10 @@
+import "./index.css";
+
 type Props = {
   pagination: Pagination;
   onChange?: (page: number) => void;
 };
+
 export default function Pagination(props: Props) {
   const { pagination, onChange } = props;
   if (!pagination) return <></>;
@@ -13,7 +16,7 @@ export default function Pagination(props: Props) {
   };
 
   return (
-    <div className="blog-pagination">
+    <div id="pagination">
       <ul className="justify-content-center">
         {[...Array(Math.ceil(totalRecords / size)).keys()].map((p) => {
           return (

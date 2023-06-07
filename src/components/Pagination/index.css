@@ -1,0 +1,34 @@
+#pagination {
+  margin-top: 30px;
+  color: var(--color-secondary-light);
+}
+
+#pagination ul {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+#pagination li {
+  margin: 0 5px;
+  transition: 0.3s;
+}
+
+#pagination li a {
+  color: var(--color-secondary);
+  padding: 7px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#pagination li.active,
+#pagination li:hover {
+  background: var(--color-primary);
+}
+
+#pagination li.active a,
+#pagination li:hover a {
+  color: var(--color-white);
+}

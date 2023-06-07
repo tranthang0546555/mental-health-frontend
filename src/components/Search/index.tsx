@@ -1,9 +1,11 @@
 import { useDebouncedCallback } from "use-debounce";
+import "./index.css";
 
 type Props = {
   defaultValue?: string;
   onChange?: (text: string) => void;
 };
+
 export default function Search(props: Props) {
   const { defaultValue, onChange } = props;
 

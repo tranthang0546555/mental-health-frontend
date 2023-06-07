@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import { POST_LIST, useApi } from "../../api";
 import Categories from "../../components/Categories";
 import Pagination from "../../components/Pagination";
-import RecentItems from "../../components/RecentItems";
+import RecentNews from "../../components/RecentNews";
 import Search from "../../components/Search";
 import NewsItem from "./NewsItem";
 import "./index.css";
@@ -59,7 +59,7 @@ export default function News() {
                 onChange={(text) => getData(text)}
               />
               <Categories />
-              <RecentItems />
+              <RecentNews />
             </div>
           </div>
         </div>

@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+
 export const LocalStorageKey = {
   USER: "user",
   ACCESS_TOKEN: "accessToken",
@@ -66,4 +68,8 @@ export const TIMELINE_OPTION: Record<string, string> = {
   _15D: "15d",
   _30D: "30d",
   _3M: "3m",
+};
+
+export const dateFormat = (date: string) => {
+  return format(new Date(date), "kk:mm - dd/MM/yyy");
 };
