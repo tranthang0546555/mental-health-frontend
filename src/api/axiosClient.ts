@@ -2,7 +2,7 @@ import axios from "axios";
 import { LocalStorageKey } from "../utils";
 
 const axiosClient = axios.create({
-  baseURL: import.meta.env.REACT_APP_PATH_API + "/api/v1",
+  baseURL: import.meta.env.VITE_BASE_URL + "/api/v1",
   headers: {
     Authorization: `Bearer ${localStorage.getItem(
       LocalStorageKey.ACCESS_TOKEN

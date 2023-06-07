@@ -25,6 +25,13 @@
   font-weight: 700;
   padding: 0;
   margin: 20px 0 0 0;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: initial;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .blog .posts-list .title a {
@@ -70,6 +77,13 @@
 
 .blog .posts-list .content {
   margin-top: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: initial;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 }
 
 .blog .posts-list .read-more a {

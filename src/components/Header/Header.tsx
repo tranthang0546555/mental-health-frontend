@@ -33,8 +33,8 @@ export default function Header() {
                 </a>
               </li>
               <li>
-                <a className="nav-link scrollto" href="#departments">
-                  Departments
+                <a className="nav-link scrollto" href="/news">
+                  News
                 </a>
               </li>
               <li>
