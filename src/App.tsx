@@ -7,6 +7,7 @@ import About from "./pages/about";
 import Contact from "./pages/contact";
 import FAQ from "./pages/faq";
 import HomePage from "./pages/home";
+import News from "./pages/news";
 
 function App() {
   const router = createBrowserRouter([
@@ -37,6 +38,14 @@ function App() {
       element: (
         <InnerPage title="About">
           <About />
+        </InnerPage>
+      ),
+    },
+    {
+      path: "/news",
+      element: (
+        <InnerPage title="News">
+          <News />
         </InnerPage>
       ),
     },
