@@ -39,19 +39,6 @@ export default function NewsItem({ data }: { data: News }) {
             </a>
           </li>
         </ul>
-        <ul>
-          <li className="d-flex align-items-center">
-            <i className="bi bi-eye" />
-            <a href="#">{viewCount || 0}</a>
-          </li>
-          <li className="d-flex align-items-center">
-            <i className="bi bi-hand-thumbs-up"></i>
-            <a href="#">{likeCount}</a>
-          </li>
-          <li className="d-flex align-items-center">
-            <i className="bi bi-chat-dots"></i> <a href="#">{commentCount}</a>
-          </li>
-        </ul>
       </div>
 
       <div className="content">
@@ -59,6 +46,21 @@ export default function NewsItem({ data }: { data: News }) {
       </div>
 
       <div className="read-more mt-auto align-self-end">
+        <div className="meta-top">
+          <ul>
+            <li className="d-flex align-items-center">
+              <i className="bi bi-eye" />
+              <a href="#">{viewCount || 0}</a>
+            </li>
+            <li className="d-flex align-items-center">
+              <i className="bi bi-hand-thumbs-up"></i>
+              <a href="#">{likeCount}</a>
+            </li>
+            <li className="d-flex align-items-center">
+              <i className="bi bi-chat-dots"></i> <a href="#">{commentCount}</a>
+            </li>
+          </ul>
+        </div>
         <a href="blog-details.html">Read More</a>
       </div>
     </article>
