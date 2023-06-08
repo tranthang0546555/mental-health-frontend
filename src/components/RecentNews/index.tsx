@@ -17,8 +17,8 @@ export default function RecentNews() {
       <h3 className="sidebar-title">Recent Posts</h3>
 
       <div className="mt-3">
-        {newsList.map(({ slug, title, createdAt }, idx) => (
-          <div className="post-item">
+        {newsList.map(({ _id, slug, title, createdAt }) => (
+          <div className="post-item" key={_id}>
             <img
               src="assets/img/blog/blog-recent-1.jpg"
               alt=""

@@ -40,6 +40,38 @@
     el.addEventListener("scroll", listener);
   };
 
+  setTimeout(() => {
+    /**
+     * Searchbar toggle
+     */
+    if (select(".search-bar-toggle")) {
+      on("click", ".search-bar-toggle", function (e) {
+        console.log("search toggle");
+        select(".search-bar").classList.toggle("search-bar-show");
+      });
+    }
+
+    /**
+     * Sidebar toggle
+     */
+    if (select(".toggle-sidebar-btn")) {
+      on("click", ".toggle-sidebar-btn", function (e) {
+        select("body").classList.toggle("toggle-sidebar-dashboard");
+      });
+    }
+
+    const mainContainer = select("#main");
+    if (mainContainer) {
+      setTimeout(() => {
+        new ResizeObserver(function () {
+          select(".echart", true).forEach((getEchart) => {
+            echarts.getInstanceByDom(getEchart).resize();
+          });
+        }).observe(mainContainer);
+      }, 200);
+    }
+  }, 2000);
+
   /**
    * Navbar links active state on scroll
    */
