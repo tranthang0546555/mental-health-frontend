@@ -1,3 +1,4 @@
+import LoginRegisterButton from "../LoginRegisterButton";
 import "./index.css";
 
 const maps: {
@@ -49,6 +50,8 @@ export default function Header() {
           <a href="#appointment" className="appointment-btn scrollto">
             <span className="d-none d-md-inline">Make an</span> Appointment
           </a>
+
+          <LoginRegisterButton />
         </div>
       </header>
     </>

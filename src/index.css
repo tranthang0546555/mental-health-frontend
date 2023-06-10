@@ -1,11 +1,11 @@
 :root {
-
   /* Primay colors */
   --color-default: #1a1f24;
   --color-default-rgb: 26, 31, 36;
   --color-links: #0ea2bd;
   --color-links-hover: #1ec3e0;
   --color-primary: #1977cc;
+  --color-primary-hover: #166ab5;
   --color-primary-light: #1977cc;
   --color-primary-dark: #0189a1;
   --color-primary-rgb: 14, 162, 189;
