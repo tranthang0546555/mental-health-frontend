@@ -4,17 +4,16 @@ import Footer from "./components/Footer";
 import Header from "./components/Header/Header";
 import InnerPage from "./components/InnerPage";
 import About from "./pages/about";
+import Login from "./pages/auth/login";
+import Register from "./pages/auth/register";
 import Contact from "./pages/contact";
+import Dashboard from "./pages/dashboard";
+import BlankPage from "./pages/dashboard/blank";
+import Profile from "./pages/dashboard/profile";
+import Doctor from "./pages/doctor";
 import FAQ from "./pages/faq";
 import HomePage from "./pages/home";
 import News from "./pages/news";
-import Login from "./pages/auth/login";
-import Dashboard from "./pages/dashboard";
-import Profile from "./pages/dashboard/profile";
-import Register from "./pages/auth/register";
-import HeaderDashboard from "./components/Dashboard/Header";
-import SidebarDashboard from "./components/Dashboard/Sidebar";
-import BlankPage from "./pages/dashboard/blank";
 
 const Root = ({ children }: { children?: React.ReactNode }) => {
   return <div className="rr">{children}</div>;
@@ -40,6 +39,14 @@ function App() {
           element: (
             <InnerPage title="News">
               <News />
+            </InnerPage>
+          ),
+        },
+        {
+          path: "doctor",
+          element: (
+            <InnerPage title="Doctor">
+              <Doctor />
             </InnerPage>
           ),
         },

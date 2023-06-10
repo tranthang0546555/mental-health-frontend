@@ -14,7 +14,7 @@ export default function Doctor() {
 
         <div className="row">
           <div className="col-lg-6">
-            <div className="member d-flex align-items-start">
+            <div className="doctor-card d-flex align-items-start">
               <div className="pic">
                 <img
                   src="assets/img/doctors/doctors-1.jpg"
@@ -48,7 +48,7 @@ export default function Doctor() {
           </div>
 
           <div className="col-lg-6 mt-4 mt-lg-0">
-            <div className="member d-flex align-items-start">
+            <div className="doctor-card d-flex align-items-start">
               <div className="pic">
                 <img
                   src="assets/img/doctors/doctors-2.jpg"
@@ -82,7 +82,7 @@ export default function Doctor() {
           </div>
 
           <div className="col-lg-6 mt-4">
-            <div className="member d-flex align-items-start">
+            <div className="doctor-card d-flex align-items-start">
               <div className="pic">
                 <img
                   src="assets/img/doctors/doctors-3.jpg"
@@ -116,7 +116,7 @@ export default function Doctor() {
           </div>
 
           <div className="col-lg-6 mt-4">
-            <div className="member d-flex align-items-start">
+            <div className="doctor-card d-flex align-items-start">
               <div className="pic">
                 <img
                   src="assets/img/doctors/doctors-4.jpg"

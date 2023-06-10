@@ -1,5 +1,14 @@
 import "./index.css";
 
+const maps: {
+  path: string;
+  name: string;
+}[] = [
+  { path: "/", name: "Home" },
+  { path: "/news", name: "News" },
+  { path: "/doctor", name: "Doctor" },
+  { path: "/contact", name: "Contact" },
+];
 export default function Header() {
   return (
     <>
@@ -17,36 +26,22 @@ export default function Header() {
           </a> */}
           <nav id="navbar" className="navbar order-last order-lg-0">
             <ul>
-              <li>
-                <a className="nav-link scrollto active" href="#hero">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a className="nav-link scrollto" href="/about">
-                  About
-                </a>
-              </li>
-              <li>
-                <a className="nav-link scrollto" href="#services">
-                  Services
-                </a>
-              </li>
-              <li>
-                <a className="nav-link scrollto" href="/news">
-                  News
-                </a>
-              </li>
-              <li>
-                <a className="nav-link scrollto" href="/doctors">
-                  Doctors
-                </a>
-              </li>
-              <li>
-                <a className="nav-link scrollto" href="/contact">
-                  Contact
-                </a>
-              </li>
+              {maps.map(({ path, name }) => {
+                const currentPath = location.pathname.split("/")?.[1];
+                const p = path.split("/")?.[1];
+                return (
+                  <li key={name}>
+                    <a
+                      className={`nav-link scrollto ${
+                        currentPath === p ? "active" : ""
+                      }`}
+                      href={path}
+                    >
+                      {name}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
             <i className="bi bi-list mobile-nav-toggle"></i>
           </nav>

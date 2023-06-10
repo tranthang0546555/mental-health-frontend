@@ -73,3 +73,6 @@ export const TIMELINE_OPTION: Record<string, string> = {
 export const dateFormat = (date: string) => {
   return format(new Date(date), "kk:mm - dd/MM/yyy");
 };
+
+export const imagePath = (name?: string) =>
+  import.meta.env.VITE_BASE_URL + "/images/" + name;

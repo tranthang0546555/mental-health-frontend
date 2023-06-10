@@ -23,10 +23,28 @@ declare type News = {
 };
 
 declare type User = {
-  _id: string;
-  avatar: string;
-  name: {
-    firstName: string;
-    lastName: string;
+  _id?: string;
+  name?: {
+    firstName?: string;
+    lastName?: string;
   };
+  avatar?: string;
+
+  role?: string;
+  email?: string;
+  phone?: string;
+  gender?: number;
+  birthday?: string;
+  address?: string;
+  job?: string;
+  numberId?: string;
+};
+
+declare type Doctor = User & {
+  description?: {
+    experience?: string;
+    degree?: string;
+  };
+  rating?: number;
+  ratingCount?: number;
 };
