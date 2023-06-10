@@ -1,153 +1,41 @@
+import { useEffect, useState } from "react";
+import { DOCTOR_LIST, useApi } from "../../../api";
+import qs from "qs";
+import DoctorItem from "../../doctor/DoctorItem";
+
 export default function Doctor() {
+  const [data, setData] = useState<Data<Doctor>>();
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    const query = qs.stringify({ size: 8 });
+    const data = (await useApi(DOCTOR_LIST + (query ? "?" + query : "")))
+      .data as Data<Doctor>;
+    setData(data);
+  };
+
   return (
     <section id="doctors" className="doctors">
       <div className="container">
         <div className="section-title">
-          <h2>Doctors</h2>
+          <h2>Đội ngũ bác sĩ tâm lý chuyên nghiệp</h2>
           <p>
-            Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex
-            aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos
-            quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia
-            fugiat sit in iste officiis commodi quidem hic quas.
+            Quy tụ đội ngũ chuyên gia, bác sĩ, tư vấn và điều trị viên được đào
+            tạo bài bản đến chuyên sâu tại Việt Nam. Luôn lấy người bệnh là
+            trung tâm, cam kết mang lại dịch vụ chăm sóc sức khỏe toàn diện và
+            chất lượng cao cho khách hàng.
           </p>
         </div>
 
         <div className="row">
-          <div className="col-lg-6">
-            <div className="doctor-card d-flex align-items-start">
-              <div className="pic">
-                <img
-                  src="assets/img/doctors/doctors-1.jpg"
-                  className="img-fluid"
-                  alt=""
-                />
-              </div>
-              <div className="member-info">
-                <h4>Walter White</h4>
-                <span>Chief Medical Officer</span>
-                <p>
-                  Explicabo voluptatem mollitia et repellat qui dolorum quasi
-                </p>
-                <div className="social">
-                  <a href="">
-                    <i className="ri-twitter-fill"></i>
-                  </a>
-                  <a href="">
-                    <i className="ri-facebook-fill"></i>
-                  </a>
-                  <a href="">
-                    <i className="ri-instagram-fill"></i>
-                  </a>
-                  <a href="">
-                    {" "}
-                    <i className="ri-linkedin-box-fill"></i>{" "}
-                  </a>
-                </div>
-              </div>
+          {data?.data.map((doctor) => (
+            <div className="col-lg-6" key={doctor._id}>
+              <DoctorItem data={doctor} />
             </div>
-          </div>
-
-          <div className="col-lg-6 mt-4 mt-lg-0">
-            <div className="doctor-card d-flex align-items-start">
-              <div className="pic">
-                <img
-                  src="assets/img/doctors/doctors-2.jpg"
-                  className="img-fluid"
-                  alt=""
-                />
-              </div>
-              <div className="member-info">
-                <h4>Sarah Jhonson</h4>
-                <span>Anesthesiologist</span>
-                <p>
-                  Aut maiores voluptates amet et quis praesentium qui senda para
-                </p>
-                <div className="social">
-                  <a href="">
-                    <i className="ri-twitter-fill"></i>
-                  </a>
-                  <a href="">
-                    <i className="ri-facebook-fill"></i>
-                  </a>
-                  <a href="">
-                    <i className="ri-instagram-fill"></i>
-                  </a>
-                  <a href="">
-                    {" "}
-                    <i className="ri-linkedin-box-fill"></i>{" "}
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-lg-6 mt-4">
-            <div className="doctor-card d-flex align-items-start">
-              <div className="pic">
-                <img
-                  src="assets/img/doctors/doctors-3.jpg"
-                  className="img-fluid"
-                  alt=""
-                />
-              </div>
-              <div className="member-info">
-                <h4>William Anderson</h4>
-                <span>Cardiology</span>
-                <p>
-                  Quisquam facilis cum velit laborum corrupti fuga rerum quia
-                </p>
-                <div className="social">
-                  <a href="">
-                    <i className="ri-twitter-fill"></i>
-                  </a>
-                  <a href="">
-                    <i className="ri-facebook-fill"></i>
-                  </a>
-                  <a href="">
-                    <i className="ri-instagram-fill"></i>
-                  </a>
-                  <a href="">
-                    {" "}
-                    <i className="ri-linkedin-box-fill"></i>{" "}
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-lg-6 mt-4">
-            <div className="doctor-card d-flex align-items-start">
-              <div className="pic">
-                <img
-                  src="assets/img/doctors/doctors-4.jpg"
-                  className="img-fluid"
-                  alt=""
-                />
-              </div>
-              <div className="member-info">
-                <h4>Amanda Jepson</h4>
-                <span>Neurosurgeon</span>
-                <p>
-                  Dolorum tempora officiis odit laborum officiis et et accusamus
-                </p>
-                <div className="social">
-                  <a href="">
-                    <i className="ri-twitter-fill"></i>
-                  </a>
-                  <a href="">
-                    <i className="ri-facebook-fill"></i>
-                  </a>
-                  <a href="">
-                    <i className="ri-instagram-fill"></i>
-                  </a>
-                  <a href="">
-                    {" "}
-                    <i className="ri-linkedin-box-fill"></i>{" "}
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

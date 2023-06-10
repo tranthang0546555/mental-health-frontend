@@ -1,4 +1,15 @@
+import { useForm } from "react-hook-form";
+import { useAppDispatch } from "../../../hooks/store";
+import { login } from "../../../store/authSlice";
+
 export default function Login() {
+  const { register, handleSubmit } = useForm<LoginInputs>();
+  const dispatch = useAppDispatch();
+
+  const handleLogin = (data: LoginInputs) => {
+    dispatch(login(data));
+  };
+
   return (
     <section className="section register d-flex flex-column align-items-center justify-content-center py-4">
       <div className="container">
@@ -12,11 +23,11 @@ export default function Login() {
                     Login to Your Account
                   </h5>
                   <p className="text-center small">
-                    Enter your username & password to login
+                    Enter your email & password to login
                   </p>
                 </div>
 
-                <form className="row g-3 needs-validation" noValidate>
+                <form className="row g-3" onSubmit={handleSubmit(handleLogin)}>
                   <div className="col-12">
                     <label htmlFor="yourEmail" className="form-label">
                       Email
@@ -27,10 +38,10 @@ export default function Login() {
                       </span>
                       <input
                         type="email"
-                        name="email"
                         className="form-control"
                         id="yourEmail"
                         required
+                        {...register("email")}
                       />
                       <div className="invalid-feedback">
                         Please enter your username.
@@ -44,10 +55,10 @@ export default function Login() {
                     </label>
                     <input
                       type="password"
-                      name="password"
                       className="form-control"
                       id="yourPassword"
                       required
+                      {...register("password")}
                     />
                     <div className="invalid-feedback">
                       Please enter your password!

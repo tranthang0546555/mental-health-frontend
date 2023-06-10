@@ -3,6 +3,7 @@ import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header/Header";
 import InnerPage from "./components/InnerPage";
+import { useVerifyToken } from "./hooks";
 import About from "./pages/about";
 import Login from "./pages/auth/login";
 import Register from "./pages/auth/register";
@@ -13,12 +14,11 @@ import Profile from "./pages/dashboard/profile";
 import Doctor from "./pages/doctor";
 import FAQ from "./pages/faq";
 import HomePage from "./pages/home";
-import News from "./pages/news";
+import Post from "./pages/post";
 
-const Root = ({ children }: { children?: React.ReactNode }) => {
-  return <div className="rr">{children}</div>;
-};
 function App() {
+  useVerifyToken();
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -35,17 +35,17 @@ function App() {
           element: <HomePage />,
         },
         {
-          path: "news",
+          path: "post",
           element: (
-            <InnerPage title="News">
-              <News />
+            <InnerPage title="Bài viết">
+              <Post />
             </InnerPage>
           ),
         },
         {
           path: "doctor",
           element: (
-            <InnerPage title="Doctor">
+            <InnerPage title="Bác sĩ">
               <Doctor />
             </InnerPage>
           ),
@@ -53,7 +53,7 @@ function App() {
         {
           path: "contact",
           element: (
-            <InnerPage title="Contact">
+            <InnerPage title="Liên hệ">
               <Contact />
             </InnerPage>
           ),
@@ -61,7 +61,7 @@ function App() {
         {
           path: "about",
           element: (
-            <InnerPage title="About">
+            <InnerPage title="Về chúng tôi">
               <About />
             </InnerPage>
           ),
@@ -77,7 +77,7 @@ function App() {
         {
           path: "login",
           element: (
-            <InnerPage title="Login">
+            <InnerPage title="Đăng nhập">
               <Login />
             </InnerPage>
           ),
@@ -85,7 +85,7 @@ function App() {
         {
           path: "register",
           element: (
-            <InnerPage title="Register">
+            <InnerPage title="Đăng ký">
               <Register />,
             </InnerPage>
           ),

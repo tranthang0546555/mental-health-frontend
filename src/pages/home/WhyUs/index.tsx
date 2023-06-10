@@ -5,17 +5,21 @@ export default function WhyUs() {
         <div className="row">
           <div className="col-lg-4 d-flex align-items-stretch">
             <div className="content">
-              <h3>Why Choose Medilab?</h3>
+              <h3>Sức khoẻ tâm thần?</h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis
-                aute irure dolor in reprehenderit Asperiores dolores sed et.
-                Tenetur quia eos. Autem tempore quibusdam vel necessitatibus
-                optio ad corporis.
+                Sức khỏe tâm thần là trạng thái cân bằng tinh thần và tâm trí,
+                cho phép chúng ta cảm nhận, xử lý và thích ứng với cảm xúc,
+                stress và cuộc sống hàng ngày một cách lành mạnh, mang lại hạnh
+                phúc và chất lượng cuộc sống.
+              </p>
+              <p>
+                Chúng tôi mong muốn giúp đỡ những người gặp phải các chứng bệnh
+                tâm lý tìm lại được sự cân bằng cho bản thân và niềm vui trong
+                cuộc sống.
               </p>
               <div className="text-center">
                 <a href="#" className="more-btn">
-                  Learn More <i className="bx bx-chevron-right"></i>
+                  Tìm hiểu thêm <i className="bx bx-chevron-right"></i>
                 </a>
               </div>
             </div>
@@ -25,31 +29,31 @@ export default function WhyUs() {
               <div className="row">
                 <div className="col-xl-4 d-flex align-items-stretch">
                   <div className="icon-box mt-4 mt-xl-0">
-                    <i className="bx bx-receipt"></i>
-                    <h4>Corporis voluptates sit</h4>
+                    <i className="bx bx-heart"></i>
+                    <h4>Điều trị</h4>
                     <p>
-                      Consequuntur sunt aut quasi enim aliquam quae harum
-                      pariatur laboris nisi ut aliquip
+                      Hỗ trợ và giúp đỡ cho những người đang trải qua khó khăn
+                      về sức khỏe tâm thần
                     </p>
                   </div>
                 </div>
                 <div className="col-xl-4 d-flex align-items-stretch">
                   <div className="icon-box mt-4 mt-xl-0">
-                    <i className="bx bx-cube-alt"></i>
-                    <h4>Ullamco laboris ladore pan</h4>
+                    <i className="bx bx-shield"></i>
+                    <h4>Phòng ngừa</h4>
                     <p>
-                      Excepteur sint occaecat cupidatat non proident, sunt in
-                      culpa qui officia deserunt
+                      Việc phòng ngừa và xử lý sớm các vấn đề tâm lý và tâm thần
+                      là cần thiết
                     </p>
                   </div>
                 </div>
                 <div className="col-xl-4 d-flex align-items-stretch">
                   <div className="icon-box mt-4 mt-xl-0">
-                    <i className="bx bx-images"></i>
-                    <h4>Labore consequatur</h4>
+                    <i className="bx bx-brain"></i>
+                    <h4>Nghiên cứu & Giáo dục</h4>
                     <p>
-                      Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut
-                      maiores omnis facere
+                      Tìm ra những phương pháp điều trị hiệu quả và cải thiện sự
+                      hiểu biết
                     </p>
                   </div>
                 </div>

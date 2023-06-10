@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import LoginRegisterButton from "../LoginRegisterButton";
 import "./index.css";
 
@@ -5,10 +6,10 @@ const maps: {
   path: string;
   name: string;
 }[] = [
-  { path: "/", name: "Home" },
-  { path: "/news", name: "News" },
-  { path: "/doctor", name: "Doctor" },
-  { path: "/contact", name: "Contact" },
+  { path: "/", name: "Trang chủ" },
+  { path: "/post", name: "Bài viết" },
+  { path: "/doctor", name: "Bác sĩ" },
+  { path: "/contact", name: "Liên hệ" },
 ];
 export default function Header() {
   return (
@@ -30,16 +31,26 @@ export default function Header() {
               {maps.map(({ path, name }) => {
                 const currentPath = location.pathname.split("/")?.[1];
                 const p = path.split("/")?.[1];
+                console.log(currentPath, p);
+
                 return (
                   <li key={name}>
-                    <a
+                    {/* <a
                       className={`nav-link scrollto ${
                         currentPath === p ? "active" : ""
                       }`}
                       href={path}
                     >
                       {name}
-                    </a>
+                    </a> */}
+                    <Link
+                      className={`nav-link scrollto ${
+                        currentPath === p ? "active" : ""
+                      }`}
+                      to={path}
+                    >
+                      {name}
+                    </Link>
                   </li>
                 );
               })}
@@ -48,7 +59,7 @@ export default function Header() {
           </nav>
 
           <a href="#appointment" className="appointment-btn scrollto">
-            <span className="d-none d-md-inline">Make an</span> Appointment
+            Đặt lịch khám Online <span className="d-none d-md-inline"></span>
           </a>
 
           <LoginRegisterButton />

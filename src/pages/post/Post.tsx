@@ -1,6 +1,6 @@
 import { dateFormat } from "../../utils";
 
-export default function NewsItem({ data }: { data: News }) {
+export default function PostItem({ data }: { data: News }) {
   const {
     _id,
     id,
@@ -29,7 +29,7 @@ export default function NewsItem({ data }: { data: News }) {
           <li className="d-flex align-items-center">
             <i className="bi bi-person"></i>{" "}
             <a href="#">
-              {createdBy.name.lastName + " " + createdBy.name.firstName}
+              {createdBy.name?.lastName + " " + createdBy.name?.firstName}
             </a>
           </li>
           <li className="d-flex align-items-center">

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LocalStorageKey } from "../utils";
+import { LocalStorageKey } from "../constants";
 
 const axiosClient = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL + "/api/v1",

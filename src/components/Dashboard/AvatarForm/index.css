@@ -1,0 +1,18 @@
+#upload-photo {
+  display: none;
+}
+
+.upload-photo-btn {
+  padding: 0.25rem 0.5rem;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.avatar-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+}

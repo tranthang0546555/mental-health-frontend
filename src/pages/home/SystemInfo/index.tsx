@@ -1,4 +1,14 @@
-export default function Count() {
+type SystemInfo = {
+  doctor: number;
+  user: number;
+  post: number;
+};
+export default function SystemInfo() {
+  const data: SystemInfo = {
+    post: 321,
+    doctor: 123,
+    user: 2312512,
+  };
   return (
     <section id="counts" className="counts">
       <div className="container">
@@ -12,9 +22,9 @@ export default function Count() {
                 data-purecounter-duration="1"
                 className="purecounter"
               >
-                15
+                {data.post}
               </span>
-              <p>Doctors</p>
+              <p>Bài viết</p>
             </div>
           </div>
 
@@ -27,9 +37,9 @@ export default function Count() {
                 data-purecounter-duration="1"
                 className="purecounter"
               >
-                14
+                {data.doctor}
               </span>
-              <p>Departments</p>
+              <p>Bác sĩ</p>
             </div>
           </div>
 
@@ -42,9 +52,9 @@ export default function Count() {
                 data-purecounter-duration="1"
                 className="purecounter"
               >
-                13
+                {data.user}
               </span>
-              <p>Research Labs</p>
+              <p>Người dùng</p>
             </div>
           </div>
 

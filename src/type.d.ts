@@ -30,7 +30,7 @@ declare type User = {
   };
   avatar?: string;
 
-  role?: string;
+  role?: Role;
   email?: string;
   phone?: string;
   gender?: number;
@@ -48,3 +48,10 @@ declare type Doctor = User & {
   rating?: number;
   ratingCount?: number;
 };
+
+declare type LoginInputs = {
+  email: string;
+  password: string;
+};
+
+declare type Role = "admin" | "doctor" | "user" | undefined;

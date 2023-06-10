@@ -1,4 +1,4 @@
-import Count from "./Count";
+import SystemInfo from "./SystemInfo";
 import Doctor from "./Doctor";
 import HeroSection from "./Hero";
 import Services from "./Services";
@@ -10,7 +10,7 @@ export default function HomePage() {
       <HeroSection />
       <main id="main">
         <WhyUs />
-        <Count />
+        <SystemInfo />
         <Doctor />
         <Services />
       </main>

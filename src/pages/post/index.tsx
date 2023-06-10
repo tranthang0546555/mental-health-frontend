@@ -6,10 +6,11 @@ import Categories from "../../components/Categories";
 import Pagination from "../../components/Pagination";
 import RecentNews from "../../components/RecentNews";
 import Search from "../../components/Search";
-import NewsItem from "./NewsItem";
+import NewsItem from "./Post";
 import "./index.css";
+import PostItem from "./Post";
 
-export default function News() {
+export default function Post() {
   const [data, setData] = useState<Data<News>>();
   const [searchParams, setSearchParams] = useSearchParams();
   const [filters, setFilters] = useState<{ keyword?: string }>();
@@ -42,7 +43,7 @@ export default function News() {
             <div className="row gy-4 posts-list">
               {data?.data.map((news, idx) => (
                 <div className="col-lg-6" key={idx}>
-                  <NewsItem data={news} />
+                  <PostItem data={news} />
                 </div>
               ))}
             </div>

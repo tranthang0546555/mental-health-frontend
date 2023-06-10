@@ -11,7 +11,7 @@
 .login-register-switch .login-button {
   background: var(--color-white);
   color: var(--color-primary-light);
-  padding: 8px 0;
+  padding: 7px 0;
   width: 90px;
   white-space: nowrap;
   transition: 0.3s;
@@ -22,7 +22,7 @@
 .login-register-switch .register-button {
   background: var(--color-white);
   color: var(--color-primary-light);
-  padding: 8px 0;
+  padding: 7px 0;
   width: 90px;
   white-space: nowrap;
   transition: 0.3s;
