@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../hooks/store";
 import { logOut } from "../../../store/authSlice";
 import { avatarPath } from "../../../utils";
@@ -13,10 +14,10 @@ export default function HeaderDashboard() {
     >
       <div className="d-flex align-items-center justify-content-between">
         <i className="bi bi-list toggle-sidebar-btn"></i>
-        <a href="/dashboard" className="logo d-flex align-items-center">
+        <Link to="/" className="logo d-flex align-items-center">
           {/* <img src="assets/img/logo.png" alt="" /> */}
-          <span className="d-none d-lg-block">Mental Health Dashboard</span>
-        </a>
+          <span className="d-none d-lg-block">Mental Health</span>
+        </Link>
       </div>
 
       <div className="search-bar">
