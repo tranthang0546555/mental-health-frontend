@@ -13,7 +13,7 @@ export default function DoctorItem(props: { data: Doctor }) {
         />
       </div>
       <div className="member-info">
-        <h4>{name?.firstName + "" + name?.lastName}</h4>
+        <h4>{name?.firstName + " " + name?.lastName}</h4>
         <span>{description?.degree}</span>
         <p>{description?.experience}</p>
         <div className="social">

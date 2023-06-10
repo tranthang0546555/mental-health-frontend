@@ -1,3 +1,6 @@
 #header {
   top: 0;
+  min-height: 79px;
+  display: flex;
+  align-items: center;
 }
