@@ -1,5 +1,11 @@
+import { useAppDispatch, useAppSelector } from "../../../hooks/store";
+import { logOut } from "../../../store/authSlice";
+import { avatarPath } from "../../../utils";
 import "./index.css";
 export default function HeaderDashboard() {
+  const user = useAppSelector((state) => state.auth.user);
+  const dispatch = useAppDispatch();
+
   return (
     <header
       id="header-dashboard"
@@ -210,12 +216,12 @@ export default function HeaderDashboard() {
               data-bs-toggle="dropdown"
             >
               <img
-                src="assets/img/profile-img.jpg"
+                src={avatarPath(user?.avatar)}
                 alt="Profile"
                 className="rounded-circle"
               />
               <span className="d-none d-md-block dropdown-toggle ps-2">
-                K. Anderson
+                {user?.name?.firstName + " " + user?.name?.lastName}
               </span>
             </a>
 
@@ -268,10 +274,13 @@ export default function HeaderDashboard() {
               </li>
 
               <li>
-                <a className="dropdown-item d-flex align-items-center" href="#">
+                <button
+                  className="dropdown-item d-flex align-items-center"
+                  onClick={() => dispatch(logOut())}
+                >
                   <i className="bi bi-box-arrow-right"></i>
-                  <span>Sign Out</span>
-                </a>
+                  <span>Log Out</span>
+                </button>
               </li>
             </ul>
           </li>

@@ -54,4 +54,4 @@ declare type LoginInputs = {
   password: string;
 };
 
-declare type Role = "admin" | "doctor" | "user" | undefined;
+declare type Role = "admin" | "doctor" | "user" | string | undefined;

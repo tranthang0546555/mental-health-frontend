@@ -1,23 +1,74 @@
-import AvatarForm from "../../../components/Dashboard/AvatarForm";
-import "./index.css";
-import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import AvatarForm from "../../../components/Dashboard/AvatarForm";
+import { useAppDispatch, useAppSelector } from "../../../hooks/store";
+import { phoneRegExp } from "../../../utils";
+import "./index.css";
+import { USER_PROFILE, useApi } from "../../../api";
+import { getProfile } from "../../../store/authSlice";
+
+type Inputs = {
+  firstName?: string;
+  lastName?: string;
+  phone?: string;
+  numberId?: string;
+  gender?: number;
+  birthday?: string;
+  address?: string;
+  degree?: string;
+  experience?: string;
+};
 
 export default function Profile() {
-  const phoneRegExp =
-    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
-
+  const profile = useAppSelector((state) => state.auth.user);
+  const dispatch = useAppDispatch();
   const schema = yup
     .object({
       firstName: yup.string().required("Không để trống"),
       lastName: yup.string().required("Không để trống"),
       phone: yup.string().matches(phoneRegExp, "Số điện thoại không hợp lệ"),
-      job: yup.string().required("Không để trống"),
-      address: yup.string().required("Không để trống"),
       numberId: yup.string().required("Không để trống"),
+      gender: yup.string().required("Không để trống"),
+      birthday: yup.string().required("Không để trống"),
+      degree: yup.string().required("Không để trống"),
+      address: yup.string().required("Không để trống"),
+      experience: yup.string().required("Không để trống"),
     })
     .required();
-  const { register } = useForm({});
+
+  useEffect(() => {
+    if (profile) {
+      const defaultValues: Inputs = {
+        firstName: profile?.name?.firstName,
+        lastName: profile?.name?.lastName,
+        phone: profile?.phone,
+        numberId: profile?.numberId,
+        gender: profile?.gender,
+        address: profile?.address,
+        degree: profile?.description?.degree,
+        experience: profile?.description?.experience,
+        birthday: profile?.birthday,
+      };
+      reset(defaultValues);
+    }
+  }, [profile]);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<Inputs>({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = async (data: Inputs) => {
+    await useApi(USER_PROFILE, { data, method: "PATCH" }).then(() => {
+      dispatch(getProfile());
+    });
+  };
 
   return (
     <section className="section profile">
@@ -25,7 +76,11 @@ export default function Profile() {
         <div className="col-xl-12">
           <div className="card" id="profile-edit">
             <div className="card-body pt-3">
-              <form>
+              <form
+                onSubmit={handleSubmit(onSubmit, (invalid) =>
+                  console.log(invalid)
+                )}
+              >
                 <div className="row mb-3">
                   <label
                     htmlFor="profileImage"
@@ -40,221 +95,203 @@ export default function Profile() {
 
                 <div className="row mb-3">
                   <label
-                    htmlFor="fullName"
+                    htmlFor="firstName"
                     className="col-md-4 col-lg-3 col-form-label"
                   >
-                    Full Name
+                    Tên
                   </label>
                   <div className="col-md-8 col-lg-9">
                     <input
-                      name="fullName"
                       type="text"
+                      id="firstName"
                       className="form-control"
-                      id="fullName"
-                      value="Kevin Anderson"
+                      {...register("firstName")}
                     />
+                    {errors.firstName && (
+                      <span className="form-error-message">
+                        {errors.firstName.message}
+                      </span>
+                    )}
                   </div>
                 </div>
 
                 <div className="row mb-3">
                   <label
-                    htmlFor="about"
+                    htmlFor="lastName"
                     className="col-md-4 col-lg-3 col-form-label"
                   >
-                    About
+                    Họ
+                  </label>
+                  <div className="col-md-8 col-lg-9">
+                    <input
+                      type="text"
+                      id="lastName"
+                      className="form-control"
+                      {...register("lastName")}
+                    />
+                    {errors.lastName && (
+                      <span className="form-error-message">
+                        {errors.lastName.message}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="row mb-3">
+                  <label
+                    htmlFor="phone"
+                    className="col-md-4 col-lg-3 col-form-label"
+                  >
+                    Số điện thoại
+                  </label>
+                  <div className="col-md-8 col-lg-9">
+                    <input
+                      type="text"
+                      id="phone"
+                      className="form-control"
+                      {...register("phone")}
+                    />
+                    {errors.phone && (
+                      <span className="form-error-message">
+                        {errors.phone.message}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="row mb-3">
+                  <label
+                    htmlFor="gender"
+                    className="col-md-4 col-lg-3 col-form-label"
+                  >
+                    Giới tính
+                  </label>
+                  <div className="col-md-8 col-lg-9">
+                    <select
+                      id="gender"
+                      className="form-select"
+                      aria-label="Default select example"
+                      {...register("gender")}
+                    >
+                      <option value="1">Nam</option>
+                      <option value="2">Nữ</option>
+                      <option value="3">Ẩn</option>
+                    </select>
+                    {errors.gender && (
+                      <span className="form-error-message">
+                        {errors.gender.message}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="row mb-3">
+                  <label
+                    htmlFor="numberId"
+                    className="col-md-4 col-lg-3 col-form-label"
+                  >
+                    Mã định danh
+                  </label>
+                  <div className="col-md-8 col-lg-9">
+                    <input
+                      type="text"
+                      id="numberId"
+                      className="form-control"
+                      {...register("numberId")}
+                    />
+                    {errors.numberId && (
+                      <span className="form-error-message">
+                        {errors.numberId.message}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="row mb-3">
+                  <label
+                    htmlFor="birthday"
+                    className="col-md-4 col-lg-3 col-form-label"
+                  >
+                    Ngày sinh
+                  </label>
+                  <div className="col-md-8 col-lg-9">
+                    <input
+                      type="text"
+                      id="birthday"
+                      className="form-control"
+                      {...register("birthday")}
+                    />
+                    {errors.birthday && (
+                      <span className="form-error-message">
+                        {errors.birthday.message}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="row mb-3">
+                  <label
+                    htmlFor="address"
+                    className="col-md-4 col-lg-3 col-form-label"
+                  >
+                    Địa chỉ
+                  </label>
+                  <div className="col-md-8 col-lg-9">
+                    <input
+                      type="text"
+                      id="address"
+                      className="form-control"
+                      {...register("address")}
+                    />
+                    {errors.address && (
+                      <span className="form-error-message">
+                        {errors.address.message}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="row mb-3">
+                  <label
+                    htmlFor="degree"
+                    className="col-md-4 col-lg-3 col-form-label"
+                  >
+                    Học vị
+                  </label>
+                  <div className="col-md-8 col-lg-9">
+                    <input
+                      type="text"
+                      id="degree"
+                      className="form-control"
+                      {...register("degree")}
+                    />
+                    {errors.degree && (
+                      <span className="form-error-message">
+                        {errors.degree.message}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="row mb-3">
+                  <label
+                    htmlFor="experience"
+                    className="col-md-4 col-lg-3 col-form-label"
+                  >
+                    Giới thiệu bản thân
                   </label>
                   <div className="col-md-8 col-lg-9">
                     <textarea
-                      name="about"
                       className="form-control"
-                      id="about"
+                      id="experience"
                       style={{ height: "100px" }}
-                    >
-                      Sunt est soluta temporibus accusantium neque nam maiores
-                      cumque temporibus. Tempora libero non est unde veniam est
-                      qui dolor. Ut sunt iure rerum quae quisquam autem eveniet
-                      perspiciatis odit. Fuga sequi sed ea saepe at unde.
-                    </textarea>
-                  </div>
-                </div>
-
-                <div className="row mb-3">
-                  <label
-                    htmlFor="company"
-                    className="col-md-4 col-lg-3 col-form-label"
-                  >
-                    Company
-                  </label>
-                  <div className="col-md-8 col-lg-9">
-                    <input
-                      name="company"
-                      type="text"
-                      className="form-control"
-                      id="company"
-                      value="Lueilwitz, Wisoky and Leuschke"
+                      {...register("experience")}
                     />
-                  </div>
-                </div>
-
-                <div className="row mb-3">
-                  <label
-                    htmlFor="Job"
-                    className="col-md-4 col-lg-3 col-form-label"
-                  >
-                    Job
-                  </label>
-                  <div className="col-md-8 col-lg-9">
-                    <input
-                      name="job"
-                      type="text"
-                      className="form-control"
-                      id="Job"
-                      value="Web Designer"
-                    />
-                  </div>
-                </div>
-
-                <div className="row mb-3">
-                  <label
-                    htmlFor="Country"
-                    className="col-md-4 col-lg-3 col-form-label"
-                  >
-                    Country
-                  </label>
-                  <div className="col-md-8 col-lg-9">
-                    <input
-                      name="country"
-                      type="text"
-                      className="form-control"
-                      id="Country"
-                      value="USA"
-                    />
-                  </div>
-                </div>
-
-                <div className="row mb-3">
-                  <label
-                    htmlFor="Address"
-                    className="col-md-4 col-lg-3 col-form-label"
-                  >
-                    Address
-                  </label>
-                  <div className="col-md-8 col-lg-9">
-                    <input
-                      name="address"
-                      type="text"
-                      className="form-control"
-                      id="Address"
-                      value="A108 Adam Street, New York, NY 535022"
-                    />
-                  </div>
-                </div>
-
-                <div className="row mb-3">
-                  <label
-                    htmlFor="Phone"
-                    className="col-md-4 col-lg-3 col-form-label"
-                  >
-                    Phone
-                  </label>
-                  <div className="col-md-8 col-lg-9">
-                    <input
-                      name="phone"
-                      type="text"
-                      className="form-control"
-                      id="Phone"
-                      value="(436) 486-3538 x29071"
-                    />
-                  </div>
-                </div>
-
-                <div className="row mb-3">
-                  <label
-                    htmlFor="Email"
-                    className="col-md-4 col-lg-3 col-form-label"
-                  >
-                    Email
-                  </label>
-                  <div className="col-md-8 col-lg-9">
-                    <input
-                      name="email"
-                      type="email"
-                      className="form-control"
-                      id="Email"
-                      value="k.anderson@example.com"
-                    />
-                  </div>
-                </div>
-
-                <div className="row mb-3">
-                  <label
-                    htmlFor="Twitter"
-                    className="col-md-4 col-lg-3 col-form-label"
-                  >
-                    Twitter Profile
-                  </label>
-                  <div className="col-md-8 col-lg-9">
-                    <input
-                      name="twitter"
-                      type="text"
-                      className="form-control"
-                      id="Twitter"
-                      value="https://twitter.com/#"
-                    />
-                  </div>
-                </div>
-
-                <div className="row mb-3">
-                  <label
-                    htmlFor="Facebook"
-                    className="col-md-4 col-lg-3 col-form-label"
-                  >
-                    Facebook Profile
-                  </label>
-                  <div className="col-md-8 col-lg-9">
-                    <input
-                      name="facebook"
-                      type="text"
-                      className="form-control"
-                      id="Facebook"
-                      value="https://facebook.com/#"
-                    />
-                  </div>
-                </div>
-
-                <div className="row mb-3">
-                  <label
-                    htmlFor="Instagram"
-                    className="col-md-4 col-lg-3 col-form-label"
-                  >
-                    Instagram Profile
-                  </label>
-                  <div className="col-md-8 col-lg-9">
-                    <input
-                      name="instagram"
-                      type="text"
-                      className="form-control"
-                      id="Instagram"
-                      value="https://instagram.com/#"
-                    />
-                  </div>
-                </div>
-
-                <div className="row mb-3">
-                  <label
-                    htmlFor="Linkedin"
-                    className="col-md-4 col-lg-3 col-form-label"
-                  >
-                    Linkedin Profile
-                  </label>
-                  <div className="col-md-8 col-lg-9">
-                    <input
-                      name="linkedin"
-                      type="text"
-                      className="form-control"
-                      id="Linkedin"
-                      value="https://linkedin.com/#"
-                    />
+                    {errors.experience && (
+                      <span className="form-error-message">
+                        {errors.experience.message}
+                      </span>
+                    )}
                   </div>
                 </div>
 

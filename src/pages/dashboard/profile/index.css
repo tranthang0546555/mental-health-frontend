@@ -48,3 +48,10 @@
 .profile .profile-edit img {
   max-width: 120px;
 }
+
+.form-error-message {
+  color: var(--color-red);
+  font-size: 14px;
+  margin-top: 5px;
+  display: block;
+}

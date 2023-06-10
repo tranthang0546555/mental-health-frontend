@@ -21,21 +21,23 @@ export const getProfile = createAsyncThunk("auth/profile", async () => {
 type AuthState = {
   login: boolean;
   accessToken: string;
-  user?: User;
+  user?: User & Doctor;
 };
 
 const initialState: AuthState = {
   login: false,
   accessToken: localStorage.getItem(LocalStorageKey.ACCESS_TOKEN) || "",
-  user: {
-    role: "user",
-  },
 };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    logOut: () => {
+      location.reload();
+      localStorage.setItem(LocalStorageKey.ACCESS_TOKEN, "");
+    },
+  },
   extraReducers(builder) {
     builder: {
       builder.addCase(login.fulfilled, (state, action) => {
@@ -49,9 +51,11 @@ const authSlice = createSlice({
         // TODO catch error
       });
       builder.addCase(getProfile.fulfilled, (state, action) => {
+        state.login = true;
         state.user = action.payload;
       });
     }
   },
 });
+export const { logOut } = authSlice.actions;
 export default authSlice.reducer;
