@@ -6,16 +6,20 @@
 }
 .doctor-card .pic {
   overflow: hidden;
-  max-width: 180px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
 }
 .doctor-card .pic img {
   transition: ease-in-out 0.3s;
+  aspect-ratio: 1/1;
+  object-fit: cover;
 }
 .doctor-card:hover img {
   transform: scale(1.1);
 }
 .doctor-card .member-info {
+  flex: 1;
   padding-left: 30px;
 }
 .doctor-card h4 {
@@ -78,4 +82,18 @@
 }
 .doctor-card .social a + a {
   margin-left: 8px;
+}
+
+@media (max-width: 1280px) {
+  .doctor-card .pic {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 992px) {
+  .doctor-card .pic {
+    width: 180px;
+    height: 180px;
+  }
 }

@@ -1,16 +1,11 @@
-import { imagePath } from "../../utils";
+import { avatarPath, imagePath } from "../../utils";
 
 export default function DoctorItem(props: { data: Doctor }) {
   const { _id, name, avatar, description } = props.data;
   return (
     <div className="doctor-card d-flex align-items-start">
       <div className="pic">
-        {/* TODO render avatar */}
-        <img
-          src={"assets/img/doctors/doctors-2.jpg" || imagePath(avatar)}
-          className="img-fluid"
-          alt=""
-        />
+        <img src={avatarPath(avatar)} className="img-fluid" alt="" />
       </div>
       <div className="member-info">
         <h4>{name?.firstName + " " + name?.lastName}</h4>
