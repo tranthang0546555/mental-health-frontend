@@ -1,12 +1,6 @@
 import { MaterialReactTable, type MRT_ColumnDef } from "material-react-table";
 import { useEffect, useMemo, useState } from "react";
-import {
-  LOCK_USER,
-  LOCKED_USER_LIST,
-  UNLOCK_USER,
-  useApi,
-  USER_LIST,
-} from "../../../../api";
+import { LOCKED_USER_LIST, UNLOCK_USER, useApi } from "../../../../api";
 import { avatarPath, dateFormat } from "../../../../utils";
 
 export default function LockUserList() {
@@ -130,14 +124,14 @@ export default function LockUserList() {
     getData();
   }, []);
 
-  const getData = async (text?: string, page?: number) => {
+  const getData = async () => {
     const data = (await useApi(LOCKED_USER_LIST)).data as Data<User>;
     setData(data.data);
   };
 
   const unlockUserAccount = async (id: string) => {
     await useApi(UNLOCK_USER.replace(":id", id), { method: "PATCH" }).then(
-      (res) => {
+      () => {
         // TODO notification
         getData();
       }

@@ -126,14 +126,14 @@ export default function PostList() {
     getData();
   }, []);
 
-  const getData = async (text?: string, page?: number) => {
+  const getData = async () => {
     const data = (await useApi(DOCTOR_POST_LIST)).data as Data<Post>;
     setData(data.data);
   };
 
   const deletePost = async (id: string) => {
     await useApi(POST_DETAIL.replace(":slug", id), { method: "DELETE" }).then(
-      (res) => {
+      () => {
         // TODO notification
         getData();
       }

@@ -24,7 +24,6 @@ export default function PostCreate() {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
     getValues,
     setValue,
@@ -36,7 +35,7 @@ export default function PostCreate() {
     await useApi(POST_LIST, {
       method: "POST",
       data: data,
-    }).then((res) => {
+    }).then(() => {
       // TODO notification
     });
   };
@@ -106,7 +105,7 @@ export default function PostCreate() {
                 <CKEditor
                   editor={ClassicEditor}
                   data={getValues("content")}
-                  onBlur={(event, editor) => {
+                  onBlur={(_, editor) => {
                     setValue("content", editor.getData());
                   }}
                 />

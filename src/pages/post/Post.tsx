@@ -3,8 +3,6 @@ import { dateFormat } from "../../utils";
 
 export default function PostItem({ data }: { data: Post }) {
   const {
-    _id,
-    id,
     slug,
     title,
     description,
@@ -13,7 +11,6 @@ export default function PostItem({ data }: { data: Post }) {
     viewCount,
     likeCount,
     commentCount,
-    updatedAt,
   } = data;
   return (
     <article className="d-flex flex-column">

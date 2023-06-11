@@ -1,14 +1,7 @@
 import { MaterialReactTable, type MRT_ColumnDef } from "material-react-table";
 import { useEffect, useMemo, useState } from "react";
-import {
-  DOCTOR_POST_LIST,
-  LOCK_USER,
-  POST_DETAIL,
-  useApi,
-  USER_LIST,
-} from "../../../../api";
+import { LOCK_USER, useApi, USER_LIST } from "../../../../api";
 import { avatarPath, dateFormat } from "../../../../utils";
-import { Link } from "react-router-dom";
 
 export default function UserList() {
   const [data, setData] = useState<User[]>([]);
@@ -124,18 +117,16 @@ export default function UserList() {
     getData();
   }, []);
 
-  const getData = async (text?: string, page?: number) => {
+  const getData = async () => {
     const data = (await useApi(USER_LIST)).data as Data<User>;
     setData(data.data);
   };
 
   const lockUserAccount = async (id: string) => {
-    await useApi(LOCK_USER.replace(":id", id), { method: "PATCH" }).then(
-      (res) => {
-        // TODO notification
-        getData();
-      }
-    );
+    await useApi(LOCK_USER.replace(":id", id), { method: "PATCH" }).then(() => {
+      // TODO notification
+      getData();
+    });
   };
 
   // if (!data) return <></>;

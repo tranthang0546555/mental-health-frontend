@@ -47,8 +47,7 @@ const authSlice = createSlice({
         localStorage.setItem(LocalStorageKey.ACCESS_TOKEN, token);
         location.assign("/dashboard");
       });
-      builder.addCase(login.rejected, (state, action) => {
-        console.log(action);
+      builder.addCase(login.rejected, () => {
         // TODO catch error
       });
       builder.addCase(getProfile.fulfilled, (state, action) => {

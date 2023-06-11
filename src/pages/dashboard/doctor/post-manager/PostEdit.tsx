@@ -55,7 +55,7 @@ export default function PostEdit() {
     await useApi(POST_DETAIL.replace(":slug", slug), {
       method: "PATCH",
       data: data,
-    }).then((res) => {
+    }).then(() => {
       // TODO notification
     });
   };
@@ -125,7 +125,7 @@ export default function PostEdit() {
                 <CKEditor
                   editor={ClassicEditor}
                   data={getValues("content")}
-                  onBlur={(event, editor) => {
+                  onBlur={(_, editor) => {
                     setValue("content", editor.getData());
                   }}
                 />

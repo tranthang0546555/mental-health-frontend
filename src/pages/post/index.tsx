@@ -67,9 +67,3 @@ export default function Post() {
     </section>
   );
 }
-
-const options: Record<string, string> = {
-  newest: "Mới nhất",
-  popular: "Phổ biến",
-  rate: "Đánh giá",
-};
