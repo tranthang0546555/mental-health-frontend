@@ -29,9 +29,7 @@ export default function PostItem({ data }: { data: Post }) {
         <ul>
           <li className="d-flex align-items-center">
             <i className="bi bi-person"></i>{" "}
-            <a href="#">
-              {createdBy.name?.lastName + " " + createdBy.name?.firstName}
-            </a>
+            <a href="#">{createdBy.name?.firstName}</a>
           </li>
           <li className="d-flex align-items-center">
             <i className="bi bi-clock"></i>{" "}

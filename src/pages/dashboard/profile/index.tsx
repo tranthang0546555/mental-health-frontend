@@ -10,6 +10,7 @@ import { USER_PROFILE, useApi } from "../../../api";
 import { getProfile } from "../../../store/authSlice";
 
 type Inputs = {
+  fullName?: string;
   firstName?: string;
   lastName?: string;
   phone?: string;
@@ -26,6 +27,7 @@ export default function Profile() {
   const dispatch = useAppDispatch();
   const schema = yup
     .object({
+      fullName: yup.string().required("Không để trống"),
       firstName: yup.string().required("Không để trống"),
       lastName: yup.string().required("Không để trống"),
       phone: yup.string().matches(phoneRegExp, "Số điện thoại không hợp lệ"),
@@ -41,6 +43,7 @@ export default function Profile() {
   useEffect(() => {
     if (profile) {
       const defaultValues: Inputs = {
+        fullName: profile?.fullName,
         firstName: profile?.name?.firstName,
         lastName: profile?.name?.lastName,
         phone: profile?.phone,
@@ -95,21 +98,21 @@ export default function Profile() {
 
                 <div className="row mb-3">
                   <label
-                    htmlFor="firstName"
+                    htmlFor="fullName"
                     className="col-md-4 col-lg-3 col-form-label"
                   >
-                    Tên
+                    Họ và tên
                   </label>
                   <div className="col-md-8 col-lg-9">
                     <input
                       type="text"
-                      id="firstName"
+                      id="fullName"
                       className="form-control"
-                      {...register("firstName")}
+                      {...register("fullName")}
                     />
-                    {errors.firstName && (
+                    {errors.fullName && (
                       <span className="form-error-message">
-                        {errors.firstName.message}
+                        {errors.fullName.message}
                       </span>
                     )}
                   </div>
@@ -117,23 +120,42 @@ export default function Profile() {
 
                 <div className="row mb-3">
                   <label
-                    htmlFor="lastName"
+                    htmlFor="firstName"
                     className="col-md-4 col-lg-3 col-form-label"
                   >
-                    Họ
+                    Tên / Họ
                   </label>
                   <div className="col-md-8 col-lg-9">
-                    <input
-                      type="text"
-                      id="lastName"
-                      className="form-control"
-                      {...register("lastName")}
-                    />
-                    {errors.lastName && (
-                      <span className="form-error-message">
-                        {errors.lastName.message}
-                      </span>
-                    )}
+                    <div className="row">
+                      <div className="col-md-6">
+                        <input
+                          type="text"
+                          id="lastName"
+                          className="form-control"
+                          {...register("lastName")}
+                          placeholder="Họ của bạn"
+                        />
+                        {errors.lastName && (
+                          <span className="form-error-message">
+                            {errors.lastName.message}
+                          </span>
+                        )}
+                      </div>
+                      <div className="col-md-6">
+                        <input
+                          type="text"
+                          id="firstName"
+                          className="form-control"
+                          {...register("firstName")}
+                          placeholder="Tên của bạn"
+                        />
+                        {errors.firstName && (
+                          <span className="form-error-message">
+                            {errors.firstName.message}
+                          </span>
+                        )}
+                      </div>
+                    </div>
                   </div>
                 </div>
 

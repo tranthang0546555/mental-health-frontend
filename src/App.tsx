@@ -15,10 +15,12 @@ import Doctor from "./pages/doctor";
 import FAQ from "./pages/faq";
 import HomePage from "./pages/home";
 import Post from "./pages/post";
-import PostManager from "./pages/dashboard/doctor/post-manager";
 import PostEdit from "./pages/dashboard/doctor/post-manager/PostEdit";
 import PostCreate from "./pages/dashboard/doctor/post-manager/PostCreate";
 import PostDetail from "./pages/post-detail";
+import UserList from "./pages/dashboard/admin/user-manager/UserList";
+import PostList from "./pages/dashboard/doctor/post-manager/PostList";
+import LockUserList from "./pages/dashboard/admin/user-manager/UserLockList";
 
 function App() {
   useVerifyToken();
@@ -115,7 +117,7 @@ function App() {
         },
         {
           path: "post",
-          element: <PostManager />,
+          element: <PostList />,
         },
         {
           path: "post/create",
@@ -124,6 +126,14 @@ function App() {
         {
           path: "post/:slug",
           element: <PostEdit />,
+        },
+        {
+          path: "user",
+          element: <UserList />,
+        },
+        {
+          path: "user/locked",
+          element: <LockUserList />,
         },
       ],
     },

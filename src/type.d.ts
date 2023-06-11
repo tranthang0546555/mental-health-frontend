@@ -25,6 +25,7 @@ declare type Post = {
 
 declare type User = {
   _id?: string;
+  fullName?: string;
   name?: {
     firstName?: string;
     lastName?: string;
@@ -39,6 +40,12 @@ declare type User = {
   address?: string;
   job?: string;
   numberId?: string;
+  createdAt?: string;
+  lock?: boolean;
+  lockedBy?: User;
+  lockedAt?: string;
+  unlockBy?: User;
+  unlockedAt?: string;
 };
 
 declare type Doctor = User & {

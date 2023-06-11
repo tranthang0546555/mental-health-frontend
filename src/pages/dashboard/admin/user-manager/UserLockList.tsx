@@ -1,57 +1,64 @@
 import { MaterialReactTable, type MRT_ColumnDef } from "material-react-table";
 import { useEffect, useMemo, useState } from "react";
-import { DOCTOR_POST_LIST, POST_DETAIL, useApi } from "../../../../api";
-import { dateFormat } from "../../../../utils";
-import { Link } from "react-router-dom";
+import {
+  LOCK_USER,
+  LOCKED_USER_LIST,
+  UNLOCK_USER,
+  useApi,
+  USER_LIST,
+} from "../../../../api";
+import { avatarPath, dateFormat } from "../../../../utils";
 
-export default function PostList() {
-  const [data, setData] = useState<Post[]>([]);
+export default function LockUserList() {
+  const [data, setData] = useState<User[]>([]);
 
-  const columns = useMemo<MRT_ColumnDef<Post>[]>(
+  const columns = useMemo<MRT_ColumnDef<User>[]>(
     () => [
       {
-        header: "Bài viết",
-        accessorKey: "title",
-        size: 400,
-        Cell({ row }) {
-          return (
-            <span className="text-line-clamp-2">{row.original.title}</span>
-          );
-        },
-      },
-      {
-        header: "Lượt xem",
-        accessorKey: "viewCount",
+        header: "Ảnh",
+        accessorKey: "avatar",
         size: 1,
-      },
-      {
-        header: "Lượt thích",
-        accessorKey: "likeCount",
-        size: 1,
-      },
-      {
-        header: "Bình luận",
-        accessorKey: "commentCount",
-        size: 1,
-      },
-      {
-        header: "Tạo",
-        accessorKey: "createdAt",
-        Cell({ row }) {
-          return <>{dateFormat(row.original.createdAt)}</>;
-        },
-        size: 1,
-      },
-      {
-        header: "Sửa",
-        accessorKey: "updatedAt",
         Cell({
           row: {
-            original: { updatedAt },
+            original: { avatar },
           },
         }) {
-          if (!updatedAt) return;
-          return <>{dateFormat(updatedAt)}</>;
+          if (!avatar) return <></>;
+          return <img className="avatar-small" src={avatarPath(avatar)} />;
+        },
+      },
+      {
+        header: "Họ tên",
+        accessorKey: "fullName",
+        size: 1,
+      },
+      {
+        header: "Email",
+        accessorKey: "email",
+        size: 1,
+      },
+      {
+        header: "Đã khoá",
+        Cell({
+          row: {
+            original: { lockedBy },
+          },
+        }) {
+          if (!lockedBy) return <></>;
+          return <>{lockedBy.name?.firstName}</>;
+        },
+        size: 1,
+      },
+      {
+        header: "Thời gian",
+        accessorKey: "lockedAt",
+        Cell({
+          row: {
+            original: { lockedAt },
+          },
+        }) {
+          if (!lockedAt) return <></>;
+          return <>{dateFormat(lockedAt)}</>;
         },
         size: 1,
       },
@@ -59,7 +66,7 @@ export default function PostList() {
         header: "Thao tác",
         size: 1,
         Cell({ row }) {
-          const { _id, slug, title } = row.original;
+          const { _id = "", name } = row.original;
           return (
             <>
               <div
@@ -73,7 +80,7 @@ export default function PostList() {
                   <div className="modal-content">
                     <div className="modal-header">
                       <h1 className="modal-title fs-5" id="modalLabel">
-                        Bạn muốn xoá bài viết này!
+                        Xoá khỏi danh sách đen
                       </h1>
                       <button
                         type="button"
@@ -82,7 +89,7 @@ export default function PostList() {
                         aria-label="Close"
                       ></button>
                     </div>
-                    <div className="modal-body">{title}</div>
+                    <div className="modal-body">{`Khôi phục tài khoản "${name?.firstName}" và người dùng có thể truy cập vào hệ thống.`}</div>
                     <div className="modal-footer">
                       <button
                         type="button"
@@ -93,11 +100,11 @@ export default function PostList() {
                       </button>
                       <button
                         type="button"
-                        className="btn btn-danger"
+                        className="btn btn-success"
                         data-bs-dismiss="modal"
-                        onClick={() => deletePost(_id)}
+                        onClick={() => unlockUserAccount(_id)}
                       >
-                        Xoá bài viết
+                        Xác nhận
                       </button>
                     </div>
                   </div>
@@ -105,15 +112,12 @@ export default function PostList() {
               </div>
               <button
                 type="button"
-                className="btn btn-danger"
+                className="btn btn-primary"
                 data-bs-toggle="modal"
                 data-bs-target={`#modal-${_id}`}
               >
-                <i className="bi bi-trash"></i>
-              </button>{" "}
-              <Link to={`/dashboard/post/${slug}`} className="btn btn-primary">
-                <i className="bi bi-pencil-square"></i>
-              </Link>
+                <i className="bi bi-unlock"></i>
+              </button>
             </>
           );
         },
@@ -127,12 +131,12 @@ export default function PostList() {
   }, []);
 
   const getData = async (text?: string, page?: number) => {
-    const data = (await useApi(DOCTOR_POST_LIST)).data as Data<Post>;
+    const data = (await useApi(LOCKED_USER_LIST)).data as Data<User>;
     setData(data.data);
   };
 
-  const deletePost = async (id: string) => {
-    await useApi(POST_DETAIL.replace(":slug", id), { method: "DELETE" }).then(
+  const unlockUserAccount = async (id: string) => {
+    await useApi(UNLOCK_USER.replace(":id", id), { method: "PATCH" }).then(
       (res) => {
         // TODO notification
         getData();

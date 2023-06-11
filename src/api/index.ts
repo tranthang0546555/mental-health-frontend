@@ -17,6 +17,11 @@ export const DOCTOR_LIST = "doctor";
 export const DOCTOR_POST_LIST = "/doctor/post";
 export const DOCTOR_TIME_SERVING = "/doctor/time-serving";
 
+export const USER_LIST = "user";
+export const LOCKED_USER_LIST = "user/locked";
+export const LOCK_USER = "user/lock/:id";
+export const UNLOCK_USER = "user/unlock/:id";
+
 export const LOGIN_EMAIL_PASSWORD = "/auth/login";
 export const REGISTER_EMAIL_PASSWORD = "/auth/register";
 export const FORGOT_PASSWORD = "/auth/forgot-password";

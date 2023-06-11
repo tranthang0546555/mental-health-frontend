@@ -1,57 +1,58 @@
 import { MaterialReactTable, type MRT_ColumnDef } from "material-react-table";
 import { useEffect, useMemo, useState } from "react";
-import { DOCTOR_POST_LIST, POST_DETAIL, useApi } from "../../../../api";
-import { dateFormat } from "../../../../utils";
+import {
+  DOCTOR_POST_LIST,
+  LOCK_USER,
+  POST_DETAIL,
+  useApi,
+  USER_LIST,
+} from "../../../../api";
+import { avatarPath, dateFormat } from "../../../../utils";
 import { Link } from "react-router-dom";
 
-export default function PostList() {
-  const [data, setData] = useState<Post[]>([]);
+export default function UserList() {
+  const [data, setData] = useState<User[]>([]);
 
-  const columns = useMemo<MRT_ColumnDef<Post>[]>(
+  const columns = useMemo<MRT_ColumnDef<User>[]>(
     () => [
       {
-        header: "Bài viết",
-        accessorKey: "title",
-        size: 400,
-        Cell({ row }) {
-          return (
-            <span className="text-line-clamp-2">{row.original.title}</span>
-          );
+        header: "Ảnh",
+        accessorKey: "avatar",
+        size: 1,
+        Cell({
+          row: {
+            original: { avatar },
+          },
+        }) {
+          if (!avatar) return <></>;
+          return <img className="avatar-small" src={avatarPath(avatar)} />;
         },
       },
       {
-        header: "Lượt xem",
-        accessorKey: "viewCount",
+        header: "Họ tên",
+        accessorKey: "fullName",
         size: 1,
       },
       {
-        header: "Lượt thích",
-        accessorKey: "likeCount",
+        header: "Email",
+        accessorKey: "email",
         size: 1,
       },
       {
-        header: "Bình luận",
-        accessorKey: "commentCount",
+        header: "Số điện thoại",
+        accessorKey: "phone",
         size: 1,
       },
       {
         header: "Tạo",
         accessorKey: "createdAt",
-        Cell({ row }) {
-          return <>{dateFormat(row.original.createdAt)}</>;
-        },
-        size: 1,
-      },
-      {
-        header: "Sửa",
-        accessorKey: "updatedAt",
         Cell({
           row: {
-            original: { updatedAt },
+            original: { createdAt },
           },
         }) {
-          if (!updatedAt) return;
-          return <>{dateFormat(updatedAt)}</>;
+          if (!createdAt) return <></>;
+          return <>{dateFormat(createdAt)}</>;
         },
         size: 1,
       },
@@ -59,7 +60,7 @@ export default function PostList() {
         header: "Thao tác",
         size: 1,
         Cell({ row }) {
-          const { _id, slug, title } = row.original;
+          const { _id = "", name } = row.original;
           return (
             <>
               <div
@@ -73,7 +74,7 @@ export default function PostList() {
                   <div className="modal-content">
                     <div className="modal-header">
                       <h1 className="modal-title fs-5" id="modalLabel">
-                        Bạn muốn xoá bài viết này!
+                        Đưa vào danh sách đen
                       </h1>
                       <button
                         type="button"
@@ -82,7 +83,7 @@ export default function PostList() {
                         aria-label="Close"
                       ></button>
                     </div>
-                    <div className="modal-body">{title}</div>
+                    <div className="modal-body">{`Chuyển người dùng "${name?.firstName}" vào danh sách đen và người dùng sẽ không thể truy cập vào hệ thống được nữa!`}</div>
                     <div className="modal-footer">
                       <button
                         type="button"
@@ -95,9 +96,9 @@ export default function PostList() {
                         type="button"
                         className="btn btn-danger"
                         data-bs-dismiss="modal"
-                        onClick={() => deletePost(_id)}
+                        onClick={() => lockUserAccount(_id)}
                       >
-                        Xoá bài viết
+                        Xác nhận
                       </button>
                     </div>
                   </div>
@@ -109,11 +110,8 @@ export default function PostList() {
                 data-bs-toggle="modal"
                 data-bs-target={`#modal-${_id}`}
               >
-                <i className="bi bi-trash"></i>
-              </button>{" "}
-              <Link to={`/dashboard/post/${slug}`} className="btn btn-primary">
-                <i className="bi bi-pencil-square"></i>
-              </Link>
+                <i className="bi bi-lock"></i>
+              </button>
             </>
           );
         },
@@ -127,12 +125,12 @@ export default function PostList() {
   }, []);
 
   const getData = async (text?: string, page?: number) => {
-    const data = (await useApi(DOCTOR_POST_LIST)).data as Data<Post>;
+    const data = (await useApi(USER_LIST)).data as Data<User>;
     setData(data.data);
   };
 
-  const deletePost = async (id: string) => {
-    await useApi(POST_DETAIL.replace(":slug", id), { method: "DELETE" }).then(
+  const lockUserAccount = async (id: string) => {
+    await useApi(LOCK_USER.replace(":id", id), { method: "PATCH" }).then(
       (res) => {
         // TODO notification
         getData();

@@ -11,7 +11,7 @@ export default function Dashboard() {
 
   const check = useDebouncedCallback(() => {
     if (!login) navigate("/login");
-    else navigate("/dashboard");
+    // else navigate("/dashboard");
   }, 3000);
 
   useEffect(() => {

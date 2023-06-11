@@ -37,8 +37,7 @@ export default function PostDetail() {
             <h1>{title}</h1>
             <div className="counter">
               <span>
-                <i className="bi bi-person"></i>{" "}
-                {createdBy.name?.firstName + " " + createdBy.name?.lastName}
+                <i className="bi bi-person"></i> {createdBy.name?.firstName}
               </span>
               <span>
                 <i className="bi bi-clock"></i>{" "}
