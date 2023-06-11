@@ -6,12 +6,11 @@ import Categories from "../../components/Categories";
 import Pagination from "../../components/Pagination";
 import RecentNews from "../../components/RecentNews";
 import Search from "../../components/Search";
-import NewsItem from "./Post";
-import "./index.css";
 import PostItem from "./Post";
+import "./index.css";
 
 export default function Post() {
-  const [data, setData] = useState<Data<News>>();
+  const [data, setData] = useState<Data<Post>>();
   const [searchParams, setSearchParams] = useSearchParams();
   const [filters, setFilters] = useState<{ keyword?: string }>();
 
@@ -31,7 +30,7 @@ export default function Post() {
     });
     setFilters({ keyword });
     const data = (await useApi(POST_LIST + (query ? "?" + query : "")))
-      .data as Data<News>;
+      .data as Data<Post>;
     setData(data);
   };
 

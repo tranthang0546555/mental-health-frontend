@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import { dateFormat } from "../../utils";
 
-export default function PostItem({ data }: { data: News }) {
+export default function PostItem({ data }: { data: Post }) {
   const {
     _id,
     id,
@@ -21,7 +22,7 @@ export default function PostItem({ data }: { data: News }) {
       </div>
 
       <h2 className="title">
-        <a href="#">{title}</a>
+        <Link to={"/post/" + slug}>{title}</Link>
       </h2>
 
       <div className="meta-top">

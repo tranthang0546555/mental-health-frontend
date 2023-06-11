@@ -219,6 +219,7 @@ export default function Profile() {
                       type="text"
                       id="birthday"
                       className="form-control"
+                      placeholder="DD/MM/YYYY"
                       {...register("birthday")}
                     />
                     {errors.birthday && (

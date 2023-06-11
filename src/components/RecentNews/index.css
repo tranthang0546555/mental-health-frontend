@@ -39,25 +39,25 @@
   font-size: 14px;
 }
 
-.blog .sidebar .recent-posts .post-item {
+.recent-posts .post-item {
   display: flex;
 }
 
-.blog .sidebar .recent-posts .post-item + .post-item {
+.recent-posts .post-item + .post-item {
   margin-top: 15px;
 }
 
-.blog .sidebar .recent-posts img {
+.recent-posts img {
   width: 80px;
   margin-right: 15px;
 }
 
-.blog .sidebar .recent-posts h4 {
+.recent-posts h4 {
   font-size: 18px;
   font-weight: 400;
 }
 
-.blog .sidebar .recent-posts h4 a {
+.recent-posts h4 a {
   color: var(--color-secondary);
   transition: 0.3s;
   overflow: hidden;
@@ -68,11 +68,11 @@
   -webkit-box-orient: vertical;
 }
 
-.blog .sidebar .recent-posts h4 a:hover {
+.recent-posts h4 a:hover {
   color: var(--color-primary);
 }
 
-.blog .sidebar .recent-posts time {
+.recent-posts time {
   display: block;
   font-style: italic;
   font-size: 14px;

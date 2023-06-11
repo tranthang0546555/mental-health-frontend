@@ -1,0 +1,16 @@
+.blog-detail .counter {
+  display: flex;
+  gap: 20px;
+  padding: 10px 0;
+}
+
+.blog-detail .counter ul {
+  display: flex;
+  gap: 8px;
+  padding-left: 0;
+}
+
+.blog-detail .counter i {
+  color: var(--color-primary);
+  padding-right: 5px;
+}

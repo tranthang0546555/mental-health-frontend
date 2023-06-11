@@ -8,7 +8,7 @@ declare type Pagination = {
   totalRecords: number;
 };
 
-declare type News = {
+declare type Post = {
   _id: string;
   id: string;
   slug: string;
@@ -20,6 +20,7 @@ declare type News = {
   createdBy: User;
   createdAt: string;
   updatedAt: string;
+  content: string;
 };
 
 declare type User = {
@@ -54,4 +55,4 @@ declare type LoginInputs = {
   password: string;
 };
 
-declare type Role = "admin" | "doctor" | "user" | string | undefined;
+declare type Role = "admin" | "doctor" | "user" | undefined;

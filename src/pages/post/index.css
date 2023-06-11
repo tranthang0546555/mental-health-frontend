@@ -18,13 +18,14 @@
   max-height: 240px;
   margin: -30px -30px 0 -30px;
   overflow: hidden;
+  display: none;
 }
 
 .blog .posts-list .title {
   font-size: 24px;
   font-weight: 700;
   padding: 0;
-  margin: 20px 0 0 0;
+  /* margin: 20px 0 0 0; */
 
   overflow: hidden;
   text-overflow: ellipsis;
@@ -96,7 +97,8 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
-}.blog .posts-list .read-more .meta-top {
+}
+.blog .posts-list .read-more .meta-top {
   margin-top: 0;
 }
 .blog .posts-list .read-more > a {

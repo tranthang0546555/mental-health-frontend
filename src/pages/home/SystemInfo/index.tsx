@@ -1,75 +1,55 @@
+import { useEffect, useState } from "react";
+import { HOME_SYSTEM_INFO, useApi } from "../../../api";
+
 type SystemInfo = {
-  doctor: number;
-  user: number;
-  post: number;
+  post?: number;
+  doctor?: number;
+  user?: number;
+  visitor?: number;
 };
+
 export default function SystemInfo() {
-  const data: SystemInfo = {
-    post: 321,
-    doctor: 123,
-    user: 2312512,
-  };
+  const [data, setData] = useState<SystemInfo>();
+
+  useEffect(() => {
+    useApi(HOME_SYSTEM_INFO).then((res) => {
+      setData(res.data);
+    });
+  }, []);
+
   return (
     <section id="counts" className="counts">
       <div className="container">
         <div className="row">
           <div className="col-lg-3 col-md-6">
             <div className="count-box">
-              <i className="fas fa-user-md"></i>
-              <span
-                data-purecounter-start="0"
-                data-purecounter-end="85"
-                data-purecounter-duration="1"
-                className="purecounter"
-              >
-                {data.post}
-              </span>
+              <i className="fas fa-newspaper"></i>
+              <span className="purecounter">{data?.post}</span>
               <p>Bài viết</p>
             </div>
           </div>
 
           <div className="col-lg-3 col-md-6 mt-5 mt-md-0">
             <div className="count-box">
-              <i className="far fa-hospital"></i>
-              <span
-                data-purecounter-start="0"
-                data-purecounter-end="18"
-                data-purecounter-duration="1"
-                className="purecounter"
-              >
-                {data.doctor}
-              </span>
+              <i className="fas fa-user-md"></i>
+              <span className="purecounter">{data?.doctor}</span>
               <p>Bác sĩ</p>
             </div>
           </div>
 
           <div className="col-lg-3 col-md-6 mt-5 mt-lg-0">
             <div className="count-box">
-              <i className="fas fa-flask"></i>
-              <span
-                data-purecounter-start="0"
-                data-purecounter-end="12"
-                data-purecounter-duration="1"
-                className="purecounter"
-              >
-                {data.user}
-              </span>
+              <i className="fas fa-users"></i>
+              <span className="purecounter">{data?.user}</span>
               <p>Người dùng</p>
             </div>
           </div>
 
           <div className="col-lg-3 col-md-6 mt-5 mt-lg-0">
             <div className="count-box">
-              <i className="fas fa-award"></i>
-              <span
-                data-purecounter-start="0"
-                data-purecounter-end="150"
-                data-purecounter-duration="1"
-                className="purecounter"
-              >
-                12
-              </span>
-              <p>Awards</p>
+              <i className="fas fa-eye"></i>
+              <span className="purecounter">{data?.visitor}</span>
+              <p>Lượt truy cập</p>
             </div>
           </div>
         </div>

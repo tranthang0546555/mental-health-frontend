@@ -4,12 +4,12 @@ import { dateFormat } from "../../utils";
 import "./index.css";
 
 export default function RecentNews() {
-  const [newsList, setNewList] = useState<News[]>([]);
+  const [newsList, setNewList] = useState<Post[]>([]);
   useEffect(() => {
     getData();
   }, []);
   const getData = async () => {
-    const res: Data<News> = (await useApi(POST_LIST)).data;
+    const res: Data<Post> = (await useApi(POST_LIST)).data;
     setNewList(res.data);
   };
   return (
