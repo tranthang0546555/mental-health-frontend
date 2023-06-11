@@ -13,7 +13,7 @@ const sidebarMenus: SidebarMenu[] = [
   {
     name: "Bài viết",
     path: "/dashboard/post",
-    role: ["doctor"],
+    role: ["doctor", "admin"],
     icon: <i className="bi bi-newspaper"></i>,
     children: [
       {
@@ -35,7 +35,7 @@ const sidebarMenus: SidebarMenu[] = [
     icon: <i className="bi bi-person"></i>,
     children: [
       {
-        name: "Danh sách",
+        name: "Hoạt động",
         path: "/",
         role: ["admin"],
       },

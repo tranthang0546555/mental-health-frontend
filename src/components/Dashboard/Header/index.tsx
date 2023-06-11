@@ -222,7 +222,7 @@ export default function HeaderDashboard() {
                 className="rounded-circle"
               />
               <span className="d-none d-md-block dropdown-toggle ps-2">
-                {user?.name?.firstName + " " + user?.name?.lastName}
+                {user?.name?.firstName}
               </span>
             </a>
 

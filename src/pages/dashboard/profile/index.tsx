@@ -130,20 +130,6 @@ export default function Profile() {
                       <div className="col-md-6">
                         <input
                           type="text"
-                          id="lastName"
-                          className="form-control"
-                          {...register("lastName")}
-                          placeholder="Họ của bạn"
-                        />
-                        {errors.lastName && (
-                          <span className="form-error-message">
-                            {errors.lastName.message}
-                          </span>
-                        )}
-                      </div>
-                      <div className="col-md-6">
-                        <input
-                          type="text"
                           id="firstName"
                           className="form-control"
                           {...register("firstName")}
@@ -152,6 +138,20 @@ export default function Profile() {
                         {errors.firstName && (
                           <span className="form-error-message">
                             {errors.firstName.message}
+                          </span>
+                        )}
+                      </div>
+                      <div className="col-md-6">
+                        <input
+                          type="text"
+                          id="lastName"
+                          className="form-control"
+                          {...register("lastName")}
+                          placeholder="Họ của bạn"
+                        />
+                        {errors.lastName && (
+                          <span className="form-error-message">
+                            {errors.lastName.message}
                           </span>
                         )}
                       </div>
