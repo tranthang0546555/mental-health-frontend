@@ -45,7 +45,7 @@
 }
 
 .recent-posts .post-item + .post-item {
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 .recent-posts img {
@@ -56,6 +56,7 @@
 .recent-posts h4 {
   font-size: 18px;
   font-weight: 400;
+  margin-bottom: .3rem;
 }
 
 .recent-posts h4 a {
