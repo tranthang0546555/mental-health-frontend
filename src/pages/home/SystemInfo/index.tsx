@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
-import { HOME_SYSTEM_INFO, useApi } from "../../../api";
-import "./index.css";
 import { useAppSelector } from "../../../hooks/store";
+import "./index.css";
 
 export default function SystemInfo() {
   const { counts } = useAppSelector((state) => state.info);
