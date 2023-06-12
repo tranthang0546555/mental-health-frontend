@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../hooks/store";
 import { logOut } from "../../../store/authSlice";
 import { avatarPath } from "../../../utils";
+import ThemeSwitch from "../../ThemeSwitch";
 import "./index.css";
+
 export default function HeaderDashboard() {
   const user = useAppSelector((state) => state.auth.user);
   const dispatch = useAppDispatch();
@@ -209,7 +211,7 @@ export default function HeaderDashboard() {
               </li>
             </ul>
           </li>
-
+          <ThemeSwitch />
           <li className="nav-item dropdown pe-3">
             <a
               className="nav-link nav-profile d-flex align-items-center pe-0"

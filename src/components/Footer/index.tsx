@@ -71,14 +71,13 @@ export default function Footer() {
             </div>
 
             <div className="col-lg-4 col-md-6 footer-newsletter">
-              <h4>Join Our Newsletter</h4>
+              <h4>Tham gia bản tin của chúng tôi</h4>
               <p>
-                Tamen quem nulla quae legam multos aute sint culpa legam noster
-                magna
+                Đăng ký bản tin của Mental Health để cập nhật tin tức mới nhất.
               </p>
               <form action="" method="post">
-                <input type="email" name="email" />
-                <input type="submit" value="Subscribe" />
+                <input type="email" name="email" placeholder="Email" />
+                <input type="submit" value="Đăng ký" />
               </form>
             </div>
           </div>

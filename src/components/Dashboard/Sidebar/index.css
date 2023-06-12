@@ -11,7 +11,7 @@
   scrollbar-width: thin;
   scrollbar-color: #aab7cf transparent;
   box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
-  background-color: #fff;
+  background-color: var(--color-background-card);
 }
 
 .sidebar-dashboard ::-webkit-scrollbar {
@@ -132,7 +132,6 @@
   align-items: center;
   font-size: 14px;
   font-weight: 600;
-  color: #012970;
   transition: 0.3;
   padding: 10px 0 10px 40px;
   transition: 0.3s;
@@ -158,6 +157,13 @@
   margin-top: 20px;
   padding: 20px 30px;
   transition: all 0.3s;
-  min-height: calc(100vh - 60px);
-  background: #f6f9ff;
+  min-height: calc(100vh - 20px);
+  background: var(--color-background-2);
+}
+#main-dashboard .section > * {
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+#main-dashboard label {
+  color: var(--color-default);
 }

@@ -3,8 +3,9 @@
   z-index: 997;
   height: 60px;
   box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
-  background-color: #fff;
+  background: var(--color-background-gradient);
   padding-left: 20px;
+  border-bottom: 1px solid var(--color-border);
   /* Toggle Sidebar Button */
   /* Search Bar */
 }
@@ -13,7 +14,6 @@
   font-size: 32px;
   padding-right: 10px;
   cursor: pointer;
-  color: #012970;
 }
 
 .header-dashboard .search-bar {
@@ -90,13 +90,13 @@
 
 .header-nav-dashboard .nav-icon {
   font-size: 22px;
-  color: #012970;
+  color: var(--color-icon);
   margin-right: 25px;
   position: relative;
 }
 
 .header-nav-dashboard .nav-profile {
-  color: #012970;
+  color: var(--color-title);
 }
 
 .header-nav-dashboard .nav-profile img {
@@ -221,7 +221,6 @@
 .header-dashboard .logo span {
   font-size: 26px;
   font-weight: 700;
-  color: #012970;
   font-family: "Nunito", sans-serif;
 }
 
