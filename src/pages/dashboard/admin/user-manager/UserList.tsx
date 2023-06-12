@@ -1,7 +1,14 @@
 import { MaterialReactTable, type MRT_ColumnDef } from "material-react-table";
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "react-toastify";
-import { LOCK_USER, useApi, USER_LIST } from "../../../../api";
+import {
+  LOCK_USER,
+  SET_ROLE_ACCOUNT,
+  useApi,
+  USER_LIST,
+} from "../../../../api";
+import Modal from "../../../../components/Modal";
+import { ROLE } from "../../../../constants";
 import { avatarPath, dateFormat } from "../../../../utils";
 
 export default function UserList() {
@@ -54,58 +61,53 @@ export default function UserList() {
         header: "Thao tác",
         size: 1,
         Cell({ row }) {
-          const { _id = "", name } = row.original;
+          const { _id = "", name, role } = row.original;
           return (
             <>
-              <div
-                className="modal fade"
-                id={"modal-" + _id}
-                tabIndex={-1}
-                aria-labelledby="modalLabel"
-                aria-hidden="true"
-              >
-                <div className="modal-dialog">
-                  <div className="modal-content">
-                    <div className="modal-header">
-                      <h1 className="modal-title fs-5" id="modalLabel">
-                        Đưa vào danh sách đen
-                      </h1>
-                      <button
-                        type="button"
-                        className="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                      ></button>
-                    </div>
-                    <div className="modal-body">{`Chuyển người dùng "${name?.firstName}" vào danh sách đen và người dùng sẽ không thể truy cập vào hệ thống được nữa!`}</div>
-                    <div className="modal-footer">
-                      <button
-                        type="button"
-                        className="btn btn-secondary"
-                        data-bs-dismiss="modal"
-                      >
-                        Huỷ bỏ
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-danger"
-                        data-bs-dismiss="modal"
-                        onClick={() => lockUserAccount(_id)}
-                      >
-                        Xác nhận
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <button
-                type="button"
-                className="btn btn-danger"
-                data-bs-toggle="modal"
-                data-bs-target={`#modal-${_id}`}
-              >
-                <i className="bi bi-lock"></i>
-              </button>
+              <Modal
+                id={_id}
+                name="lock"
+                title=" Đưa vào danh sách đen"
+                description={`Chuyển người dùng "${name?.firstName}" vào danh sách đen và người dùng sẽ không thể truy cập vào hệ thống được nữa!`}
+                onSubmit={() => lockUserAccount(_id)}
+                button={
+                  <button type="button" className="btn btn-danger">
+                    <i className="bi bi-lock"></i>
+                  </button>
+                }
+              />
+              <span> </span>
+              <Modal
+                id={_id}
+                name="role"
+                onSubmit={(data) => setRoleAccount(_id, data as Role)}
+                title="Quyền truy cập"
+                button={
+                  <button type="button" className="btn btn-info">
+                    <i className="bi bi-gear"></i>
+                  </button>
+                }
+                description={`Lựa chọn quyền truy cập cho người dùng "${name?.firstName}"`}
+                optional={{
+                  select: {
+                    attributes: { defaultValue: role || ROLE.USER },
+                    options: [
+                      {
+                        name: ROLE.USER,
+                        value: ROLE.USER,
+                      },
+                      {
+                        name: ROLE.DOCTOR,
+                        value: ROLE.DOCTOR,
+                      },
+                      {
+                        name: ROLE.ADMIN,
+                        value: ROLE.ADMIN,
+                      },
+                    ],
+                  },
+                }}
+              />
             </>
           );
         },
@@ -130,6 +132,14 @@ export default function UserList() {
     });
   };
 
+  const setRoleAccount = async (id: string, role: Role) => {
+    await useApi(SET_ROLE_ACCOUNT.replace(":id", id), {
+      method: "PATCH",
+      data: { role },
+    }).then(() => {
+      toast.success("Thay đổi thành công");
+    });
+  };
   // if (!data) return <></>;
   return (
     <section className="section">

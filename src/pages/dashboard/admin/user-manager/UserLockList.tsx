@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { toast } from "react-toastify";
 import { LOCKED_USER_LIST, UNLOCK_USER, useApi } from "../../../../api";
 import { avatarPath, dateFormat } from "../../../../utils";
+import Modal from "../../../../components/Modal";
 
 export default function LockUserList() {
   const [data, setData] = useState<User[]>([]);
@@ -64,55 +65,18 @@ export default function LockUserList() {
           const { _id = "", name } = row.original;
           return (
             <>
-              <div
-                className="modal fade"
-                id={"modal-" + _id}
-                tabIndex={-1}
-                aria-labelledby="modalLabel"
-                aria-hidden="true"
-              >
-                <div className="modal-dialog">
-                  <div className="modal-content">
-                    <div className="modal-header">
-                      <h1 className="modal-title fs-5" id="modalLabel">
-                        Xoá khỏi danh sách đen
-                      </h1>
-                      <button
-                        type="button"
-                        className="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                      ></button>
-                    </div>
-                    <div className="modal-body">{`Khôi phục tài khoản "${name?.firstName}" và người dùng có thể truy cập vào hệ thống.`}</div>
-                    <div className="modal-footer">
-                      <button
-                        type="button"
-                        className="btn btn-secondary"
-                        data-bs-dismiss="modal"
-                      >
-                        Huỷ bỏ
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-success"
-                        data-bs-dismiss="modal"
-                        onClick={() => unlockUserAccount(_id)}
-                      >
-                        Xác nhận
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <button
-                type="button"
-                className="btn btn-primary"
-                data-bs-toggle="modal"
-                data-bs-target={`#modal-${_id}`}
-              >
-                <i className="bi bi-unlock"></i>
-              </button>
+              <Modal
+                id={_id}
+                name="unlock"
+                title="Xoá khỏi danh sách đen"
+                description={`Khôi phục tài khoản "${name?.firstName}" và người dùng có thể truy cập vào hệ thống.`}
+                onSubmit={() => unlockUserAccount(_id)}
+                button={
+                  <button type="button" className="btn btn-primary">
+                    <i className="bi bi-unlock"></i>
+                  </button>
+                }
+              />
             </>
           );
         },

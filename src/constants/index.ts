@@ -4,7 +4,7 @@ export const LocalStorageKey = {
   REFRESH_TOKEN: "refreshToken",
 };
 
-export enum Role {
+export enum ROLE {
   ADMIN = "admin",
   DOCTOR = "doctor",
   USER = "user",
