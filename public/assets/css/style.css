@@ -121,10 +121,10 @@ h6 {
   align-items: center;
   justify-content: space-between;
   font-size: 14px;
-  color: var(--color-title);
+  color: var(--color-text);
   white-space: nowrap;
   transition: 0.3s;
-  border-bottom: 2px solid #fff;
+  /* border-bottom: 2px solid var(--color-background-gradient); */
   padding: 5px 2px;
 }
 .navbar a i,
@@ -138,7 +138,7 @@ h6 {
 .navbar .active:focus,
 .navbar li:hover > a {
   color: #1977cc;
-  border-color: #1977cc;
+  border-bottom: 2px solid var(--color-icon);
 }
 .navbar .dropdown ul {
   display: block;
