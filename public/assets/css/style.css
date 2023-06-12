@@ -330,9 +330,12 @@ h6 {
 .navbar-mobile a,
 .navbar-mobile a:focus {
   padding: 10px 20px;
-  font-size: 15px;
+  font-size: 26px;
   color: #2c4964;
   border: none;
+  display: block;
+  text-align: center;
+  line-height: 2;
 }
 .navbar-mobile a:hover,
 .navbar-mobile .active,
