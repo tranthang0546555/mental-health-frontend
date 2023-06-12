@@ -8,6 +8,7 @@
   box-shadow: 0 4px 16px rgba(var(--color-black-rgb), 0.1);
   padding: 30px;
   height: 100%;
+  border: 1px solid var(--color-border);
 }
 
 .blog .posts-list article + article {

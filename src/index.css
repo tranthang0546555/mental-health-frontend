@@ -105,7 +105,7 @@ html[data-theme='dark']{
   --color-gray: #6c757d;
   --color-gray-rgb: 108, 117, 125;
   --color-black: #000000;
-  --color-black-rgb: 0, 0, 0;
+  --color-black-rgb: 200, 100, 100;
 
   --color-logo: #fff;
   --color-background: #001E3C;

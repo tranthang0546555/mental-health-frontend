@@ -3,6 +3,7 @@
   border: 1px solid rgba(var(--color-secondary-rgb), 0.3);
   padding: 3px 10px;
   position: relative;
+  overflow: hidden;
 }
 
 .sidebar .search-form form input[type="text"] {

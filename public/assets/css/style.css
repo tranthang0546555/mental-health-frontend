@@ -115,7 +115,7 @@ h6 {
   --------------------------------------------------------------*/
 #header {
   background: var(--color-background-gradient);
-  transition: all 0.5s;
+  /* transition: all 0.5s; */
   z-index: 997;
   padding: 15px 0;
   top: 40px;
@@ -499,7 +499,7 @@ section {
   --------------------------------------------------------------*/
 .breadcrumbs {
   padding: 20px 0;
-  background-color: #f1f7fd;
+  background-color: var(--color-background-2);
   min-height: 40px;
   margin-top: 120px;
 }

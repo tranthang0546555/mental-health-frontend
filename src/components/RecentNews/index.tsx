@@ -19,11 +19,11 @@ export default function RecentNews() {
       <div className="mt-3">
         {newsList.map(({ _id, title, createdAt }) => (
           <div className="post-item" key={_id}>
-            <img
+            {/* <img
               src="assets/img/blog/blog-recent-1.jpg"
               alt=""
               className="flex-shrink-0"
-            />
+            /> */}
             <div>
               <h4>
                 <a href="blog-post.html">{title}</a>
