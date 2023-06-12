@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy" : "tsc && vite build",
+    "deploy" : "gh-pages -d build"
   },
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^38.0.1",
@@ -21,6 +23,7 @@
     "@types/qs": "^6.9.7",
     "axios": "^1.4.0",
     "date-fns": "^2.30.0",
+    "gh-pages": "^5.0.0",
     "material-react-table": "^1.12.0",
     "qs": "^6.11.2",
     "react": "^18.2.0",
