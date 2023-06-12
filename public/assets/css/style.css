@@ -1204,7 +1204,6 @@ section {
   --------------------------------------------------------------*/
 .contact .info {
   width: 100%;
-  background: #fff;
 }
 .contact .info i {
   font-size: 20px;
@@ -1224,7 +1223,6 @@ section {
   font-size: 22px;
   font-weight: 600;
   margin-bottom: 5px;
-  color: #2c4964;
 }
 .contact .info p {
   padding: 0 0 0 60px;
@@ -1244,7 +1242,6 @@ section {
 }
 .contact .php-email-form {
   width: 100%;
-  background: #fff;
 }
 .contact .php-email-form .form-group {
   padding-bottom: 8px;

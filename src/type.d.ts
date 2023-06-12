@@ -62,4 +62,10 @@ declare type LoginInputs = {
   password: string;
 };
 
+declare type RegisterInputs = {
+  email: string;
+  password: string;
+  confirmPassword: string;
+};
+
 declare type Role = "admin" | "doctor" | "user" | undefined;

@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
 import { useAppDispatch } from "../../../hooks/store";
 import { login } from "../../../store/authSlice";
+import "./index.css";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const { register, handleSubmit } = useForm<LoginInputs>();
@@ -11,7 +13,7 @@ export default function Login() {
   };
 
   return (
-    <section className="section register d-flex flex-column align-items-center justify-content-center py-4">
+    <section className="section login-form d-flex flex-column align-items-center justify-content-center py-4">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
@@ -20,10 +22,10 @@ export default function Login() {
               <div className="card-body">
                 <div className="pt-4 pb-2">
                   <h5 className="card-title text-center pb-0 fs-4">
-                    Login to Your Account
+                    ĐĂNG NHẬP
                   </h5>
                   <p className="text-center small">
-                    Enter your email & password to login
+                    Nhập email và mật khẩu của bạn để đăng nhập
                   </p>
                 </div>
 
@@ -44,14 +46,14 @@ export default function Login() {
                         {...register("email")}
                       />
                       <div className="invalid-feedback">
-                        Please enter your username.
+                        Xin hãy điền email.
                       </div>
                     </div>
                   </div>
 
                   <div className="col-12">
                     <label htmlFor="yourPassword" className="form-label">
-                      Password
+                      Mật khẩu
                     </label>
                     <input
                       type="password"
@@ -61,7 +63,7 @@ export default function Login() {
                       {...register("password")}
                     />
                     <div className="invalid-feedback">
-                      Please enter your password!
+                      Vui lòng nhập mật khẩu của bạn!
                     </div>
                   </div>
 
@@ -75,19 +77,19 @@ export default function Login() {
                         id="rememberMe"
                       />
                       <label className="form-check-label" htmlFor="rememberMe">
-                        Remember me
+                        Ghi nhớ tài khoản
                       </label>
                     </div>
                   </div>
                   <div className="col-12">
                     <button className="btn btn-primary w-100" type="submit">
-                      Login
+                      Đăng nhập
                     </button>
                   </div>
                   <div className="col-12">
                     <p className="small mb-0">
-                      Don't have account?{" "}
-                      <a href="/register">Create an account</a>
+                      Không có tài khoản?{" ==> "}
+                      <Link to="/register">Tạo một tài khoản</Link>
                     </p>
                   </div>
                 </form>

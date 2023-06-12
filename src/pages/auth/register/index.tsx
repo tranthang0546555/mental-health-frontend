@@ -1,6 +1,16 @@
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import "./index.css";
+
 export default function Register() {
+  const { handleSubmit } = useForm<RegisterInputs>();
+  const handleRegister = () => {};
+
   return (
-    <section className="section register d-flex flex-column align-items-center justify-content-center py-4">
+    <section
+      onSubmit={handleSubmit(handleRegister)}
+      className="section register-form d-flex flex-column align-items-center justify-content-center py-4"
+    >
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
@@ -9,14 +19,18 @@ export default function Register() {
               <div className="card-body">
                 <div className="pt-4 pb-2">
                   <h5 className="card-title text-center pb-0 fs-4">
-                    Create an Account
+                    ĐĂNG KÝ TÀI KHOẢN
                   </h5>
                   <p className="text-center small">
-                    Enter your personal details to create account
+                    Nhập thông tin cá nhân của bạn để tạo tài khoản
                   </p>
                 </div>
 
-                <form className="row g-3 needs-validation" noValidate>
+                <form
+                  action="#"
+                  className="row g-3 needs-validation"
+                  noValidate
+                >
                   <div className="col-12">
                     <label htmlFor="yourEmail" className="form-label">
                       Email
@@ -33,14 +47,14 @@ export default function Register() {
                         required
                       />
                       <div className="invalid-feedback">
-                        Please enter your username.
+                        Xin hãy điền email.
                       </div>
                     </div>
                   </div>
 
                   <div className="col-12">
                     <label htmlFor="yourPassword" className="form-label">
-                      Password
+                      Mật khẩu
                     </label>
                     <input
                       type="password"
@@ -50,13 +64,13 @@ export default function Register() {
                       required
                     />
                     <div className="invalid-feedback">
-                      Please enter your password!
+                      Vui lòng nhập mật khẩu của bạn!
                     </div>
                   </div>
 
                   <div className="col-12">
                     <label htmlFor="yourRePassword" className="form-label">
-                      Confirm password
+                      Xác nhận mật khẩu
                     </label>
                     <input
                       type="password"
@@ -66,11 +80,10 @@ export default function Register() {
                       required
                     />
                     <div className="invalid-feedback">
-                      Please confirm your password!
+                      Vui lòng xác nhận mật khẩu của bạn!
                     </div>
                   </div>
-
-                  <div className="col-12">
+                  {/* <div className="col-12">
                     <div className="form-check">
                       <input
                         className="form-check-input"
@@ -83,15 +96,16 @@ export default function Register() {
                         Remember me
                       </label>
                     </div>
-                  </div>
-                  <div className="col-12">
+                  </div> */}
+                  <div className="col-12 mt-4">
                     <button className="btn btn-primary w-100" type="submit">
-                      Login
+                      Đăng ký
                     </button>
                   </div>
                   <div className="col-12">
                     <p className="small mb-0">
-                      Already have an account? <a href="/login">Log in</a>
+                      Đã có tài khoản?{" ==> "}{" "}
+                      <Link to="/login">Đăng nhập</Link>
                     </p>
                   </div>
                 </form>

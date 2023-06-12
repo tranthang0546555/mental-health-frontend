@@ -5,16 +5,16 @@ export default function Footer() {
         <div className="container">
           <div className="row">
             <div className="col-lg-3 col-md-6 footer-contact">
-              <h3>Medilab</h3>
+              <h3>Mental Health</h3>
               <p>
-                A108 Adam Street <br />
-                New York, NY 535022
+                Cam Le <br />
+                Da Nang
                 <br />
-                United States <br />
+                Viet nam <br />
                 <br />
-                <strong>Phone:</strong> +1 5589 55488 55
+                <strong>Phone:</strong> 0336721xxx
                 <br />
-                <strong>Email:</strong> info@example.com
+                <strong>Email:</strong> tnthang.18it5@vku.udn.vn
                 <br />
               </p>
             </div>
@@ -85,12 +85,12 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="container d-md-flex py-4">
+      {/* <div className="container d-md-flex py-4">
         <div className="me-md-auto text-center text-md-start">
           <div className="copyright">
             &copy; Copyright{" "}
             <strong>
-              <span>Medilab</span>
+              <span>Mental Headth</span>
             </strong>
             . All Rights Reserved
           </div>
@@ -115,7 +115,7 @@ export default function Footer() {
             <i className="bx bxl-linkedin"></i>
           </a>
         </div>
-      </div>
+      </div> */}
     </footer>
   );
 }

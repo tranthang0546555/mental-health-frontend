@@ -1,0 +1,4 @@
+.register-form .card {
+  background-color: transparent;
+  border-color: var(--color-border-2);
+}
