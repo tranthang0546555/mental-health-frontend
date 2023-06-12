@@ -100,7 +100,7 @@ function App() {
           path: "register",
           element: (
             <InnerPage title="Đăng ký">
-              <Register />,
+              <Register />
             </InnerPage>
           ),
         },
