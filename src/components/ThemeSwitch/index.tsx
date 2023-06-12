@@ -28,7 +28,7 @@ export default function ThemeSwitch() {
     <>
       {theme === "dark" ? (
         <button className="theme-btn" onClick={() => handleChange("light")}>
-          <i className="bi bi-brightness-high"></i>
+          <i className="bi bi-sun"></i>
         </button>
       ) : (
         <button className="theme-btn" onClick={() => handleChange("dark")}>
