@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import "./index.css";
+
 export default function Footer() {
   return (
     <footer id="footer">
@@ -10,9 +13,9 @@ export default function Footer() {
                 Cam Le <br />
                 Da Nang
                 <br />
-                Viet nam <br />
+                Viet Nam <br />
                 <br />
-                <strong>Phone:</strong> 0336721xxx
+                <strong>Điện thoại:</strong> 0336721xxx
                 <br />
                 <strong>Email:</strong> tnthang.18it5@vku.udn.vn
                 <br />
@@ -20,52 +23,45 @@ export default function Footer() {
             </div>
 
             <div className="col-lg-2 col-md-6 footer-links">
-              <h4>Useful Links</h4>
+              <h4>Liên kết</h4>
               <ul>
                 <li>
-                  <i className="bx bx-chevron-right"></i> <a href="#">Home</a>
+                  <i className="bx bx-chevron-right"></i>
+                  <Link to="#">Trang chủ</Link>
                 </li>
                 <li>
-                  <i className="bx bx-chevron-right"></i>{" "}
-                  <a href="#">About us</a>
+                  <i className="bx bx-chevron-right"></i>
+                  <Link to="/post">Bài viết</Link>
                 </li>
                 <li>
-                  <i className="bx bx-chevron-right"></i>{" "}
-                  <a href="#">Services</a>
+                  <i className="bx bx-chevron-right"></i>
+                  <Link to="/doctor">Bác sĩ</Link>
                 </li>
                 <li>
-                  <i className="bx bx-chevron-right"></i>{" "}
-                  <a href="#">Terms of service</a>
-                </li>
-                <li>
-                  <i className="bx bx-chevron-right"></i>{" "}
-                  <a href="#">Privacy policy</a>
+                  <i className="bx bx-chevron-right"></i>
+                  <Link to="/dashboard">Dashboard</Link>
                 </li>
               </ul>
             </div>
 
             <div className="col-lg-3 col-md-6 footer-links">
-              <h4>Our Services</h4>
+              <h4>Thông tin</h4>
               <ul>
                 <li>
-                  <i className="bx bx-chevron-right"></i>{" "}
-                  <a href="#">Web Design</a>
+                  <i className="bx bx-chevron-right"></i>
+                  <Link to="/about">Về chúng tôi</Link>
                 </li>
                 <li>
-                  <i className="bx bx-chevron-right"></i>{" "}
-                  <a href="#">Web Development</a>
+                  <i className="bx bx-chevron-right"></i>
+                  <Link to="/contact">Liên hệ</Link>
                 </li>
                 <li>
-                  <i className="bx bx-chevron-right"></i>{" "}
-                  <a href="#">Product Management</a>
+                  <i className="bx bx-chevron-right"></i>
+                  <Link to="#">Điều khoản dịch vụ</Link>
                 </li>
                 <li>
-                  <i className="bx bx-chevron-right"></i>{" "}
-                  <a href="#">Marketing</a>
-                </li>
-                <li>
-                  <i className="bx bx-chevron-right"></i>{" "}
-                  <a href="#">Graphic Design</a>
+                  <i className="bx bx-chevron-right"></i>
+                  <Link to="/faq">Các câu hỏi thường gặp</Link>
                 </li>
               </ul>
             </div>
@@ -83,38 +79,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-
-      {/* <div className="container d-md-flex py-4">
-        <div className="me-md-auto text-center text-md-start">
-          <div className="copyright">
-            &copy; Copyright{" "}
-            <strong>
-              <span>Mental Headth</span>
-            </strong>
-            . All Rights Reserved
-          </div>
-          <div className="credits">
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-          </div>
-        </div>
-        <div className="social-links text-center text-md-right pt-3 pt-md-0">
-          <a href="#" className="twitter">
-            <i className="bx bxl-twitter"></i>
-          </a>
-          <a href="#" className="facebook">
-            <i className="bx bxl-facebook"></i>
-          </a>
-          <a href="#" className="instagram">
-            <i className="bx bxl-instagram"></i>
-          </a>
-          <a href="#" className="google-plus">
-            <i className="bx bxl-skype"></i>
-          </a>
-          <a href="#" className="linkedin">
-            <i className="bx bxl-linkedin"></i>
-          </a>
-        </div>
-      </div> */}
     </footer>
   );
 }
