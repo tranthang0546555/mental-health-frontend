@@ -140,6 +140,12 @@ h6 {
   max-height: 40px;
 }
 
+@media (max-width: 768px) {
+  #header .logo a {
+    font-size: 20px;
+  }
+}
+
 /**
   * Appointment Button *
   */

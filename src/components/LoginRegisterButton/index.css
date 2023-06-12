@@ -37,7 +37,7 @@
   transition: 0.3s;
   font-size: 14px;
   display: inline-block;
-  min-width: 150px;
+  /* min-width: 150px; */
 }
 
 .login-register-switch .active {
@@ -50,7 +50,7 @@
 
 @media (max-width: 768px) {
   .login-register-switch {
-    margin-right: 25px;
+    margin-right: 5px;
     margin-left: 0;
   }
   .login-register-switch .register-button {
@@ -61,5 +61,8 @@
   }
   .appointment-btn {
     display: none;
+  }
+  .theme-btn{
+    margin-right: 5px;;
   }
 }
