@@ -32,7 +32,7 @@ export default function Doctor() {
 
         <div className="row">
           {data?.data.map((doctor) => (
-            <div className="col-lg-6" key={doctor._id}>
+            <div className="col-lg-6 pb-4" key={doctor._id}>
               <DoctorItem data={doctor} />
             </div>
           ))}

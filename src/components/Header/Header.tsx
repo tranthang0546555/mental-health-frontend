@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import LoginRegisterButton from "../LoginRegisterButton";
 import "./index.css";
+import ThemeSwitch from "../ThemeSwitch";
 
 const maps: {
   path: string;
@@ -63,6 +64,7 @@ export default function Header() {
           </a>
 
           <LoginRegisterButton />
+          <ThemeSwitch />
         </div>
       </header>
     </>

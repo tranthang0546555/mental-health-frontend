@@ -18,7 +18,9 @@ export default function Services() {
                   <i className="fa fa-user-nurse"></i>
                 </div>
                 <h4>
-                  <a href="">Tư vấn tâm lý</a>
+                  <a href="" className="title-theme">
+                    Tư vấn tâm lý
+                  </a>
                 </h4>
                 <p>
                   Tư vấn và hỗ trợ tâm lý cho những người gặp khó khăn tâm lý,
@@ -33,7 +35,9 @@ export default function Services() {
                   <i className="fa fa-notes-medical"></i>
                 </div>
                 <h4>
-                  <a href="">Điều trị tâm lý</a>
+                  <a href="" className="title-theme">
+                    Điều trị tâm lý
+                  </a>
                 </h4>
                 <p>
                   Các phương pháp điều trị tâm lý như terapi hành vi nhận thức
@@ -48,7 +52,9 @@ export default function Services() {
                   <i className="fa fa-calendar-check"></i>
                 </div>
                 <h4>
-                  <a href="">Đặt lịch hẹn khám online</a>
+                  <a href="" className="title-theme">
+                    Đặt lịch hẹn khám online
+                  </a>
                 </h4>
                 <p>
                   Cho phép người dùng đặt lịch hẹn khám tâm lý hoặc hỗ trợ trực
@@ -64,7 +70,9 @@ export default function Services() {
                   <i className="fa fa-house-user"></i>
                 </div>
                 <h4>
-                  <a href="">Hỗ trợ tâm lý cho gia đình</a>
+                  <a href="" className="title-theme">
+                    Hỗ trợ tâm lý cho gia đình
+                  </a>
                 </h4>
                 <p>
                   Hỗ trợ tâm lý cho các thành viên trong gia đình để xây dựng
@@ -80,7 +88,9 @@ export default function Services() {
                   <i className="fa fa-question"></i>
                 </div>
                 <h4>
-                  <a href="">Hỗ trợ sau điều trị</a>
+                  <a href="" className="title-theme">
+                    Hỗ trợ sau điều trị
+                  </a>
                 </h4>
                 <p>
                   Đồng hành và cung cấp hỗ trợ sau quá trình điều trị, giúp
@@ -96,7 +106,9 @@ export default function Services() {
                   <i className="fas fa-capsules"></i>
                 </div>
                 <h4>
-                  <a href="">Tư vấn về thuốc </a>
+                  <a href="" className="title-theme">
+                    Tư vấn về thuốc{" "}
+                  </a>
                 </h4>
                 <p>
                   Tư vấn về thuốc và quy trình điều trị tâm lý, đảm bảo sự hiểu

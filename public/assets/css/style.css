@@ -114,7 +114,7 @@ h6 {
   # Header
   --------------------------------------------------------------*/
 #header {
-  background: #fff;
+  background: var(--color-background-gradient);
   transition: all 0.5s;
   z-index: 997;
   padding: 15px 0;
@@ -134,7 +134,7 @@ h6 {
   font-family: "Poppins", sans-serif;
 }
 #header .logo a {
-  color: #2c4964;
+  color: var(--color-logo);
 }
 #header .logo img {
   max-height: 40px;
@@ -195,7 +195,7 @@ h6 {
   align-items: center;
   justify-content: space-between;
   font-size: 14px;
-  color: #2c4964;
+  color: var(--color-title);
   white-space: nowrap;
   transition: 0.3s;
   border-bottom: 2px solid #fff;
@@ -469,7 +469,6 @@ section {
   margin-bottom: 20px;
   padding-bottom: 20px;
   position: relative;
-  color: #2c4964;
 }
 .section-title h2::before {
   content: "";
@@ -561,9 +560,11 @@ section {
   font-weight: 700;
   font-size: 34px;
   margin-bottom: 30px;
+  color: var(--color-white);
 }
 .why-us .content p {
   margin-bottom: 30px;
+  color: var(--color-white);
 }
 .why-us .content .more-btn {
   display: inline-block;
@@ -583,14 +584,15 @@ section {
 .why-us .icon-boxes .icon-box {
   text-align: center;
   border-radius: 10px;
-  background: #fff;
+  background: var(--color-background-card);
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
   padding: 40px 30px;
   width: 100%;
+  border: 1px solid var(--color-border);
 }
 .why-us .icon-boxes .icon-box i {
   font-size: 40px;
-  color: #1977cc;
+  color: var(--color-icon);
   margin-bottom: 30px;
 }
 .why-us .icon-boxes .icon-box h4 {
@@ -600,7 +602,7 @@ section {
 }
 .why-us .icon-boxes .icon-box p {
   font-size: 15px;
-  color: #848484;
+  color: var(--color-text-light);
 }
 
 /*--------------------------------------------------------------
@@ -759,15 +761,16 @@ section {
   # Counts
   --------------------------------------------------------------*/
 .counts {
-  background: #f1f7fd;
+  background: var(--color-background-2);
   padding: 70px 0 60px;
 }
 .counts .count-box {
+  border-radius: 10px;
   padding: 30px 30px 25px 30px;
   width: 100%;
   position: relative;
   text-align: center;
-  background: #fff;
+  background: var(--color-background-card);
 }
 .counts .count-box i {
   position: absolute;
@@ -788,7 +791,6 @@ section {
   font-size: 36px;
   display: block;
   font-weight: 600;
-  color: #082744;
 }
 .counts .count-box p {
   padding: 0;
@@ -800,9 +802,13 @@ section {
 /*--------------------------------------------------------------
   # Services
   --------------------------------------------------------------*/
+.services {
+  background: var(--color-background-gradient);
+}
 .services .icon-box {
+  border-radius: 10px;
   text-align: center;
-  border: 1px solid #d5e1ed;
+  border: 1px solid var(--color-border-2);
   padding: 80px 20px;
   transition: all ease-in-out 0.3s;
 }
@@ -840,8 +846,8 @@ section {
   margin-bottom: 15px;
   font-size: 24px;
 }
-.services .icon-box h4 a {
-  color: #2c4964;
+.services .icon-box:hover h4 a {
+  color: #fff;
 }
 .services .icon-box p {
   line-height: 24px;
@@ -866,6 +872,9 @@ section {
   color: #fff;
 }
 
+.services .icon-box:hover h4 {
+  color: #fff !important;
+}
 /*--------------------------------------------------------------
   # Appointments
   --------------------------------------------------------------*/
@@ -1008,7 +1017,7 @@ section {
   # Doctors
   --------------------------------------------------------------*/
 .doctors {
-  background: #fff;
+  background: var(--color-background-gradient);
 }
 
 /*--------------------------------------------------------------
@@ -1317,11 +1326,11 @@ section {
 #footer {
   color: #444444;
   font-size: 14px;
-  background: #f1f7fd;
+  background: transparent;
 }
 #footer .footer-top {
   padding: 60px 0 30px 0;
-  background: #fff;
+  background: transparent;
   box-shadow: 0px 2px 15px rgba(25, 119, 204, 0.1);
 }
 #footer .footer-top .footer-contact {
@@ -1339,12 +1348,10 @@ section {
   line-height: 24px;
   margin-bottom: 0;
   font-family: "Raleway", sans-serif;
-  color: #777777;
 }
 #footer .footer-top h4 {
   font-size: 16px;
   font-weight: bold;
-  color: #444444;
   position: relative;
   padding-bottom: 12px;
 }
@@ -1358,7 +1365,6 @@ section {
 }
 #footer .footer-top .footer-links ul i {
   padding-right: 2px;
-  color: #1c84e3;
   font-size: 18px;
   line-height: 1;
 }
@@ -1371,7 +1377,6 @@ section {
   padding-top: 0;
 }
 #footer .footer-top .footer-links ul a {
-  color: #777777;
   transition: 0.3s;
   display: inline-block;
   line-height: 1;
@@ -1386,7 +1391,6 @@ section {
 #footer .footer-newsletter h4 {
   font-size: 16px;
   font-weight: bold;
-  color: #444444;
   position: relative;
   padding-bottom: 12px;
 }

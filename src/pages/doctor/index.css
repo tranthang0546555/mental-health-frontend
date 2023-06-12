@@ -3,6 +3,7 @@
   box-shadow: 0px 2px 15px rgba(44, 73, 100, 0.08);
   padding: 30px;
   border-radius: 10px;
+  border: 1px solid var(--color-border);
 }
 .doctor-card .pic {
   overflow: hidden;
@@ -26,7 +27,6 @@
   font-weight: 700;
   margin-bottom: 5px;
   font-size: 20px;
-  color: #2c4964;
 }
 .doctor-card span {
   display: block;
