@@ -1,3 +1,5 @@
+import "./index.css";
+
 export default function WhyUs() {
   return (
     <section id="why-us" className="why-us">

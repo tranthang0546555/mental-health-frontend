@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { HOME_SYSTEM_INFO, useApi } from "../../../api";
+import "./index.css";
 
 type SystemInfo = {
   post?: number;

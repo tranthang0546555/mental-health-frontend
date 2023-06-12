@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import LoginRegisterButton from "../LoginRegisterButton";
-import "./index.css";
 import ThemeSwitch from "../ThemeSwitch";
+import "./index.css";
 
 const maps: {
   path: string;
