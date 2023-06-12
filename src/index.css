@@ -59,6 +59,8 @@
 
   --color-border: #fff;
   --color-border-2: #d5e1ed;
+
+  --hero-background: url("/assets/img/hero-bg.jpg");
 }
 
 html[data-theme="dark"] {
@@ -123,6 +125,8 @@ html[data-theme="dark"] {
   --color-icon: #fff;
   --color-border: #1e4976;
   --color-border-2: #1e4976;
+
+  --hero-background: url("/assets/img/hero-bg-dark.jpg");
 }
 
 #root {
@@ -206,8 +210,8 @@ h6 {
   -webkit-box-orient: vertical;
 }
 .avatar-small {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   object-fit: cover;
   border-radius: 50%;
 }

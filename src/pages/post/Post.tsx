@@ -14,9 +14,9 @@ export default function PostItem({ data }: { data: Post }) {
   } = data;
   return (
     <article className="d-flex flex-column">
-      <div className="post-img">
+      {/* <div className="post-img">
         <img src="assets/img/blog/blog-1.jpg" alt="" className="img-fluid" />
-      </div>
+      </div> */}
 
       <h2 className="title">
         <Link to={"/post/" + slug}>{title}</Link>
