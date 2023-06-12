@@ -1,5 +1,6 @@
 import { MaterialReactTable, type MRT_ColumnDef } from "material-react-table";
 import { useEffect, useMemo, useState } from "react";
+import { toast } from "react-toastify";
 import { LOCK_USER, useApi, USER_LIST } from "../../../../api";
 import { avatarPath, dateFormat } from "../../../../utils";
 
@@ -124,8 +125,8 @@ export default function UserList() {
 
   const lockUserAccount = async (id: string) => {
     await useApi(LOCK_USER.replace(":id", id), { method: "PATCH" }).then(() => {
-      // TODO notification
       getData();
+      toast.success("Đã đưa vào danh sách đen");
     });
   };
 

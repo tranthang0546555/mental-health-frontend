@@ -211,6 +211,11 @@ h6 {
   object-fit: cover;
   border-radius: 50%;
 }
+
+.modal-title {
+  color: #000;
+}
+
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

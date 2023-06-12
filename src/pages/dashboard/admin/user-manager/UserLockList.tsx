@@ -1,5 +1,6 @@
 import { MaterialReactTable, type MRT_ColumnDef } from "material-react-table";
 import { useEffect, useMemo, useState } from "react";
+import { toast } from "react-toastify";
 import { LOCKED_USER_LIST, UNLOCK_USER, useApi } from "../../../../api";
 import { avatarPath, dateFormat } from "../../../../utils";
 
@@ -132,8 +133,8 @@ export default function LockUserList() {
   const unlockUserAccount = async (id: string) => {
     await useApi(UNLOCK_USER.replace(":id", id), { method: "PATCH" }).then(
       () => {
-        // TODO notification
         getData();
+        toast.success("Đã xóa khỏi danh sách đen");
       }
     );
   };
