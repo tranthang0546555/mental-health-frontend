@@ -3,27 +3,27 @@ import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header/Header";
 import InnerPage from "./components/InnerPage";
-import { useVerifyToken } from "./hooks";
+import { preLoadPage } from "./hooks";
 import About from "./pages/about";
 import Login from "./pages/auth/login";
 import Register from "./pages/auth/register";
 import Contact from "./pages/contact";
 import Dashboard from "./pages/dashboard";
+import UserList from "./pages/dashboard/admin/user-manager/UserList";
+import LockUserList from "./pages/dashboard/admin/user-manager/UserLockList";
 import BlankPage from "./pages/dashboard/blank";
+import PostCreate from "./pages/dashboard/doctor/post-manager/PostCreate";
+import PostEdit from "./pages/dashboard/doctor/post-manager/PostEdit";
+import PostList from "./pages/dashboard/doctor/post-manager/PostList";
 import Profile from "./pages/dashboard/profile";
 import Doctor from "./pages/doctor";
 import FAQ from "./pages/faq";
 import HomePage from "./pages/home";
 import Post from "./pages/post";
-import PostEdit from "./pages/dashboard/doctor/post-manager/PostEdit";
-import PostCreate from "./pages/dashboard/doctor/post-manager/PostCreate";
 import PostDetail from "./pages/post-detail";
-import UserList from "./pages/dashboard/admin/user-manager/UserList";
-import PostList from "./pages/dashboard/doctor/post-manager/PostList";
-import LockUserList from "./pages/dashboard/admin/user-manager/UserLockList";
 
 function App() {
-  useVerifyToken();
+  preLoadPage();
 
   const router = createBrowserRouter([
     {

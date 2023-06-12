@@ -69,3 +69,10 @@ declare type RegisterInputs = {
 };
 
 declare type Role = "admin" | "doctor" | "user" | undefined;
+
+declare type CountsInfo = {
+  post?: number;
+  doctor?: number;
+  user?: number;
+  visitor?: number;
+};

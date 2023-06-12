@@ -1,23 +1,10 @@
 import { useEffect, useState } from "react";
 import { HOME_SYSTEM_INFO, useApi } from "../../../api";
 import "./index.css";
-
-type SystemInfo = {
-  post?: number;
-  doctor?: number;
-  user?: number;
-  visitor?: number;
-};
+import { useAppSelector } from "../../../hooks/store";
 
 export default function SystemInfo() {
-  const [data, setData] = useState<SystemInfo>();
-
-  useEffect(() => {
-    useApi(HOME_SYSTEM_INFO).then((res) => {
-      setData(res.data);
-    });
-  }, []);
-
+  const { counts } = useAppSelector((state) => state.info);
   return (
     <section id="counts" className="counts">
       <div className="container">
@@ -25,7 +12,7 @@ export default function SystemInfo() {
           <div className="col-lg-3 col-md-6">
             <div className="count-box">
               <i className="fas fa-newspaper"></i>
-              <span className="purecounter">{data?.post}</span>
+              <span className="purecounter">{counts?.post}</span>
               <p>Bài viết</p>
             </div>
           </div>
@@ -33,7 +20,7 @@ export default function SystemInfo() {
           <div className="col-lg-3 col-md-6 mt-5 mt-md-0">
             <div className="count-box">
               <i className="fas fa-user-md"></i>
-              <span className="purecounter">{data?.doctor}</span>
+              <span className="purecounter">{counts?.doctor}</span>
               <p>Bác sĩ</p>
             </div>
           </div>
@@ -41,7 +28,7 @@ export default function SystemInfo() {
           <div className="col-lg-3 col-md-6 mt-5 mt-lg-0">
             <div className="count-box">
               <i className="fas fa-users"></i>
-              <span className="purecounter">{data?.user}</span>
+              <span className="purecounter">{counts?.user}</span>
               <p>Người dùng</p>
             </div>
           </div>
@@ -49,7 +36,7 @@ export default function SystemInfo() {
           <div className="col-lg-3 col-md-6 mt-5 mt-lg-0">
             <div className="count-box">
               <i className="fas fa-eye"></i>
-              <span className="purecounter">{data?.visitor}</span>
+              <span className="purecounter">{counts?.visitor}</span>
               <p>Lượt truy cập</p>
             </div>
           </div>
