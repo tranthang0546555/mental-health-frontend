@@ -55,6 +55,7 @@ declare type Doctor = User & {
   };
   rating?: number;
   ratingCount?: number;
+  timeServing?: any;
 };
 
 declare type LoginInputs = {
@@ -75,4 +76,9 @@ declare type CountsInfo = {
   doctor?: number;
   user?: number;
   visitor?: number;
+};
+
+declare type Schedule = {
+  from: number;
+  to: number;
 };

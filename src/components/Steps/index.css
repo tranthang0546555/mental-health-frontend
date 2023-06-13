@@ -66,6 +66,7 @@
   background: var(--color-background-card);
   position: relative;
   border-radius: 5px;
+  cursor: pointer;
 }
 .timeline > li > .timeline-panel:before {
   position: absolute;
@@ -207,5 +208,11 @@
   }
   .timeline > li.timeline-inverted > .timeline-badge {
     left: 28px;
+  }
+  .timeline > li.active > .timeline-panel:after {
+    border-left: none;
+  }
+  .steps {
+    max-width: 90%;
   }
 }

@@ -1,4 +1,4 @@
-.sidebar .search-form form {
+.search-form form {
   background: var(--color-white);
   border: 1px solid rgba(var(--color-secondary-rgb), 0.3);
   padding: 3px 10px;
@@ -6,18 +6,18 @@
   overflow: hidden;
 }
 
-.sidebar .search-form form input[type="text"] {
+.search-form form input[type="text"] {
   border: 0;
   padding: 4px;
   border-radius: 4px;
   width: calc(100% - 40px);
 }
 
-.sidebar .search-form form input[type="text"]:focus {
+.search-form form input[type="text"]:focus {
   outline: none;
 }
 
-.sidebar .search-form form button {
+.search-form form button {
   position: absolute;
   top: 0;
   right: 0;
@@ -34,10 +34,10 @@
   line-height: 0;
 }
 
-.sidebar .search-form form button i {
+.search-form form button i {
   line-height: 0;
 }
 
-.sidebar .search-form form button:hover {
+.search-form form button:hover {
   background: rgba(var(--color-primary-rgb), 0.8);
 }

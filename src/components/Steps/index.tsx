@@ -8,10 +8,11 @@ export type StepsProps = {
     description?: string;
     time?: string;
   }[];
+  onChange?: (step: number) => void;
 };
 
 export default function Steps({ data }: { data: StepsProps }) {
-  const { title, currentStep = 1, steps } = data;
+  const { title, currentStep = 1, steps, onChange } = data;
   return (
     <div className="steps">
       <h3 className="timeline-title">{title}</h3>
@@ -22,6 +23,9 @@ export default function Steps({ data }: { data: StepsProps }) {
               className={`${idx % 2 === 0 ? "timeline" : "timeline"} ${
                 currentStep === idx + 1 ? "active" : ""
               }`}
+              onClick={() =>
+                currentStep !== idx + 1 && onChange && onChange(idx + 1)
+              }
             >
               <div className="timeline-badge">
                 <a>

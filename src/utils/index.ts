@@ -1,7 +1,11 @@
 import { format } from "date-fns";
 
-export const dateFormat = (date: string) => {
+export const dateFormat = (date: string | number | Date) => {
   return format(new Date(date), "kk:mm - dd/MM/yyy");
+};
+
+export const hourFormat = (date: string | number | Date) => {
+  return format(new Date(date), "kk:mm");
 };
 
 export const imagePath = (name?: string) =>

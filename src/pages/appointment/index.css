@@ -1,0 +1,28 @@
+.time-select {
+  background-color: transparent;
+  border-color: var(--color-border-2);
+}
+.time-select .nav-tabs .nav-link {
+  color: var(--color-title);
+}
+
+.time-select .nav-tabs .active {
+  color: var(--color-primary);
+}
+.time-select .tab-content {
+  min-height: 300px;
+}
+
+.time-select .time-chip {
+  padding: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  cursor: copy;
+}
+
+.appointment-verify {
+  text-align: center;
+  border: 1px solid var(--color-border-2);
+  padding: 20px;
+  border-radius: 5px;
+}
