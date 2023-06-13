@@ -4,6 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import * as yup from "yup";
 import { POST_DETAIL, useApi } from "../../../../api";
 import "./index.css";
@@ -56,7 +57,7 @@ export default function PostEdit() {
       method: "PATCH",
       data: data,
     }).then(() => {
-      // TODO notification
+      toast.success("Thay đổi đã được lưu");
     });
   };
 

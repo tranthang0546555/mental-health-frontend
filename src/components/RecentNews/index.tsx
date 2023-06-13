@@ -14,7 +14,7 @@ export default function RecentNews() {
   };
   return (
     <div className="sidebar-item recent-posts">
-      <h3 className="sidebar-title">Recent Posts</h3>
+      <h3 className="sidebar-title">Bài viết gần đây</h3>
 
       <div className="mt-3">
         {newsList.map(({ _id, title, createdAt }) => (

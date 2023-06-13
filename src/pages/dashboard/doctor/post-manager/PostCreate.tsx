@@ -2,6 +2,8 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import * as yup from "yup";
 import { POST_LIST, useApi } from "../../../../api";
 import "./index.css";
@@ -13,6 +15,7 @@ type Inputs = {
 };
 
 export default function PostCreate() {
+  const navigate = useNavigate();
   const schema = yup
     .object({
       title: yup.string().required("Không để trống"),
@@ -36,7 +39,8 @@ export default function PostCreate() {
       method: "POST",
       data: data,
     }).then(() => {
-      // TODO notification
+      toast.success("Một bài viết mới đã được thêm");
+      navigate("/dashboard/post/");
     });
   };
 
