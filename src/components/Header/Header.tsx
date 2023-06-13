@@ -32,7 +32,7 @@ export default function Header() {
               {maps.map(({ path, name }) => {
                 const currentPath = location.pathname.split("/")?.[1];
                 const p = path.split("/")?.[1];
-                console.log(currentPath, p);
+                // console.log(currentPath, p);
 
                 return (
                   <li key={name}>

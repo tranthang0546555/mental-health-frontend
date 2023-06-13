@@ -19,6 +19,9 @@
   margin-top: 10px;
   cursor: copy;
 }
+.time-select .time-chip-error {
+  cursor: not-allowed;
+}
 
 .appointment-verify {
   text-align: center;

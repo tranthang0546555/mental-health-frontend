@@ -23,7 +23,6 @@ export default function Appointment() {
     toast.success("Đã hoàn thành bước đầu tiên");
   };
 
-  console.log(timeSelected);
   const handleStepSelect = (st: number) => {
     switch (st) {
       case 4:

@@ -14,10 +14,19 @@ type Props = {
 export default function TimeSelect(props: Props) {
   const { doctor, onSelect } = props;
   const [tab, setTab] = useState<string | "sun">("sun");
-  const [booked, setBooked] = useState();
+  const [booked, setBooked] = useState<string[]>([]);
 
   if (!doctor?.timeServing)
     return <h5>Lịch khám bệnh hiện không có hoặc chưa được thiết lập</h5>;
+
+  const now = new Date();
+  const toDay = new Date(
+    now.getUTCFullYear(),
+    now.getUTCMonth(),
+    now.getUTCDate()
+  );
+  const currentDay = new Date().getDay();
+  const currentTab = Object.keys(SCHEDULE_DAY).findIndex((v) => v == tab);
 
   const renderTabList = () => {
     return (
@@ -58,16 +67,37 @@ export default function TimeSelect(props: Props) {
               aria-labelledby={`day-tab-${idx}`}
             >
               {schedule.map((time) => {
-                const from = hourFormat(
-                  SCHEDULE_TIME_HOOK.getTime() + time.from
+                const from = SCHEDULE_TIME_HOOK.getTime() + time.from;
+                const to = SCHEDULE_TIME_HOOK.getTime() + time.to;
+                const label = hourFormat(from) + " - " + hourFormat(to);
+
+                const isBooked = booked.some(
+                  (v) =>
+                    new Date(v).getTime() ===
+                    addDays(
+                      toDay.getTime() + time.from,
+                      currentTab - currentDay
+                    ).getTime()
                 );
-                const to = hourFormat(SCHEDULE_TIME_HOOK.getTime() + time.to);
 
                 return (
-                  <span
-                    onClick={() => handleSelect(time)}
-                    className="time-chip badge bg-secondary"
-                  >{`${from} - ${to}`}</span>
+                  <>
+                    {isBooked ? (
+                      <span
+                        onClick={() => handleSelect(time)}
+                        className="time-chip time-chip-error badge bg-danger"
+                      >
+                        {label}
+                      </span>
+                    ) : (
+                      <span
+                        onClick={() => handleSelect(time)}
+                        className="time-chip badge bg-secondary"
+                      >
+                        {label}
+                      </span>
+                    )}
+                  </>
                 );
               })}
             </div>
@@ -78,15 +108,6 @@ export default function TimeSelect(props: Props) {
   };
 
   const handleSelect = (schedule: Schedule) => {
-    const now = new Date();
-    const toDay = new Date(
-      now.getUTCFullYear(),
-      now.getUTCMonth(),
-      now.getUTCDate()
-    );
-    const currentDay = new Date().getDay();
-    const currentTab = Object.keys(SCHEDULE_DAY).findIndex((v) => v == tab);
-
     const bookingFrom = addDays(
       new Date(toDay.getTime() + schedule.from),
       currentTab - currentDay
@@ -103,6 +124,7 @@ export default function TimeSelect(props: Props) {
 
   useEffect(() => {
     getBooked();
+    setTab(Object.keys(SCHEDULE_DAY)[currentDay]);
   }, []);
 
   const getBooked = async () => {
@@ -110,7 +132,6 @@ export default function TimeSelect(props: Props) {
       .get(PATIENT_REGISTRATION_BOOKED.replace(":id", doctor._id || ""))
       .then((res) => {
         setBooked(res.data);
-        console.log(res);
       });
   };
 

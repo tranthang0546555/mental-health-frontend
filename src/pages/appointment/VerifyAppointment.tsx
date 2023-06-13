@@ -10,10 +10,13 @@ type Props = {
 
 export default function VerifyAppointment(props: Props) {
   const { doctor, timeSelect, onSubmit } = props;
+  if (!doctor || !timeSelect) return <></>;
+
   const handleSubmit = async () => {
     const data = {
       doctorId: doctor?._id,
-      ...timeSelect,
+      from: new Date(timeSelect.from),
+      to: new Date(timeSelect.to),
     };
 
     await useApi
@@ -26,6 +29,7 @@ export default function VerifyAppointment(props: Props) {
         toast.error(error?.response?.data?.message);
       });
   };
+
   return (
     <div className="appointment-verify">
       <h4>Xác nhận lịch khám</h4>
