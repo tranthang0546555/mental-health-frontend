@@ -80,7 +80,7 @@ export default function Appointment() {
       },
       {
         title: "Bước 4",
-        description: "Bác sĩ đã xác nhận",
+        description: "Xác nhận của bác sĩ",
       },
     ],
   };
