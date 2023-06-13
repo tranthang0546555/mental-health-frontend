@@ -21,6 +21,7 @@ import FAQ from "./pages/faq";
 import HomePage from "./pages/home";
 import Post from "./pages/post";
 import PostDetail from "./pages/post-detail";
+import Appointment from "./pages/appointment";
 
 function App() {
   preLoadPage();
@@ -101,6 +102,14 @@ function App() {
           element: (
             <InnerPage title="Đăng ký">
               <Register />
+            </InnerPage>
+          ),
+        },
+        {
+          path: "appointment",
+          element: (
+            <InnerPage title="Đặt lịch khám Online">
+              <Appointment />
             </InnerPage>
           ),
         },

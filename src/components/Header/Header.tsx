@@ -59,9 +59,9 @@ export default function Header() {
             <i className="bi bi-list mobile-nav-toggle"></i>
           </nav>
 
-          <a href="#appointment" className="appointment-btn scrollto">
+          <Link to="/appointment" className="appointment-btn scrollto">
             Đặt lịch khám Online <span className="d-none d-md-inline"></span>
-          </a>
+          </Link>
 
           <LoginRegisterButton />
           <ThemeSwitch />
