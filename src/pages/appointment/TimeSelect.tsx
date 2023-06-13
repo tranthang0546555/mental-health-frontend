@@ -84,7 +84,9 @@ export default function TimeSelect(props: Props) {
                   <>
                     {isBooked ? (
                       <span
-                        onClick={() => handleSelect(time)}
+                        onClick={() =>
+                          toast.warn("Đã có ai đó đặt lịch vào thời gian này")
+                        }
                         className="time-chip time-chip-error badge bg-danger"
                       >
                         {label}

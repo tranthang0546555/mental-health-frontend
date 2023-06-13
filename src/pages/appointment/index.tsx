@@ -5,6 +5,7 @@ import { dateFormat } from "../../utils";
 import DoctorSelect from "./DoctorSelect";
 import TimeSelect from "./TimeSelect";
 import VerifyAppointment from "./VerifyAppointment";
+import Waiting from "./Waiting";
 
 export default function Appointment() {
   const [step, setStep] = useState(1);
@@ -74,7 +75,7 @@ export default function Appointment() {
         description: "Chọn thời gian bạn mong muốn",
       },
       {
-        title: "Bước 3",
+        title: `Bước 3 ${step === 4 ? ": Hoàn tất" : ""}`,
         description: "Xác nhận của bạn",
       },
       {
@@ -100,6 +101,8 @@ export default function Appointment() {
             onSubmit={() => setStep(4)}
           />
         );
+      case 4:
+        return <Waiting />;
     }
   };
 
