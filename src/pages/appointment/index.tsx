@@ -1,12 +1,20 @@
 import { useState } from "react";
 import Steps, { StepsProps } from "../../components/Steps";
+import DoctorSelect from "./DoctorSelect";
 
 export default function Appointment() {
   const [step, setStep] = useState(1);
 
   return (
     <>
-      <Steps data={{ ...data, currentStep: step }} />
+      <div className="row">
+        <div className="col-md-4">
+          <Steps data={{ ...data, currentStep: step }} />
+        </div>
+        <div className="col-md-8">
+          <DoctorSelect />
+        </div>
+      </div>
     </>
   );
 }
