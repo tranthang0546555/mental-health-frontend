@@ -1,3 +1,7 @@
 .content-editor .ck-content {
   min-height: 500px;
 }
+
+.content-editor .ck-content * {
+  color: #444444 !important;
+}
