@@ -1,15 +1,20 @@
+import { toast } from "react-toastify";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { LOGIN_EMAIL_PASSWORD, USER_PROFILE, useApi } from "../api";
 import { LocalStorageKey } from "../constants";
 
 export const login = createAsyncThunk(
   "auth/login",
-  async (data: LoginInputs) => {
-    const response = await useApi(LOGIN_EMAIL_PASSWORD, {
-      data: data,
-      method: "POST",
-    });
-    return response.data;
+  async (data: LoginInputs, { rejectWithValue }) => {
+    try {
+      const response = await useApi(LOGIN_EMAIL_PASSWORD, {
+        data: data,
+        method: "POST",
+      });
+      return response.data;
+    } catch (error: any) {
+      return rejectWithValue(error?.response);
+    }
   }
 );
 
@@ -47,8 +52,9 @@ const authSlice = createSlice({
         localStorage.setItem(LocalStorageKey.ACCESS_TOKEN, token);
         location.assign("/dashboard");
       });
-      builder.addCase(login.rejected, () => {
-        // TODO catch error
+      builder.addCase(login.rejected, (_, action) => {
+        const payload: any = action.payload;
+        toast.error(payload?.data?.message);
       });
       builder.addCase(getProfile.fulfilled, (state, action) => {
         state.login = true;
