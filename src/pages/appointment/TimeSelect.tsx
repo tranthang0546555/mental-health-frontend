@@ -28,7 +28,7 @@ export default function TimeSelect(props: Props) {
   const currentDay = new Date().getDay();
   const currentTab = Object.keys(SCHEDULE_DAY).findIndex((v) => v == tab);
 
-  const renderTabList = () => {
+  const TabList = () => {
     return (
       <>
         {Object.keys(SCHEDULE_DAY).map((day, idx) => {
@@ -54,7 +54,7 @@ export default function TimeSelect(props: Props) {
     );
   };
 
-  const renderTabContent = () => {
+  const TabContents = () => {
     return (
       <>
         {Object.keys(SCHEDULE_DAY).map((day, idx) => {
@@ -141,10 +141,10 @@ export default function TimeSelect(props: Props) {
     <div className="card time-select">
       <div className="card-body">
         <ul className="nav nav-tabs d-flex" id="myTab" role="tablist">
-          {renderTabList()}
+          {<TabList />}
         </ul>
         <div className="tab-content pt-2" id="myTabContent">
-          {renderTabContent()}
+          {<TabContents />}
         </div>
       </div>
     </div>
