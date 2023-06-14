@@ -13,8 +13,18 @@ export default defineConfig({
             "react-dom",
             "react-router-dom",
             "react-toastify",
+            "react-redux",
           ],
           "@reduxjs": ["@reduxjs/toolkit"],
+          "@ckeditor": [
+            "@ckeditor/ckeditor5-build-classic",
+            "@ckeditor/ckeditor5-react",
+          ],
+          "@mui": [
+            "@mui/icons-material",
+            "@mui/material",
+            "material-react-table",
+          ],
         },
       },
     },
