@@ -13,6 +13,18 @@ const maps: {
   { path: "/contact", name: "Liên hệ" },
 ];
 export default function Header() {
+  const handleNavbarMobileToggle = () => {
+    const nav = document.getElementById("navbar")?.classList;
+    const navToggle = document.getElementById("nav-toggle")?.classList;
+    if (nav?.contains("navbar-mobile")) {
+      nav.remove("navbar-mobile");
+      navToggle?.replace("bi-x", "bi-list");
+    } else {
+      nav?.add("navbar-mobile");
+      navToggle?.replace("bi-list", "bi-x");
+    }
+  };
+
   return (
     <>
       <header id="header" className="fixed-top">
@@ -56,7 +68,11 @@ export default function Header() {
                 );
               })}
             </ul>
-            <i className="bi bi-list mobile-nav-toggle"></i>
+            <i
+              id="nav-toggle"
+              className="bi bi-list mobile-nav-toggle"
+              onClick={handleNavbarMobileToggle}
+            ></i>
           </nav>
 
           <Link to="/appointment" className="appointment-btn scrollto">

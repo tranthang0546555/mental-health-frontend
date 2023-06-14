@@ -50,6 +50,10 @@
   .toggle-sidebar #footer {
     margin-left: 0;
   }
+
+  .toggle-sidebar .sidebar {
+    left: -300px;
+  }
 }
 
 .sidebar-dashboard .sidebar-nav {
