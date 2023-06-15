@@ -28,6 +28,37 @@ function App() {
 
   const router = createBrowserRouter([
     {
+      path: "/dashboard",
+      element: <Dashboard />,
+      children: [
+        { index: true, element: <BlankPage /> },
+        {
+          path: "profile",
+          element: <Profile />,
+        },
+        {
+          path: "post",
+          element: <PostList />,
+        },
+        {
+          path: "post/create",
+          element: <PostCreate />,
+        },
+        {
+          path: "post/:slug",
+          element: <PostEdit />,
+        },
+        {
+          path: "user",
+          element: <UserList />,
+        },
+        {
+          path: "user/locked",
+          element: <LockUserList />,
+        },
+      ],
+    },
+    {
       path: "/",
       element: (
         <>
@@ -112,37 +143,6 @@ function App() {
               <Appointment />
             </InnerPage>
           ),
-        },
-      ],
-    },
-    {
-      path: "/dashboard",
-      element: <Dashboard />,
-      children: [
-        { index: true, element: <BlankPage /> },
-        {
-          path: "profile",
-          element: <Profile />,
-        },
-        {
-          path: "post",
-          element: <PostList />,
-        },
-        {
-          path: "post/create",
-          element: <PostCreate />,
-        },
-        {
-          path: "post/:slug",
-          element: <PostEdit />,
-        },
-        {
-          path: "user",
-          element: <UserList />,
-        },
-        {
-          path: "user/locked",
-          element: <LockUserList />,
         },
       ],
     },
