@@ -21,123 +21,122 @@ import HomePage from "./pages/home";
 import Post from "./pages/post";
 import PostDetail from "./pages/post-detail";
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <Layout>
+        <HomePage />
+      </Layout>
+    ),
+  },
+  {
+    path: "post",
+    element: (
+      <Layout title="Bài viết">
+        <Post />
+      </Layout>
+    ),
+  },
+  {
+    path: "post/:slug",
+    element: (
+      <Layout title="Bài viết">
+        <PostDetail />
+      </Layout>
+    ),
+  },
+  {
+    path: "doctor",
+    element: (
+      <Layout title="Bác sĩ">
+        <Doctor />
+      </Layout>
+    ),
+  },
+  {
+    path: "contact",
+    element: (
+      <Layout title="Liên hệ">
+        <Contact />
+      </Layout>
+    ),
+  },
+  {
+    path: "about",
+    element: (
+      <Layout title="Về chúng tôi">
+        <About />
+      </Layout>
+    ),
+  },
+  {
+    path: "faq",
+    element: (
+      <Layout title="FAQ">
+        <FAQ />
+      </Layout>
+    ),
+  },
+  {
+    path: "login",
+    element: (
+      <Layout title="Đăng nhập">
+        <Login />
+      </Layout>
+    ),
+  },
+  {
+    path: "register",
+    element: (
+      <Layout title="Đăng ký">
+        <Register />
+      </Layout>
+    ),
+  },
+  {
+    path: "appointment",
+    element: (
+      <Layout title="Đặt lịch khám Online">
+        <Appointment />
+      </Layout>
+    ),
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+    children: [
+      { index: true, element: <BlankPage /> },
+      {
+        path: "profile",
+        element: <Profile />,
+      },
+      {
+        path: "post",
+        element: <PostList />,
+      },
+      {
+        path: "post/create",
+        element: <PostCreate />,
+      },
+      {
+        path: "post/:slug",
+        element: <PostEdit />,
+      },
+      {
+        path: "user",
+        element: <UserList />,
+      },
+      {
+        path: "user/locked",
+        element: <LockUserList />,
+      },
+    ],
+  },
+]);
+
 function App() {
   preLoadPage();
-
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: (
-        <Layout>
-          <HomePage />
-        </Layout>
-      ),
-    },
-    {
-      path: "post",
-      element: (
-        <Layout title="Bài viết">
-          <Post />
-        </Layout>
-      ),
-    },
-    {
-      path: "post/:slug",
-      element: (
-        <Layout title="Bài viết">
-          <PostDetail />
-        </Layout>
-      ),
-    },
-    {
-      path: "doctor",
-      element: (
-        <Layout title="Bác sĩ">
-          <Doctor />
-        </Layout>
-      ),
-    },
-    {
-      path: "contact",
-      element: (
-        <Layout title="Liên hệ">
-          <Contact />
-        </Layout>
-      ),
-    },
-    {
-      path: "about",
-      element: (
-        <Layout title="Về chúng tôi">
-          <About />
-        </Layout>
-      ),
-    },
-    {
-      path: "faq",
-      element: (
-        <Layout title="FAQ">
-          <FAQ />
-        </Layout>
-      ),
-    },
-    {
-      path: "login",
-      element: (
-        <Layout title="Đăng nhập">
-          <Login />
-        </Layout>
-      ),
-    },
-    {
-      path: "register",
-      element: (
-        <Layout title="Đăng ký">
-          <Register />
-        </Layout>
-      ),
-    },
-    {
-      path: "appointment",
-      element: (
-        <Layout title="Đặt lịch khám Online">
-          <Appointment />
-        </Layout>
-      ),
-    },
-    {
-      path: "/dashboard",
-      element: <Dashboard />,
-      children: [
-        { index: true, element: <BlankPage /> },
-        {
-          path: "profile",
-          element: <Profile />,
-        },
-        {
-          path: "post",
-          element: <PostList />,
-        },
-        {
-          path: "post/create",
-          element: <PostCreate />,
-        },
-        {
-          path: "post/:slug",
-          element: <PostEdit />,
-        },
-        {
-          path: "user",
-          element: <UserList />,
-        },
-        {
-          path: "user/locked",
-          element: <LockUserList />,
-        },
-      ],
-    },
-  ]);
-
   return <RouterProvider router={router} />;
 }
 
