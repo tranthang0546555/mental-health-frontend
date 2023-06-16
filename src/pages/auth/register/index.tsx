@@ -1,10 +1,23 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { REGISTER_EMAIL_PASSWORD, useApi } from "../../../api";
 import "./index.css";
 
 export default function Register() {
-  const { handleSubmit } = useForm<RegisterInputs>();
-  const handleRegister = () => {};
+  const navigate = useNavigate();
+  const { register, handleSubmit } = useForm<RegisterInputs>();
+  const handleRegister = async (data: RegisterInputs) => {
+    await useApi
+      .post(REGISTER_EMAIL_PASSWORD, data)
+      .then((res) => {
+        toast.success(res.data?.message);
+        navigate("/login");
+      })
+      .catch((err: any) => {
+        toast.error(err.response?.data?.message);
+      });
+  };
 
   return (
     <section
@@ -41,10 +54,10 @@ export default function Register() {
                       </span>
                       <input
                         type="email"
-                        name="email"
                         className="form-control"
                         id="yourEmail"
                         required
+                        {...register("email")}
                       />
                       <div className="invalid-feedback">
                         Xin hãy điền email.
@@ -58,10 +71,10 @@ export default function Register() {
                     </label>
                     <input
                       type="password"
-                      name="password"
                       className="form-control"
                       id="yourPassword"
                       required
+                      {...register("password")}
                     />
                     <div className="invalid-feedback">
                       Vui lòng nhập mật khẩu của bạn!
@@ -74,10 +87,10 @@ export default function Register() {
                     </label>
                     <input
                       type="password"
-                      name="rePassword"
                       className="form-control"
                       id="yourRePassword"
                       required
+                      {...register("confirmPassword")}
                     />
                     <div className="invalid-feedback">
                       Vui lòng xác nhận mật khẩu của bạn!
