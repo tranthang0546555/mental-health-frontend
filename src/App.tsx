@@ -1,10 +1,9 @@
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import InnerPage from "./components/InnerPage";
+import Layout from "./components/Layout";
 import { preLoadPage } from "./hooks";
 import About from "./pages/about";
+import Appointment from "./pages/appointment";
 import Login from "./pages/auth/login";
 import Register from "./pages/auth/register";
 import Contact from "./pages/contact";
@@ -21,12 +20,91 @@ import FAQ from "./pages/faq";
 import HomePage from "./pages/home";
 import Post from "./pages/post";
 import PostDetail from "./pages/post-detail";
-import Appointment from "./pages/appointment";
 
 function App() {
   preLoadPage();
 
   const router = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <Layout>
+          <HomePage />
+        </Layout>
+      ),
+    },
+    {
+      path: "post",
+      element: (
+        <Layout title="Bài viết">
+          <Post />
+        </Layout>
+      ),
+    },
+    {
+      path: "post/:slug",
+      element: (
+        <Layout title="Bài viết">
+          <PostDetail />
+        </Layout>
+      ),
+    },
+    {
+      path: "doctor",
+      element: (
+        <Layout title="Bác sĩ">
+          <Doctor />
+        </Layout>
+      ),
+    },
+    {
+      path: "contact",
+      element: (
+        <Layout title="Liên hệ">
+          <Contact />
+        </Layout>
+      ),
+    },
+    {
+      path: "about",
+      element: (
+        <Layout title="Về chúng tôi">
+          <About />
+        </Layout>
+      ),
+    },
+    {
+      path: "faq",
+      element: (
+        <Layout title="FAQ">
+          <FAQ />
+        </Layout>
+      ),
+    },
+    {
+      path: "login",
+      element: (
+        <Layout title="Đăng nhập">
+          <Login />
+        </Layout>
+      ),
+    },
+    {
+      path: "register",
+      element: (
+        <Layout title="Đăng ký">
+          <Register />
+        </Layout>
+      ),
+    },
+    {
+      path: "appointment",
+      element: (
+        <Layout title="Đặt lịch khám Online">
+          <Appointment />
+        </Layout>
+      ),
+    },
     {
       path: "/dashboard",
       element: <Dashboard />,
@@ -55,94 +133,6 @@ function App() {
         {
           path: "user/locked",
           element: <LockUserList />,
-        },
-      ],
-    },
-    {
-      path: "/",
-      element: (
-        <>
-          <Header />
-          <Outlet />
-          <Footer />
-        </>
-      ),
-      children: [
-        {
-          index: true,
-          element: <HomePage />,
-        },
-        {
-          path: "post",
-          element: (
-            <InnerPage title="Bài viết">
-              <Post />
-            </InnerPage>
-          ),
-        },
-        {
-          path: "post/:slug",
-          element: (
-            <InnerPage title="Bài viết">
-              <PostDetail />
-            </InnerPage>
-          ),
-        },
-        {
-          path: "doctor",
-          element: (
-            <InnerPage title="Bác sĩ">
-              <Doctor />
-            </InnerPage>
-          ),
-        },
-        {
-          path: "contact",
-          element: (
-            <InnerPage title="Liên hệ">
-              <Contact />
-            </InnerPage>
-          ),
-        },
-        {
-          path: "about",
-          element: (
-            <InnerPage title="Về chúng tôi">
-              <About />
-            </InnerPage>
-          ),
-        },
-        {
-          path: "faq",
-          element: (
-            <InnerPage title="FAQ">
-              <FAQ />
-            </InnerPage>
-          ),
-        },
-        {
-          path: "login",
-          element: (
-            <InnerPage title="Đăng nhập">
-              <Login />
-            </InnerPage>
-          ),
-        },
-        {
-          path: "register",
-          element: (
-            <InnerPage title="Đăng ký">
-              <Register />
-            </InnerPage>
-          ),
-        },
-        {
-          path: "appointment",
-          element: (
-            <InnerPage title="Đặt lịch khám Online">
-              <Appointment />
-            </InnerPage>
-          ),
         },
       ],
     },
