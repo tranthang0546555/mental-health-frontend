@@ -257,6 +257,9 @@ export default function HeaderDashboard() {
                   <span>Trang chủ</span>
                 </Link>
               </li>
+              <li>
+                <hr className="dropdown-divider" />
+              </li>
 
               <li>
                 <a
