@@ -1,3 +1,7 @@
 .breadcrumbs {
   margin-top: 80px;
 }
+
+.inner-page {
+  min-height: calc(100vh - 440px);
+}

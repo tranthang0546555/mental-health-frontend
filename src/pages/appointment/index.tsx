@@ -6,6 +6,7 @@ import DoctorSelect from "./DoctorSelect";
 import TimeSelect from "./TimeSelect";
 import VerifyAppointment from "./VerifyAppointment";
 import Waiting from "./Waiting";
+import LoginCheck from "../../components/LoginCheck";
 
 export default function Appointment() {
   const [step, setStep] = useState(1);
@@ -107,7 +108,7 @@ export default function Appointment() {
   };
 
   return (
-    <>
+    <LoginCheck>
       <div className="row">
         <div className="col-md-4">
           <Steps
@@ -116,6 +117,6 @@ export default function Appointment() {
         </div>
         <div className="col-md-8">{render()}</div>
       </div>
-    </>
+    </LoginCheck>
   );
 }

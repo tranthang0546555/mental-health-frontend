@@ -4,6 +4,7 @@ import { PATIENT_REGISTRATION, useApi } from "../../../api";
 import { SCHEDULE_STATUS } from "../../../constants";
 import { useAppSelector } from "../../../hooks/store";
 import { dateFormat } from "../../../utils";
+import { Link } from "react-router-dom";
 
 type keys = keyof typeof SCHEDULE_STATUS;
 type Props = {
@@ -20,8 +21,8 @@ export default function AppointmentManager({ option }: Props) {
     () => [
       {
         header: "Phòng",
-        accessorFn(originalRow) {
-          return <b>{originalRow.code}</b>;
+        accessorFn({ code }) {
+          return <Link to={`/online-appointment/${code}`}>{code}</Link>;
         },
         size: 1,
       },

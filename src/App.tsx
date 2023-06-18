@@ -22,6 +22,8 @@ import Post from "./pages/post";
 import PostDetail from "./pages/post-detail";
 import AppointmentManager from "./pages/dashboard/appointment-manager";
 import ScheduleSetting from "./pages/dashboard/doctor/schedule-setting";
+import OnlineAppointment from "./pages/online-appointment";
+import NotFound from "./pages/not-found";
 
 const router = createBrowserRouter([
   {
@@ -105,6 +107,10 @@ const router = createBrowserRouter([
     ),
   },
   {
+    path: "online-appointment/:id",
+    element: <OnlineAppointment />,
+  },
+  {
     path: "/dashboard",
     element: <Dashboard />,
     children: [
@@ -160,6 +166,10 @@ const router = createBrowserRouter([
         element: <ScheduleSetting />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 

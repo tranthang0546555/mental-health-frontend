@@ -20,6 +20,7 @@ export default function Steps({ data }: { data: StepsProps }) {
         {steps.map((step, idx) => {
           return (
             <li
+              key={idx}
               className={`${idx % 2 === 0 ? "timeline" : "timeline"} ${
                 currentStep === idx + 1 ? "active" : ""
               }`}

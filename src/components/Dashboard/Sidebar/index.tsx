@@ -77,7 +77,7 @@ const sidebarMenus: SidebarMenu[] = [
   {
     name: "Thời gian làm việc",
     path: "/dashboard/schedule",
-    role: ["doctor", "admin"],
+    role: ["doctor"],
     icon: <i className="bi bi-clock"></i>,
   },
   {
