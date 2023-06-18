@@ -31,7 +31,8 @@ export default function TimeSelect(props: Props) {
   const TabList = () => {
     return (
       <>
-        {Object.keys(SCHEDULE_DAY).map((day, idx) => {
+        {Object.keys(SCHEDULE_DAY).map((d, idx) => {
+          const day = d as keyof typeof SCHEDULE_DAY;
           return (
             <li className="nav-item" role="presentation">
               <button
@@ -57,8 +58,9 @@ export default function TimeSelect(props: Props) {
   const TabContents = () => {
     return (
       <>
-        {Object.keys(SCHEDULE_DAY).map((day, idx) => {
-          const schedule = doctor.timeServing[day] as Schedule[];
+        {Object.keys(SCHEDULE_DAY).map((d, idx) => {
+          const day = d as keyof typeof SCHEDULE_DAY;
+          const schedule = doctor?.timeServing?.[day] || [];
           return (
             <div
               className={`tab-pane fade show ${tab === day ? "active" : ""}`}

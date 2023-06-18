@@ -48,6 +48,21 @@ declare type User = {
   unlockedAt?: string;
 };
 
+declare type Schedule = {
+  from: number;
+  to: number;
+};
+
+declare type TimeServing = {
+  sun: Schedule[];
+  mon: Schedule[];
+  tue: Schedule[];
+  wed: Schedule[];
+  thu: Schedule[];
+  fri: Schedule[];
+  sat: Schedule[];
+};
+
 declare type Doctor = User & {
   description?: {
     experience?: string;
@@ -55,7 +70,7 @@ declare type Doctor = User & {
   };
   rating?: number;
   ratingCount?: number;
-  timeServing?: any;
+  timeServing?: TimeServing;
 };
 
 declare type LoginInputs = {
@@ -78,7 +93,16 @@ declare type CountsInfo = {
   visitor?: number;
 };
 
-declare type Schedule = {
-  from: number;
-  to: number;
+declare type Appointment = {
+  _id: string;
+  user: User;
+  doctor: Doctor;
+  code: string;
+  from: string;
+  to: string;
+  status: string;
+  createdAt: string;
+  updatedAt?: string;
+  writeRecord?: boolean;
+  rating?: number;
 };

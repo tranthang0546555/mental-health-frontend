@@ -47,6 +47,40 @@ const sidebarMenus: SidebarMenu[] = [
     ],
   },
   {
+    name: "Lịch khám",
+    path: "/dashboard/appointment",
+    role: ["user", "doctor"],
+    icon: <i className="bi bi-calendar"></i>,
+    children: [
+      {
+        name: "Lịch sắp tới",
+        path: "/progress",
+        role: ["user", "doctor"],
+      },
+      {
+        name: "Chờ xác nhận",
+        path: "/pending",
+        role: ["user", "doctor"],
+      },
+      {
+        name: "Đã khám",
+        path: "/completed",
+        role: ["user", "doctor"],
+      },
+      {
+        name: "Đã huỷ",
+        path: "/cancel",
+        role: ["user", "doctor"],
+      },
+    ],
+  },
+  {
+    name: "Thời gian làm việc",
+    path: "/dashboard/schedule",
+    role: ["doctor", "admin"],
+    icon: <i className="bi bi-clock"></i>,
+  },
+  {
     name: "Thông tin",
     path: "/dashboard/profile",
     role: ["user", "doctor", "admin"],

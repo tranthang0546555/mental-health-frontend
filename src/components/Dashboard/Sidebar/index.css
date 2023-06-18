@@ -167,6 +167,7 @@
 #main-dashboard .section > * {
   border-radius: 0.25rem;
   overflow: hidden;
+  background-color: #fff;
 }
 #main-dashboard label {
   color: var(--color-default);

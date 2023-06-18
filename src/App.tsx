@@ -20,6 +20,8 @@ import FAQ from "./pages/faq";
 import HomePage from "./pages/home";
 import Post from "./pages/post";
 import PostDetail from "./pages/post-detail";
+import AppointmentManager from "./pages/dashboard/appointment-manager";
+import ScheduleSetting from "./pages/dashboard/doctor/schedule-setting";
 
 const router = createBrowserRouter([
   {
@@ -130,6 +132,32 @@ const router = createBrowserRouter([
       {
         path: "user/locked",
         element: <LockUserList />,
+      },
+      {
+        path: "appointment",
+        children: [
+          {
+            index: true,
+            path: "progress",
+            element: <AppointmentManager option="PROGRESS" />,
+          },
+          {
+            path: "pending",
+            element: <AppointmentManager option="PENDING" />,
+          },
+          {
+            path: "completed",
+            element: <AppointmentManager option="COMPLETED" />,
+          },
+          {
+            path: "cancel",
+            element: <AppointmentManager option="CANCEL" />,
+          },
+        ],
+      },
+      {
+        path: "schedule",
+        element: <ScheduleSetting />,
       },
     ],
   },

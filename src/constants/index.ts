@@ -16,7 +16,7 @@ export const ERROR_ACCOUNT_CODE = {
   NOT_EXISTED: "Not existed",
 };
 
-export const SCHEDULE_DAY: Record<string, string> = Object.freeze({
+export const SCHEDULE_DAY = Object.freeze({
   sun: "Chủ Nhật",
   mon: "Thứ Hai",
   tue: "Thứ Ba",
@@ -28,10 +28,11 @@ export const SCHEDULE_DAY: Record<string, string> = Object.freeze({
 
 export const SCHEDULE_TIME_HOOK = new Date("2022-06-06T00:00:00+07:00");
 
-export const SCHEDULE_STATUS: Record<string, string> = {
+export const SCHEDULE_STATUS = {
   COMPLETED: "completed",
   CANCEL: "cancel",
   PROGRESS: "progress",
+  PENDING: "pending",
 };
 
 export const ScheduleTab: Record<string, string> = {

@@ -1,0 +1,12 @@
+.schedule-select {
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: end;
+}
+
+.schedule-select > button {
+  width: 100px;
+  height: min-content;
+}
