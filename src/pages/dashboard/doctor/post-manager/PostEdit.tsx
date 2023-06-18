@@ -19,7 +19,7 @@ export default function PostEdit() {
   const { slug = "" } = useParams();
 
   const schema = yup
-    .object({
+    .object<Inputs>({
       title: yup.string().required("Không để trống"),
       description: yup.string().required("Không để trống"),
       content: yup.string().required("Không để trống"),

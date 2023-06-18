@@ -70,7 +70,7 @@ export default function RoomDetail({ room }: { room: string }) {
         socket.current?.on(
           "re-receiving-signal",
           (payload: ReceivingSignal) => {
-            const { signal, sender } = payload;
+            const { signal } = payload;
             console.log("re-receiving-signal");
             myPeer.current?.signal(signal);
             myPeer.current?.on("stream", (stream) => {

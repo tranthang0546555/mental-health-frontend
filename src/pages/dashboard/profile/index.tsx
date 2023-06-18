@@ -26,7 +26,7 @@ export default function Profile() {
   const profile = useAppSelector((state) => state.auth.user);
   const dispatch = useAppDispatch();
   const schema = yup
-    .object({
+    .object<Inputs>({
       fullName: yup.string().required("Không để trống"),
       firstName: yup.string().required("Không để trống"),
       lastName: yup.string().required("Không để trống"),

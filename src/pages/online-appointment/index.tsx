@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ROOM_ACCESS, useApi } from "../../api";
 import NotFound from "../not-found";
