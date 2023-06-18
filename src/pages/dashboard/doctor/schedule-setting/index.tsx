@@ -1,12 +1,11 @@
-import { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { SCHEDULE_DAY, SCHEDULE_TIME_HOOK } from "../../../../constants";
-import { hourFormat } from "../../../../utils";
-import "./index.css";
-import { toast } from "react-toastify";
 import { format, parse } from "date-fns";
 import {} from "date-fns/locale";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import { DOCTOR_TIME_SERVING, useApi } from "../../../../api";
+import { SCHEDULE_DAY } from "../../../../constants";
+import "./index.css";
 
 export default function ScheduleSetting() {
   const [tab, setTab] = useState<keyof typeof SCHEDULE_DAY>("sun");
@@ -33,12 +32,21 @@ export default function ScheduleSetting() {
     if (!valid) return toast.warn("Khoảng thời gian không hợp lệ");
     await useApi
       .post(DOCTOR_TIME_SERVING, { day: tab, from, to })
-      .then((res) => {
+      .then(() => {
         toast.success("Thêm hoàn tất");
         getTimeServing();
       })
       .catch((error: any) => {
         toast.error(error?.response?.data?.message || "Error");
+      });
+  };
+
+  const handleResetTimeServing = async () => {
+    await useApi
+      .delete(DOCTOR_TIME_SERVING, { data: { day: tab } })
+      .then(() => {
+        toast.success("Làm mới hoàn tất");
+        getTimeServing();
       });
   };
 
@@ -145,6 +153,13 @@ export default function ScheduleSetting() {
             </div>
             <button type="submit" className="btn btn-success">
               Thêm
+            </button>
+            <button
+              type="button"
+              className="btn btn-danger"
+              onClick={handleResetTimeServing}
+            >
+              Đặt lại
             </button>
           </div>
         </form>
