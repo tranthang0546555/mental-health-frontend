@@ -242,11 +242,20 @@ export default function HeaderDashboard() {
 
             <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li className="dropdown-header">
-                <h6>Kevin Anderson</h6>
-                <span>Web Designer</span>
+                <h6>{user?.fullName}</h6>
               </li>
               <li>
                 <hr className="dropdown-divider" />
+              </li>
+
+              <li>
+                <Link
+                  className="dropdown-item d-flex align-items-center"
+                  to="/"
+                >
+                  <i className="bi bi-house"></i>
+                  <span>Trang chủ</span>
+                </Link>
               </li>
 
               <li>
