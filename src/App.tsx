@@ -10,20 +10,21 @@ import Contact from "./pages/contact";
 import Dashboard from "./pages/dashboard";
 import UserList from "./pages/dashboard/admin/user-manager/UserList";
 import LockUserList from "./pages/dashboard/admin/user-manager/UserLockList";
+import AppointmentManager from "./pages/dashboard/appointment-manager";
 import BlankPage from "./pages/dashboard/blank";
+import CategoryList from "./pages/dashboard/doctor/category-manager/CategoryList";
 import PostCreate from "./pages/dashboard/doctor/post-manager/PostCreate";
 import PostEdit from "./pages/dashboard/doctor/post-manager/PostEdit";
 import PostList from "./pages/dashboard/doctor/post-manager/PostList";
+import ScheduleSetting from "./pages/dashboard/doctor/schedule-setting";
 import Profile from "./pages/dashboard/profile";
 import Doctor from "./pages/doctor";
 import FAQ from "./pages/faq";
 import HomePage from "./pages/home";
+import NotFound from "./pages/not-found";
+import OnlineAppointment from "./pages/online-appointment";
 import Post from "./pages/post";
 import PostDetail from "./pages/post-detail";
-import AppointmentManager from "./pages/dashboard/appointment-manager";
-import ScheduleSetting from "./pages/dashboard/doctor/schedule-setting";
-import OnlineAppointment from "./pages/online-appointment";
-import NotFound from "./pages/not-found";
 
 const router = createBrowserRouter([
   {
@@ -121,23 +122,37 @@ const router = createBrowserRouter([
       },
       {
         path: "post",
-        element: <PostList />,
-      },
-      {
-        path: "post/create",
-        element: <PostCreate />,
-      },
-      {
-        path: "post/:slug",
-        element: <PostEdit />,
+        children: [
+          {
+            index: true,
+            element: <PostList />,
+          },
+          {
+            path: "create",
+            element: <PostCreate />,
+          },
+          {
+            path: "category",
+            element: <CategoryList />,
+          },
+          {
+            path: ":slug",
+            element: <PostEdit />,
+          },
+        ],
       },
       {
         path: "user",
-        element: <UserList />,
-      },
-      {
-        path: "user/locked",
-        element: <LockUserList />,
+        children: [
+          {
+            index: true,
+            element: <UserList />,
+          },
+          {
+            path: "locked",
+            element: <LockUserList />,
+          },
+        ],
       },
       {
         path: "appointment",

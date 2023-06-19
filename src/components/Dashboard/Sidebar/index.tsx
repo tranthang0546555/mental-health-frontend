@@ -26,6 +26,11 @@ const sidebarMenus: SidebarMenu[] = [
         path: "/create",
         role: ["doctor", "admin"],
       },
+      {
+        name: "Thể loại",
+        path: "/category",
+        role: ["doctor", "admin"],
+      },
     ],
   },
   {
