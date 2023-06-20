@@ -1,26 +1,40 @@
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import * as yup from "yup";
-import { POST_LIST, useApi } from "../../../../api";
+import { CATEGORY_LIST, POST_LIST, useApi } from "../../../../api";
 import "./index.css";
 
 type Inputs = {
   title?: string;
   description?: string;
   content?: string;
+  category?: string;
 };
 
 export default function PostCreate() {
   const navigate = useNavigate();
+  const [categories, setCategories] = useState<Category[]>([]);
+  useEffect(() => {
+    getCategoriest();
+  }, []);
+
+  const getCategoriest = async () => {
+    await useApi(CATEGORY_LIST).then((res) => {
+      const data = res.data as Data<Category>;
+      setCategories(data.data);
+    });
+  };
   const schema = yup
     .object<Inputs>({
       title: yup.string().required("Không để trống"),
       description: yup.string().required("Không để trống"),
       content: yup.string().required("Không để trống"),
+      category: yup.string().required("Không để trống"),
     })
     .required();
 
@@ -93,6 +107,29 @@ export default function PostCreate() {
                 {errors.description && (
                   <span className="form-error-message">
                     {errors.description.message}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            <div className="row mb-3">
+              <label
+                htmlFor="category"
+                className="col-md-2 col-lg-2 col-form-label"
+              >
+                Thể loại
+              </label>
+              <div className="col-md-10 col-lg-10">
+                <select className="form-control" {...register("category")}>
+                  {categories.map(({ _id, name }) => (
+                    <option key={_id} value={_id}>
+                      {name}
+                    </option>
+                  ))}
+                </select>
+                {errors.category && (
+                  <span className="form-error-message">
+                    {errors.category.message}
                   </span>
                 )}
               </div>

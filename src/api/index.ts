@@ -11,6 +11,9 @@ export const POST_COMMENT_LIST = "/post/:id/comment";
 export const POST_BOOKMARK_ACTION = "/post/:id/bookmark";
 export const COMMENT_DELETE = "/post/comment/:id";
 
+export const CATEGORY_LIST = "category";
+export const CATEGORY_DETAIL = "/category/:id";
+
 export const GROUP_LIST = "group";
 
 export const DOCTOR_LIST = "doctor";

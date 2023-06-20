@@ -8,7 +8,7 @@ declare type Pagination = {
   totalRecords: number;
 };
 
-declare type Post = {
+declare type Post = TimeStemp & {
   _id: string;
   id: string;
   slug: string;
@@ -18,12 +18,16 @@ declare type Post = {
   likeCount: string;
   viewCount: 1;
   createdBy: User;
-  createdAt: string;
-  updatedAt: string;
   content: string;
 };
 
-declare type User = {
+declare type Category = TimeStemp & {
+  _id: string;
+  name: string;
+  description: string;
+};
+
+declare type User = TimeStemp & {
   _id?: string;
   fullName?: string;
   name?: {
@@ -40,7 +44,6 @@ declare type User = {
   address?: string;
   job?: string;
   numberId?: string;
-  createdAt?: string;
   lock?: boolean;
   lockedBy?: User;
   lockedAt?: string;
@@ -93,7 +96,7 @@ declare type CountsInfo = {
   visitor?: number;
 };
 
-declare type Appointment = {
+declare type Appointment = TimeStemp & {
   _id: string;
   user: User;
   doctor: Doctor;
@@ -101,8 +104,11 @@ declare type Appointment = {
   from: string;
   to: string;
   status: string;
-  createdAt: string;
-  updatedAt?: string;
   writeRecord?: boolean;
   rating?: number;
+};
+
+declare type TimeStemp = {
+  createdAt?: string;
+  updatedAt?: string;
 };
