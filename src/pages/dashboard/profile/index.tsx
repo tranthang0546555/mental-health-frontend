@@ -34,7 +34,6 @@ export default function Profile() {
       numberId: yup.string().required("Không để trống"),
       gender: yup.string().required("Không để trống"),
       birthday: yup.string().required("Không để trống"),
-      degree: yup.string().required("Không để trống"),
       address: yup.string().required("Không để trống"),
       experience: yup.string().required("Không để trống"),
     })
@@ -274,27 +273,29 @@ export default function Profile() {
                   </div>
                 </div>
 
-                <div className="row mb-3">
-                  <label
-                    htmlFor="degree"
-                    className="col-md-4 col-lg-3 col-form-label"
-                  >
-                    Học vị
-                  </label>
-                  <div className="col-md-8 col-lg-9">
-                    <input
-                      type="text"
-                      id="degree"
-                      className="form-control"
-                      {...register("degree")}
-                    />
-                    {errors.degree && (
-                      <span className="form-error-message">
-                        {errors.degree.message}
-                      </span>
-                    )}
+                {profile?.role === "doctor" && (
+                  <div className="row mb-3">
+                    <label
+                      htmlFor="degree"
+                      className="col-md-4 col-lg-3 col-form-label"
+                    >
+                      Học vị
+                    </label>
+                    <div className="col-md-8 col-lg-9">
+                      <input
+                        type="text"
+                        id="degree"
+                        className="form-control"
+                        {...register("degree")}
+                      />
+                      {errors.degree && (
+                        <span className="form-error-message">
+                          {errors.degree.message}
+                        </span>
+                      )}
+                    </div>
                   </div>
-                </div>
+                )}
 
                 <div className="row mb-3">
                   <label
