@@ -51,6 +51,7 @@ export default function Post() {
                   <PostItem data={news} />
                 </div>
               ))}
+              {data?.totalRecords === 0 && <h4>Không tìm thấy kết quả nào!</h4>}
             </div>
             <Pagination
               pagination={data as Pagination}

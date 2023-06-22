@@ -121,6 +121,7 @@ export default function PostCreate() {
               </label>
               <div className="col-md-10 col-lg-10">
                 <select className="form-control" {...register("category")}>
+                  <option value="">Chọn</option>
                   {categories.map(({ _id, name }) => (
                     <option key={_id} value={_id}>
                       {name}
