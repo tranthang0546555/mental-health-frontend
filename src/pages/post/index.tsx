@@ -12,23 +12,29 @@ import "./index.css";
 export default function Post() {
   const [data, setData] = useState<Data<Post>>();
   const [searchParams, setSearchParams] = useSearchParams();
-  const [filters, setFilters] = useState<{ keyword?: string }>();
+  const [filters, setFilters] = useState<{
+    keyword?: string;
+    category?: string;
+  }>();
 
   useEffect(() => {
     const page = Number(searchParams.get("page")) || 1;
     const keyword = searchParams.get("keyword") || "";
-    setFilters({ keyword });
-    getData(keyword, page);
+    const category = searchParams.get("category") || "";
+    setFilters({ keyword, category });
+    getData(keyword, page, category);
   }, []);
 
-  const getData = async (text?: string, page?: number) => {
+  const getData = async (text?: string, page?: number, cate?: string) => {
     const keyword = (page ? filters?.keyword : text) || "";
-    const query = qs.stringify({ keyword, page });
+    const category = (page ? filters?.category : cate) || "";
+    const query = qs.stringify({ keyword, page, category });
     setSearchParams({
       keyword,
       page: page?.toString() || "1",
+      category,
     });
-    setFilters({ keyword });
+    setFilters({ keyword, category });
     const data = (await useApi(POST_LIST + (query ? "?" + query : "")))
       .data as Data<Post>;
     setData(data);
@@ -58,7 +64,9 @@ export default function Post() {
                 defaultValue={filters?.keyword}
                 onChange={(text) => getData(text)}
               />
-              <Categories />
+              <Categories
+                onChange={(cate) => getData(undefined, undefined, cate)}
+              />
               <RecentNews />
             </div>
           </div>

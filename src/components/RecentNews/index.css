@@ -40,6 +40,16 @@
   font-size: 14px;
 }
 
+.blog .sidebar .categories ul u {
+  font-size: 14px;
+  cursor: pointer;
+}
+.blog .sidebar .categories .clean{
+  cursor: pointer;
+  margin-left: 20px;
+  font-size: 25px;
+}
+
 .recent-posts .post-item {
   display: flex;
 }
