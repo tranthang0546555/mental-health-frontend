@@ -9,7 +9,7 @@ import * as yup from "yup";
 import { CATEGORY_LIST, POST_LIST, useApi } from "../../../../api";
 import "./index.css";
 
-type Inputs = {
+export type PostInputs = {
   title?: string;
   description?: string;
   content?: string;
@@ -30,7 +30,7 @@ export default function PostCreate() {
     });
   };
   const schema = yup
-    .object<Inputs>({
+    .object<PostInputs>({
       title: yup.string().required("Không để trống"),
       description: yup.string().required("Không để trống"),
       content: yup.string().required("Không để trống"),
@@ -44,11 +44,11 @@ export default function PostCreate() {
     formState: { errors },
     getValues,
     setValue,
-  } = useForm<Inputs>({
+  } = useForm<PostInputs>({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async (data: Inputs) => {
+  const onSubmit = async (data: PostInputs) => {
     await useApi(POST_LIST, {
       method: "POST",
       data: data,

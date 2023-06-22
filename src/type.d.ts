@@ -19,6 +19,7 @@ declare type Post = TimeStemp & {
   viewCount: 1;
   createdBy: User;
   content: string;
+  category: Category;
 };
 
 declare type Category = TimeStemp & {
