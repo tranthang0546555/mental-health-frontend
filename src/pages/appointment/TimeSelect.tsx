@@ -1,8 +1,8 @@
-import { addDays } from "date-fns";
+import { addDays, format, sub } from "date-fns";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { PATIENT_REGISTRATION_BOOKED, useApi } from "../../api";
-import { SCHEDULE_DAY, SCHEDULE_TIME_HOOK } from "../../constants";
+import { SCHEDULE_TIME_HOOK, SCHEDULE_DAY as SD } from "../../constants";
 import { hourFormat } from "../../utils";
 import "./index.css";
 
@@ -11,9 +11,11 @@ type Props = {
   onSelect: (time: Schedule) => void;
 };
 
+const SCHEDULE_DAY: { [key: string]: string } = SD;
+
 export default function TimeSelect(props: Props) {
   const { doctor, onSelect } = props;
-  const [tab, setTab] = useState<string | "sun">("sun");
+  const [tab, setTab] = useState<{ day: string; nextweek: boolean }>();
   const [booked, setBooked] = useState<string[]>([]);
 
   if (!doctor?.timeServing)
@@ -26,17 +28,20 @@ export default function TimeSelect(props: Props) {
     now.getUTCDate()
   );
   const currentDay = new Date().getDay();
-  const currentTab = Object.keys(SCHEDULE_DAY).findIndex((v) => v == tab);
+  const currentTab =
+    Object.keys(SCHEDULE_DAY).findIndex((v) => v == tab?.day) +
+    (tab?.nextweek === true ? 7 : 0);
 
   const TabList = () => {
     return (
       <>
-        {Object.keys(SCHEDULE_DAY).map((d, idx) => {
-          const day = d as keyof typeof SCHEDULE_DAY;
+        {Object.keys(SCHEDULE_DAY).map((day, idx) => {
           return (
             <li className="nav-item" role="presentation">
               <button
-                className={`nav-link ${tab === day ? "active" : ""}`}
+                className={`nav-link ${
+                  tab?.day === day && tab.nextweek === false ? "active" : ""
+                }`}
                 id={`day-tab-${idx}`}
                 data-bs-toggle="tab"
                 data-bs-target={`#day-${idx}`}
@@ -44,9 +49,35 @@ export default function TimeSelect(props: Props) {
                 role="tab"
                 aria-controls={`day-${idx}`}
                 aria-selected="true"
-                onClick={() => setTab(day)}
+                onClick={() => setTab({ day, nextweek: false })}
               >
-                {SCHEDULE_DAY[day]}
+                {SCHEDULE_DAY[day] +
+                  " - " +
+                  format(sub(toDay, { days: now.getDay() - idx }), "dd/MM")}
+              </button>
+            </li>
+          );
+        })}
+        {Object.keys(SCHEDULE_DAY).map((day, i) => {
+          const idx = 7 + i;
+          return (
+            <li className="nav-item" role="presentation">
+              <button
+                className={`nav-link ${
+                  tab?.day === day && tab.nextweek === true ? "active" : ""
+                }`}
+                id={`day-tab-${idx}`}
+                data-bs-toggle="tab"
+                data-bs-target={`#day-${idx}`}
+                type="button"
+                role="tab"
+                aria-controls={`day-${idx}`}
+                aria-selected="true"
+                onClick={() => setTab({ day, nextweek: true })}
+              >
+                {SCHEDULE_DAY[day] +
+                  " - " +
+                  format(sub(toDay, { days: now.getDay() - idx }), "dd/MM")}
               </button>
             </li>
           );
@@ -59,11 +90,13 @@ export default function TimeSelect(props: Props) {
     return (
       <>
         {Object.keys(SCHEDULE_DAY).map((d, idx) => {
-          const day = d as keyof typeof SCHEDULE_DAY;
+          const day = d as keyof typeof SD;
           const schedule = doctor?.timeServing?.[day] || [];
           return (
             <div
-              className={`tab-pane fade show ${tab === day ? "active" : ""}`}
+              className={`tab-pane fade show ${
+                tab?.day === day && tab.nextweek === false ? "active" : ""
+              }`}
               id={`day-${idx}`}
               role="tabpanel"
               aria-labelledby={`day-tab-${idx}`}
@@ -107,11 +140,69 @@ export default function TimeSelect(props: Props) {
             </div>
           );
         })}
+        {Object.keys(SCHEDULE_DAY).map((d, i) => {
+          const idx = 7 + i;
+          const day = d as keyof typeof SD;
+          const schedule = doctor?.timeServing?.[day] || [];
+          return (
+            <div
+              className={`tab-pane fade show ${
+                tab?.day === day && tab.nextweek === true ? "active" : ""
+              }`}
+              id={`day-${idx}`}
+              role="tabpanel"
+              aria-labelledby={`day-tab-${idx}`}
+            >
+              {schedule.map((time) => {
+                const from =
+                  SCHEDULE_TIME_HOOK.getTime() +
+                  time.from +
+                  7 * 24 * 60 * 60 * 1000;
+                const to =
+                  SCHEDULE_TIME_HOOK.getTime() +
+                  time.to +
+                  7 * 24 * 60 * 60 * 1000;
+                const label = hourFormat(from) + " - " + hourFormat(to);
+                console.log("booked", booked);
+                const isBooked = booked.some(
+                  (v) =>
+                    new Date(v).getTime() ===
+                    addDays(
+                      toDay.getTime() + time.from,
+                      currentTab - currentDay
+                    ).getTime()
+                );
+
+                return (
+                  <>
+                    {isBooked ? (
+                      <span
+                        onClick={() =>
+                          toast.warn("Đã có ai đó đặt lịch vào thời gian này")
+                        }
+                        className="time-chip time-chip-error badge bg-danger"
+                      >
+                        {label}
+                      </span>
+                    ) : (
+                      <span
+                        onClick={() => handleSelect(time, true)}
+                        className="time-chip badge bg-secondary"
+                      >
+                        {label}
+                      </span>
+                    )}
+                  </>
+                );
+              })}
+            </div>
+          );
+        })}
       </>
     );
   };
 
-  const handleSelect = (schedule: Schedule) => {
+  const handleSelect = (schedule: Schedule, nextweek?: boolean) => {
     const bookingFrom = addDays(
       new Date(toDay.getTime() + schedule.from),
       currentTab - currentDay
@@ -121,14 +212,19 @@ export default function TimeSelect(props: Props) {
       currentTab - currentDay
     );
 
-    if (bookingFrom.getTime() < now.getTime())
-      return toast.warn("Thời gian đã qua, vui lòng chọn ngày khác");
+    if (
+      bookingFrom.getTime() < now.getTime() + 24 * 60 * 60 * 1000 &&
+      !nextweek
+    )
+      return toast.warn(
+        "Bạn phải đặt sớm hơn ít nhất hai ngày, vui lòng chọn thời gian khác"
+      );
     onSelect({ from: bookingFrom.getTime(), to: bookingTo.getTime() });
   };
 
   useEffect(() => {
     getBooked();
-    setTab(Object.keys(SCHEDULE_DAY)[currentDay]);
+    setTab({ day: Object.keys(SCHEDULE_DAY)[currentDay], nextweek: false });
   }, []);
 
   const getBooked = async () => {
@@ -142,7 +238,11 @@ export default function TimeSelect(props: Props) {
   return (
     <div className="card time-select">
       <div className="card-body">
-        <ul className="nav nav-tabs d-flex" id="myTab" role="tablist">
+        <ul
+          className="nav nav-tabs d-flex justify-content-center"
+          id="myTab"
+          role="tablist"
+        >
           {<TabList />}
         </ul>
         <div className="tab-content pt-2" id="myTabContent">
