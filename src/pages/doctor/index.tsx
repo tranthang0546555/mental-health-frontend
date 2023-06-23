@@ -2,7 +2,6 @@ import qs from "qs";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { DOCTOR_LIST, useApi } from "../../api";
-import Categories from "../../components/Categories";
 import Pagination from "../../components/Pagination";
 import Search from "../../components/Search";
 
@@ -58,7 +57,6 @@ export default function Doctor() {
                 defaultValue={filters?.keyword}
                 onChange={(text) => getData(text)}
               />
-              <Categories />
             </div>
           </div>
         </div>
