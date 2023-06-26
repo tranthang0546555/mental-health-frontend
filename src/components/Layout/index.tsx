@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Footer from "../Footer";
 import Header from "../Header";
 import "./index.css";
@@ -8,6 +10,12 @@ type Props = {
 };
 export default function Layout(props: Props) {
   const { title, children } = props;
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <>
       <Header />

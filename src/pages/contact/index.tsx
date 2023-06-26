@@ -5,7 +5,7 @@ export default function Contact() {
     <section id="contact" className="contact">
       <div className="container">
         <div className="section-title">
-          <h2>Contact</h2>
+          <h2>Liên hệ</h2>
           <p>
             Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex
             aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos
@@ -18,7 +18,7 @@ export default function Contact() {
       <div>
         <iframe
           style={{ border: 0, width: "100%", height: 350 }}
-          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61349.62160109751!2d108.16550648839126!3d16.047247302786108!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314219c792252a13%3A0xfc14e3a044436487!2sDa%20Nang%2C%20H%E1%BA%A3i%20Ch%C3%A2u%20District%2C%20Da%20Nang%2C%20Vietnam!5e0!3m2!1sen!2s!4v1687767738151!5m2!1sen!2s"
           frameBorder={0}
           allowFullScreen
         ></iframe>
@@ -30,7 +30,7 @@ export default function Contact() {
             <div className="info">
               <div className="address">
                 <i className="bi bi-geo-alt"></i>
-                <h4>Location:</h4>
+                <h4>Địa chỉ:</h4>
                 <p>A108 Adam Street, New York, NY 535022</p>
               </div>
 
@@ -42,7 +42,7 @@ export default function Contact() {
 
               <div className="phone">
                 <i className="bi bi-phone"></i>
-                <h4>Call:</h4>
+                <h4>Sđt:</h4>
                 <p>+1 5589 55488 55s</p>
               </div>
             </div>
