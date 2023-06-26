@@ -8,15 +8,17 @@ import Login from "./pages/auth/login";
 import Register from "./pages/auth/register";
 import Contact from "./pages/contact";
 import Dashboard from "./pages/dashboard";
+import CategoryCreate from "./pages/dashboard/admin/category-manager/CategoryCreate";
+import CategoryEdit from "./pages/dashboard/admin/category-manager/CategoryEdit";
+import CategoryList from "./pages/dashboard/admin/category-manager/CategoryList";
 import UserList from "./pages/dashboard/admin/user-manager/UserList";
 import LockUserList from "./pages/dashboard/admin/user-manager/UserLockList";
 import AppointmentManager from "./pages/dashboard/appointment-manager";
-import BlankPage from "./pages/dashboard/blank";
-import CategoryList from "./pages/dashboard/admin/category-manager/CategoryList";
 import PostCreate from "./pages/dashboard/doctor/post-manager/PostCreate";
 import PostEdit from "./pages/dashboard/doctor/post-manager/PostEdit";
 import PostList from "./pages/dashboard/doctor/post-manager/PostList";
 import ScheduleSetting from "./pages/dashboard/doctor/schedule-setting";
+import Statistics from "./pages/dashboard/doctor/statistics";
 import Profile from "./pages/dashboard/profile";
 import Doctor from "./pages/doctor";
 import FAQ from "./pages/faq";
@@ -25,8 +27,6 @@ import NotFound from "./pages/not-found";
 import OnlineAppointment from "./pages/online-appointment";
 import Post from "./pages/post";
 import PostDetail from "./pages/post-detail";
-import CategoryCreate from "./pages/dashboard/admin/category-manager/CategoryCreate";
-import CategoryEdit from "./pages/dashboard/admin/category-manager/CategoryEdit";
 
 const router = createBrowserRouter([
   {
@@ -117,7 +117,7 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: <Dashboard />,
     children: [
-      { index: true, element: <BlankPage /> },
+      { index: true, element: <Statistics /> },
       {
         path: "profile",
         element: <Profile />,

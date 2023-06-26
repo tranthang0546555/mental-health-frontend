@@ -11,6 +11,12 @@ type SidebarMenu = {
 };
 const sidebarMenus: SidebarMenu[] = [
   {
+    name: "Dashboard",
+    path: "/dashboard",
+    role: ["doctor", "admin"],
+    icon: <i className="bi bi-grid" />,
+  },
+  {
     name: "Bài viết",
     path: "/dashboard/post",
     role: ["doctor", "admin"],

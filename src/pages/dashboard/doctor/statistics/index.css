@@ -1,0 +1,19 @@
+.statistics > .row {
+  --bs-gutter-x: 0;
+}
+.user-overview .card {
+  margin-bottom: 30px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0 30px rgb(1 41 112 / 10%);
+}
+.user-overview h5,
+.user-overview h6,
+.user-overview i {
+  color: var(--color-title-default);
+  margin: 5px 0;
+}
+
+.statistics .user-overview .chart > * {
+  margin: auto;
+}
