@@ -110,6 +110,26 @@ declare type Appointment = TimeStemp & {
 };
 
 declare type TimeStemp = {
-  createdAt?: string;
-  updatedAt?: string;
+  createdAt?: string | number;
+  updatedAt?: string | number;
+};
+
+declare type MedicalRecord = TimeStemp & {
+  id: number;
+  data: MedicalRecordData | string;
+  doctorId: string;
+  userId: string;
+  walletId: string;
+  isDeleted: boolean;
+};
+
+declare type MedicalRecordData = {
+  dayIn: string;
+  diagnostic: string;
+  medicalHistory: string;
+  reason: string;
+  status: string;
+  treatment: string;
+  doctor: Doctor;
+  user: User;
 };

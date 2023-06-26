@@ -16,3 +16,20 @@ export const avatarPath = (name?: string) =>
 
 export const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+
+export const decodeMedicalRecord = (record: MedicalRecord): MedicalRecord => {
+  return {
+    ...record,
+    id: Number(record.id),
+    data: JSON.parse(record.data as string),
+    createdAt: Number(record.createdAt),
+    updatedAt: Number(record.updatedAt),
+  };
+};
+
+export const encodeMedicalRecord = (record: MedicalRecord): MedicalRecord => {
+  return {
+    ...record,
+    data: JSON.stringify(record.data),
+  };
+};
