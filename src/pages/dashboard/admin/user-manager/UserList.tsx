@@ -45,6 +45,11 @@ export default function UserList() {
         size: 1,
       },
       {
+        header: "Vai trò",
+        accessorKey: "role",
+        size: 1,
+      },
+      {
         header: "Tạo",
         accessorKey: "createdAt",
         Cell({
@@ -69,12 +74,21 @@ export default function UserList() {
                 name="lock"
                 title=" Đưa vào danh sách đen"
                 description={`Chuyển người dùng "${name?.firstName}" vào danh sách đen và người dùng sẽ không thể truy cập vào hệ thống được nữa!`}
-                onSubmit={() => lockUserAccount(_id)}
+                onSubmit={(data) => lockUserAccount(_id, String(data))}
                 button={
                   <button type="button" className="btn btn-danger">
                     <i className="bi bi-lock"></i>
                   </button>
                 }
+                optional={{
+                  input: {
+                    name: "message",
+                    className: "form-control",
+                    type: "text",
+                    defaultValue:
+                      "Người dùng vi phạm chinh sách của Mental-Health",
+                  },
+                }}
               />
               <span> </span>
               <Modal
@@ -125,8 +139,11 @@ export default function UserList() {
     setData(data.data);
   };
 
-  const lockUserAccount = async (id: string) => {
-    await useApi(LOCK_USER.replace(":id", id), { method: "PATCH" }).then(() => {
+  const lockUserAccount = async (id: string, message: string) => {
+    await useApi(LOCK_USER.replace(":id", id), {
+      method: "PATCH",
+      data: { message },
+    }).then(() => {
       getData();
       toast.success("Đã đưa vào danh sách đen");
     });
@@ -138,6 +155,7 @@ export default function UserList() {
       data: { role },
     }).then(() => {
       toast.success("Thay đổi thành công");
+      getData();
     });
   };
   // if (!data) return <></>;

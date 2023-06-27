@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Props = {
   id: string;
@@ -31,11 +31,17 @@ export default function Modal(props: Props) {
   const [optionalValue, setOptionalValue] = useState<any>();
   const { id, name, title, description, button, optional, onSubmit } = props;
 
+  useEffect(() => {
+    if (optional?.input) setOptionalValue(optional.input.defaultValue);
+    if (optional?.select)
+      setOptionalValue(optional.select.attributes?.defaultValue);
+  });
+
   const renderOptional = (optional: Optional) => {
     const { input, select } = optional;
     if (input)
       return (
-        <input {...input} onBlur={(e) => setOptionalValue(e.target.value)} />
+        <input {...input} onChange={(e) => setOptionalValue(e.target.value)} />
       );
     if (select)
       return (

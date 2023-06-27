@@ -107,6 +107,7 @@ declare type Appointment = TimeStemp & {
   status: string;
   writeRecord?: boolean;
   rating?: number;
+  message?: string;
 };
 
 declare type TimeStemp = {

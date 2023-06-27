@@ -18,7 +18,6 @@ export default function useContract() {
       const provider = new (ethers as any).providers.Web3Provider(ethereum);
 
       const chainId = await ethereum.request({ method: "eth_chainId" });
-      // console.log("Connected to chainId", chainId);
 
       const goerliChainId = "0x5";
       if (chainId !== goerliChainId) {
@@ -29,7 +28,6 @@ export default function useContract() {
       const accounts = await ethereum.request({
         method: "eth_requestAccounts",
       });
-      // console.log("Account", accounts[0]);
 
       if (!accounts[0])
         return toast.warn("Bạn cần đăng nhập ví Metamask để tiếp tục");

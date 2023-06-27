@@ -34,6 +34,11 @@ export default function LockUserList() {
         size: 1,
       },
       {
+        header: "Lý do",
+        accessorKey: "message",
+        size: 1,
+      },
+      {
         header: "Đã khoá",
         Cell({
           row: {
