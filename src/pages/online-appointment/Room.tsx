@@ -136,7 +136,10 @@ export default function RoomDetail({ room }: { room: string }) {
     <div className="room p-3">
       <div className="row p-3">
         <div className="col-lg-9 container-left">
-          <Link className="btn btn-secondary close" to="/">
+          <Link
+            className="btn btn-secondary close"
+            to="/dashboard/appointment/progress"
+          >
             <i className="bi bi-box-arrow-left"></i>
           </Link>
           <div className="container-video-me">

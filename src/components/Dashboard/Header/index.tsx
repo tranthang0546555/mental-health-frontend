@@ -34,7 +34,7 @@ export default function HeaderDashboard() {
         </Link>
       </div>
 
-      <div className="search-bar">
+      {/* <div className="search-bar">
         <form
           className="search-form d-flex align-items-center"
           method="POST"
@@ -50,15 +50,15 @@ export default function HeaderDashboard() {
             <i className="bi bi-search"></i>
           </button>
         </form>
-      </div>
+      </div> */}
 
       <nav className="header-nav-dashboard ms-auto">
         <ul className="d-flex align-items-center">
-          <li className="nav-item d-block d-lg-none">
+          {/* <li className="nav-item d-block d-lg-none">
             <a className="nav-link nav-icon search-bar-toggle " href="#">
               <i className="bi bi-search"></i>
             </a>
-          </li>
+          </li> */}
 
           <li className="nav-item dropdown">
             <a className="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
@@ -136,7 +136,7 @@ export default function HeaderDashboard() {
             </ul>
           </li>
 
-          <li className="nav-item dropdown">
+          {/* <li className="nav-item dropdown">
             <a className="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
               <i className="bi bi-chat-left-text"></i>
               <span className="badge bg-success badge-number">3</span>
@@ -222,7 +222,7 @@ export default function HeaderDashboard() {
                 <a href="#">Show all messages</a>
               </li>
             </ul>
-          </li>
+          </li> */}
           <ThemeSwitch />
           <li className="nav-item dropdown pe-3">
             <a
@@ -261,7 +261,7 @@ export default function HeaderDashboard() {
                 <hr className="dropdown-divider" />
               </li>
 
-              <li>
+              {/* <li>
                 <a
                   className="dropdown-item d-flex align-items-center"
                   href="users-profile.html"
@@ -298,7 +298,7 @@ export default function HeaderDashboard() {
               </li>
               <li>
                 <hr className="dropdown-divider" />
-              </li>
+              </li> */}
 
               <li>
                 <button

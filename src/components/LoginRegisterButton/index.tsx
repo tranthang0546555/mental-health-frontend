@@ -8,17 +8,9 @@ export default function LoginRegisterButton() {
   const [button, setButton] = useState<"login" | "register">("login");
 
   return (
-    <div className="login-register-switch">
-      {login ? (
-        <Link
-          className={`dashboard-button ${button === "login" ? "active" : ""}`}
-          to="/dashboard"
-          onClick={() => setButton("login")}
-        >
-          Dashboard
-        </Link>
-      ) : (
-        <>
+    <>
+      {!login && (
+        <div className="login-register-switch">
           <Link
             className={`login-button ${button === "register" ? "active" : ""}`}
             to="/register"
@@ -33,8 +25,8 @@ export default function LoginRegisterButton() {
           >
             Đăng nhập
           </Link>
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 }

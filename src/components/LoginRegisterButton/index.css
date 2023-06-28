@@ -52,17 +52,23 @@
   .login-register-switch {
     margin-right: 5px;
     margin-left: 0;
+    border: none;
+    min-width: fit-content;
+    font-size: 12px;
   }
   .login-register-switch .register-button {
     padding: 6px 0;
+    font-size: 12px;
   }
   .login-register-switch .login-button {
     padding: 6px 0;
-  }
-  .appointment-btn {
     display: none;
   }
-  .theme-btn{
-    margin-right: 5px;;
+  .appointment-btn {
+    /* display: none; */
+    font-size: 12px;
+  }
+  .theme-btn {
+    margin-right: 15px;
   }
 }

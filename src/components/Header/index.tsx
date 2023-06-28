@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useAppSelector } from "../../hooks/store";
 import LoginRegisterButton from "../LoginRegisterButton";
 import ThemeSwitch from "../ThemeSwitch";
 import "./index.css";
@@ -13,6 +14,7 @@ const maps: {
   { path: "/contact", name: "Liên hệ" },
 ];
 export default function Header() {
+  const login = useAppSelector((state) => state.auth.login);
   const handleNavbarMobileToggle = () => {
     const nav = document.getElementById("navbar")?.classList;
     const navToggle = document.getElementById("nav-toggle")?.classList;
@@ -23,6 +25,13 @@ export default function Header() {
       nav?.add("navbar-mobile");
       navToggle?.replace("bi-list", "bi-x");
     }
+  };
+
+  const handleClose = () => {
+    const nav = document.getElementById("navbar")?.classList;
+    const navToggle = document.getElementById("nav-toggle")?.classList;
+    nav?.remove("navbar-mobile");
+    navToggle?.replace("bi-x", "bi-list");
   };
 
   return (
@@ -60,6 +69,7 @@ export default function Header() {
                       className={`nav-link scrollto ${
                         currentPath === p ? "active" : ""
                       }`}
+                      onClick={handleClose}
                       to={path}
                     >
                       {name}
@@ -67,6 +77,13 @@ export default function Header() {
                   </li>
                 );
               })}
+              <li>
+                {login && (
+                  <Link className={`dashboard-button active}`} to="/dashboard">
+                    Dashboard
+                  </Link>
+                )}
+              </li>
             </ul>
             <i
               id="nav-toggle"
@@ -76,7 +93,7 @@ export default function Header() {
           </nav>
 
           <Link to="/appointment" className="appointment-btn scrollto">
-            Đặt lịch khám Online <span className="d-none d-md-inline"></span>
+            Đặt lịch <span className="d-none d-md-inline">khám Online</span>
           </Link>
 
           <LoginRegisterButton />

@@ -8,6 +8,7 @@ import { phoneRegExp } from "../../../utils";
 import "./index.css";
 import { USER_PROFILE, useApi } from "../../../api";
 import { getProfile } from "../../../store/authSlice";
+import { toast } from "react-toastify";
 
 type Inputs = {
   fullName?: string;
@@ -69,6 +70,7 @@ export default function Profile() {
   const onSubmit = async (data: Inputs) => {
     await useApi(USER_PROFILE, { data, method: "PATCH" }).then(() => {
       dispatch(getProfile());
+      toast.success("Đã cập nhật");
     });
   };
 
@@ -125,7 +127,7 @@ export default function Profile() {
                     Tên / Họ
                   </label>
                   <div className="col-md-8 col-lg-9">
-                    <div className="row">
+                    <div className="row gy-3">
                       <div className="col-md-6">
                         <input
                           type="text"
@@ -167,7 +169,7 @@ export default function Profile() {
                   </label>
                   <div className="col-md-8 col-lg-9">
                     <input
-                      type="text"
+                      type="tel"
                       id="phone"
                       className="form-control"
                       {...register("phone")}
@@ -237,7 +239,7 @@ export default function Profile() {
                   </label>
                   <div className="col-md-8 col-lg-9">
                     <input
-                      type="text"
+                      type="date"
                       id="birthday"
                       className="form-control"
                       placeholder="DD/MM/YYYY"
