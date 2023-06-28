@@ -5,3 +5,9 @@
 .inner-page {
   min-height: calc(100vh - 440px);
 }
+
+@media (max-width: 768px) {
+  .inner-page {
+    padding: 0;
+  }
+}
