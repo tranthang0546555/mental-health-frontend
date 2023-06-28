@@ -46,7 +46,7 @@ export default function Notification() {
       <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
         <li className="dropdown-header">
           {newNoti !== 0
-            ? `Bạn có ${newNoti} thông báo mới}`
+            ? `Bạn có ${newNoti} thông báo mới`
             : "Bạn không có thông báo mới nào"}
         </li>
         {state.map(({ _id, title, description, createdAt, type, isRead }) => {

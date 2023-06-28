@@ -6,7 +6,7 @@ import { GET_SCHEDULE, PATIENT_REGISTRATION, useApi } from "../../../api";
 import Modal from "../../../components/Modal";
 import { SCHEDULE_STATUS } from "../../../constants";
 import { useAppSelector } from "../../../hooks/store";
-import { dateFormat } from "../../../utils";
+import { dateFormat, hourFormat } from "../../../utils";
 
 type keys = keyof typeof SCHEDULE_STATUS;
 type Props = {
@@ -24,15 +24,8 @@ export default function AppointmentManager({ option }: Props) {
     () => [
       {
         header: "Thời gian",
-        accessorFn(originalRow) {
-          return (
-            <>
-              {dateFormat(originalRow.from) +
-                " - " +
-                dateFormat(originalRow.to)}
-            </>
-          );
-        },
+        accessorFn: (originalRow) =>
+          hourFormat(originalRow.from) + " - " + dateFormat(originalRow.to),
       },
       {
         id: "room",
@@ -49,21 +42,15 @@ export default function AppointmentManager({ option }: Props) {
       role === "doctor"
         ? {
             header: "Bệnh nhân",
-            accessorFn(originalRow) {
-              return <>{originalRow.user.fullName}</>;
-            },
+            accessorFn: (originalRow) => originalRow.user.fullName,
           }
         : {
             header: "Bác sĩ",
-            accessorFn(originalRow) {
-              return <>{originalRow.doctor.fullName}</>;
-            },
+            accessorFn: (originalRow) => originalRow.doctor.fullName,
           },
       {
         header: "Tạo",
-        accessorFn(originalRow) {
-          return <>{dateFormat(originalRow.createdAt)}</>;
-        },
+        accessorFn: (originalRow) => dateFormat(originalRow.createdAt),
       },
       {
         header: "Lý do",
