@@ -118,7 +118,7 @@ export default function ScheduleSetting() {
 
   return (
     <section className="section">
-      <div className="card time-select">
+      <div className="time-select">
         <div className="card-body">
           <ul className="nav nav-tabs d-flex" id="myTab" role="tablist">
             {<TabList />}
