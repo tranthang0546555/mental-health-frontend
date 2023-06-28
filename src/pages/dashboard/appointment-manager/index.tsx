@@ -1,5 +1,5 @@
 import { MRT_ColumnDef, MaterialReactTable } from "material-react-table";
-import { useEffect, useMemo, useState } from "react";
+import { useLayoutEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { GET_SCHEDULE, PATIENT_REGISTRATION, useApi } from "../../../api";
@@ -15,7 +15,8 @@ type Props = {
 export default function AppointmentManager({ option }: Props) {
   const [data, setData] = useState<Appointment[]>([]);
   const role = useAppSelector((state) => state.auth.user?.role) as Role;
-  useEffect(() => {
+  useLayoutEffect(() => {
+    setData([]);
     getData();
   }, [option]);
 
