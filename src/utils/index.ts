@@ -1,4 +1,4 @@
-import { format } from "date-fns";
+import { format, formatDistance } from "date-fns";
 
 export const dateFormat = (date?: string | number | Date) => {
   return format(new Date(date || ""), "HH:mm - dd/MM/yyy");
@@ -6,6 +6,10 @@ export const dateFormat = (date?: string | number | Date) => {
 
 export const hourFormat = (date: string | number | Date) => {
   return format(new Date(date), "HH:mm");
+};
+
+export const distanceFormat = (date?: string | number | Date) => {
+  return formatDistance(new Date(date || ""), new Date(), { addSuffix: true });
 };
 
 export const imagePath = (name?: string) =>

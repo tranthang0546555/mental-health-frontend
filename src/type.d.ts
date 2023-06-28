@@ -134,3 +134,16 @@ declare type MedicalRecordData = {
   doctor: Doctor;
   user: User;
 };
+
+declare type Noti = {
+  _id: string;
+  title: string;
+  description: string;
+  receiver: Doctor;
+  isRead: boolean;
+  createdAt: string;
+  updatedAt: string;
+  type: NotificationType;
+};
+
+type NotiType = "success" | "danger" | "warning" | "info";

@@ -11,13 +11,9 @@ export default function PostList() {
     () => [
       {
         header: "Bài viết",
-        accessorKey: "title",
-        size: 400,
-        Cell({ row }) {
-          return (
-            <span className="text-line-clamp-2">{row.original.title}</span>
-          );
-        },
+        accessorFn: (originalRow) => (
+          <span className="text-line-clamp-2">{originalRow.title}</span>
+        ),
       },
       {
         header: "Lượt xem",
@@ -35,11 +31,12 @@ export default function PostList() {
         size: 1,
       },
       {
+        header: "Người tạo",
+        accessorFn: (originalRow) => originalRow.createdBy.name?.firstName,
+      },
+      {
         header: "Tạo",
-        accessorKey: "createdAt",
-        Cell({ row }) {
-          return <>{dateFormat(row.original.createdAt)}</>;
-        },
+        accessorFn: (originalRow) => dateFormat(originalRow.createdAt),
         size: 1,
       },
       {

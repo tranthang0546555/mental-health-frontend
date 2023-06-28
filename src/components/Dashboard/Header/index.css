@@ -257,7 +257,13 @@
   animation-name: dropdown-animate;
   animation-duration: 0.2s;
   animation-fill-mode: both;
+  max-height: 500px;
+  overflow: scroll;
 }
 .header-dashboard .dropdown-divider {
   margin: 0;
+}
+
+.header-nav-dashboard .notifications .readed {
+  background-color: #f6f9ff;
 }

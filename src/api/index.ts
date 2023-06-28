@@ -47,3 +47,5 @@ export const VIEW_SCHEDULES_CHART = "/schedule/chart/all";
 
 export const HOME_SEARCH = "/home/search";
 export const HOME_SYSTEM_INFO = "/home/system-info";
+
+export const NOTIFICATION = "/notification";
