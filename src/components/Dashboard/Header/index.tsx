@@ -242,7 +242,9 @@ export default function HeaderDashboard() {
 
             <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li className="dropdown-header">
-                <h6>{user?.fullName}</h6>
+                <Link to="/dashboard/profile">
+                  <h6>{user?.fullName}</h6>
+                </Link>
               </li>
               <li>
                 <hr className="dropdown-divider" />
