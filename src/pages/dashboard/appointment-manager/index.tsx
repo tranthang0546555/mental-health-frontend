@@ -37,7 +37,11 @@ export default function AppointmentManager({ option }: Props) {
         id: "room",
         header: "Phòng",
         accessorFn({ code }) {
-          return <Link to={`/online-appointment/${code}`}>{code}</Link>;
+          return (
+            <Link to={`/online-appointment/${code}`}>
+              <b style={{ color: "var(--color-default)" }}>{code}</b>
+            </Link>
+          );
         },
         size: 1,
       },

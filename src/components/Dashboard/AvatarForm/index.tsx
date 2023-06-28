@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { AVATAR_CHANGE, useApi } from "../../../api";
 import { useAppDispatch, useAppSelector } from "../../../hooks/store";
 import { getProfile } from "../../../store/authSlice";
@@ -20,7 +21,9 @@ export default function AvatarForm() {
       .then(() => {
         dispatch(getProfile());
       })
-      .catch(() => {});
+      .catch((error) => {
+        toast.error(error.response.data.message);
+      });
   };
 
   return (
