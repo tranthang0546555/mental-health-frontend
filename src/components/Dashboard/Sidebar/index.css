@@ -56,6 +56,12 @@
   }
 }
 
+@media (max-width: 720px){
+  #main-dashboard {
+    margin-top: 0 !important;
+    padding: 10px !important;
+  }
+}
 .sidebar-dashboard .sidebar-nav {
   padding: 0;
   margin: 0;
