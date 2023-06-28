@@ -12,6 +12,9 @@ export const distanceFormat = (date?: string | number | Date) => {
   return formatDistance(new Date(date || ""), new Date(), { addSuffix: true });
 };
 
+export const numberFormat = (number = 0) =>
+  Intl.NumberFormat("en-US").format(number);
+
 export const imagePath = (name?: string) =>
   import.meta.env.VITE_BASE_URL + "/images/" + name;
 

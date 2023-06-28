@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { HOME_SYSTEM_INFO, useApi } from "../../../../api";
 import { DoughnutChart } from "../../../../components/Chart";
+import { numberFormat } from "../../../../utils";
 
 export default function UserOverView() {
   const [data, setData] = useState<CountsInfo>();
@@ -28,7 +29,7 @@ export default function UserOverView() {
                       <i className="bi bi-person"></i>
                     </div>
                     <div className="ps-3">
-                      <h6>{data?.user}</h6>
+                      <h6>{numberFormat(data?.user)}</h6>
                     </div>
                   </div>
                 </div>
@@ -43,7 +44,7 @@ export default function UserOverView() {
                       <i className="bi bi-person"></i>
                     </div>
                     <div className="ps-3">
-                      <h6>{data?.doctor}</h6>
+                      <h6>{numberFormat(data?.doctor)}</h6>
                     </div>
                   </div>
                 </div>
@@ -58,7 +59,7 @@ export default function UserOverView() {
                       <i className="bi bi-person"></i>
                     </div>
                     <div className="ps-3">
-                      <h6>{data?.post}</h6>
+                      <h6>{numberFormat(data?.post)}</h6>
                     </div>
                   </div>
                 </div>
@@ -73,7 +74,7 @@ export default function UserOverView() {
                       <i className="bi bi-person"></i>
                     </div>
                     <div className="ps-3">
-                      <h6>{data?.visitor}</h6>
+                      <h6>{numberFormat(data?.visitor)}</h6>
                     </div>
                   </div>
                 </div>
