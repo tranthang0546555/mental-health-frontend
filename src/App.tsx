@@ -27,6 +27,7 @@ import NotFound from "./pages/not-found";
 import OnlineAppointment from "./pages/online-appointment";
 import Post from "./pages/post";
 import PostDetail from "./pages/post-detail";
+import PrivacyPolicy from "./pages/privacy-policy";
 
 const router = createBrowserRouter([
   {
@@ -82,6 +83,14 @@ const router = createBrowserRouter([
     element: (
       <Layout title="FAQ">
         <FAQ />
+      </Layout>
+    ),
+  },
+  {
+    path: "privacy-policy",
+    element: (
+      <Layout title="Chính sách bảo mật ">
+        <PrivacyPolicy />
       </Layout>
     ),
   },
