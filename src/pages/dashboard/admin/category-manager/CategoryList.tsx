@@ -42,7 +42,7 @@ export default function CategoryList() {
         Cell({ row }) {
           const { _id, name } = row.original;
           return (
-            <>
+            <div className="group-btn">
               <div
                 className="modal fade"
                 id={"modal-" + _id}
@@ -98,7 +98,7 @@ export default function CategoryList() {
               >
                 <i className="bi bi-pencil-square"></i>
               </Link>
-            </>
+            </div>
           );
         },
       },

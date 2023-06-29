@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { NOTIFICATION, useApi } from "../../../api";
 import { distanceFormat } from "../../../utils";
 
@@ -51,7 +51,7 @@ export default function Notification() {
         </li>
         {state.map(({ _id, title, description, createdAt, type, isRead }) => {
           return (
-            <>
+            <Fragment key={_id}>
               <li>
                 <hr className="dropdown-divider" />
               </li>
@@ -68,7 +68,7 @@ export default function Notification() {
                   <p>{distanceFormat(createdAt)}</p>
                 </div>
               </li>
-            </>
+            </Fragment>
           );
         })}
       </ul>

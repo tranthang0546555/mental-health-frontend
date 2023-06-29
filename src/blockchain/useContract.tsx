@@ -38,7 +38,8 @@ export default function useContract() {
       );
 
       setContract(MedicalRecordContract);
-    } catch (error) {
+    } catch (error: any) {
+      toast.error(error.message);
       console.log("Connect error", error);
     }
   };
@@ -47,9 +48,13 @@ export default function useContract() {
     getMedicalRecord: async (id: number) => await contract.getMedicalRecord(id),
     getRecordsbyDoctorId: async (doctorId: string) =>
       await contract.getRecordsbyDoctorId(doctorId),
-    createMedicalRecord: (data: string, userId: string, doctorId: string) =>
-      contract.createMedicalRecord(data, userId, doctorId),
-    getRecordsbyUserId: (id: string) => contract.getRecordsbyUserId(id),
+    createMedicalRecord: async (
+      data: string,
+      userId: string,
+      doctorId: string
+    ) => await contract.createMedicalRecord(data, userId, doctorId),
+    getRecordsbyUserId: async (id: string) =>
+      await contract.getRecordsbyUserId(id),
   };
 
   return funcs;

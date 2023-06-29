@@ -1,8 +1,8 @@
 import { MaterialReactTable, type MRT_ColumnDef } from "material-react-table";
 import { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import { DOCTOR_POST_LIST, POST_DETAIL, useApi } from "../../../../api";
 import { dateFormat } from "../../../../utils";
-import { Link } from "react-router-dom";
 
 export default function PostList() {
   const [data, setData] = useState<Post[]>([]);
@@ -58,7 +58,7 @@ export default function PostList() {
         Cell({ row }) {
           const { _id, slug, title } = row.original;
           return (
-            <>
+            <div className="group-btn">
               <div
                 className="modal fade"
                 id={"modal-" + _id}
@@ -111,7 +111,7 @@ export default function PostList() {
               <Link to={`/dashboard/post/${slug}`} className="btn btn-primary">
                 <i className="bi bi-pencil-square"></i>
               </Link>
-            </>
+            </div>
           );
         },
       },

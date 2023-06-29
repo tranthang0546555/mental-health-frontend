@@ -1,6 +1,6 @@
 import { MRT_ColumnDef, MaterialReactTable } from "material-react-table";
 import { useLayoutEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { GET_SCHEDULE, PATIENT_REGISTRATION, useApi } from "../../../api";
 import Modal from "../../../components/Modal";
@@ -15,6 +15,7 @@ type Props = {
 export default function AppointmentManager({ option }: Props) {
   const [data, setData] = useState<Appointment[]>([]);
   const role = useAppSelector((state) => state.auth.user?.role) as Role;
+  const navigate = useNavigate();
   useLayoutEffect(() => {
     setData([]);
     getData();
@@ -62,7 +63,7 @@ export default function AppointmentManager({ option }: Props) {
         header: "Thao tác",
         accessorFn({ _id }) {
           return (
-            <>
+            <div className="group-btn">
               <Modal
                 id="accept"
                 name="accept"
@@ -93,7 +94,29 @@ export default function AppointmentManager({ option }: Props) {
                   },
                 }}
               />
-            </>
+            </div>
+          );
+        },
+      },
+      {
+        id: "success",
+        header: "Thao tác",
+        accessorFn({ _id }) {
+          return (
+            <div className="group-btn">
+              <Modal
+                id="accept"
+                name="accept"
+                onSubmit={() => handleSuccess(_id)}
+                title="Xác nhận đã khám khám"
+                description="Bạn sẽ được chuyển sang trang viết bệnh án cho bệnh nhân"
+                button={
+                  <button className="btn btn-success">
+                    <i className="bi bi-check-circle"></i>
+                  </button>
+                }
+              />
+            </div>
           );
         },
       },
@@ -131,6 +154,10 @@ export default function AppointmentManager({ option }: Props) {
     });
   };
 
+  const handleSuccess = (id: string) => {
+    navigate("/dashboard/medical-record/create/" + id);
+  };
+
   return (
     <section className="section">
       <MaterialReactTable
@@ -143,6 +170,7 @@ export default function AppointmentManager({ option }: Props) {
             room: option === "PROGRESS",
             actions: option === "PENDING" && role === "doctor",
             message: option === "CANCEL",
+            success: option === "PROGRESS",
           },
         }}
       />

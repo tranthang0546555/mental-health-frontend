@@ -28,6 +28,8 @@ import OnlineAppointment from "./pages/online-appointment";
 import Post from "./pages/post";
 import PostDetail from "./pages/post-detail";
 import PrivacyPolicy from "./pages/privacy-policy";
+import MedicalRecords from "./pages/dashboard/medical-record-manager";
+import RecordCreate from "./pages/dashboard/medical-record-manager/RecordCreate";
 
 const router = createBrowserRouter([
   {
@@ -203,6 +205,13 @@ const router = createBrowserRouter([
       {
         path: "schedule",
         element: <ScheduleSetting />,
+      },
+      {
+        path: "medical-record",
+        children: [
+          { index: true, element: <MedicalRecords /> },
+          { path: "create/:id", element: <RecordCreate /> },
+        ],
       },
     ],
   },

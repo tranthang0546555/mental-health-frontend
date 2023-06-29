@@ -1,14 +1,14 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import * as yup from "yup";
+import { USER_PROFILE, useApi } from "../../../api";
 import AvatarForm from "../../../components/Dashboard/AvatarForm";
 import { useAppDispatch, useAppSelector } from "../../../hooks/store";
+import { getProfile } from "../../../store/authSlice";
 import { phoneRegExp } from "../../../utils";
 import "./index.css";
-import { USER_PROFILE, useApi } from "../../../api";
-import { getProfile } from "../../../store/authSlice";
-import { toast } from "react-toastify";
 
 type Inputs = {
   fullName?: string;

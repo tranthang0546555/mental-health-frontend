@@ -4,8 +4,8 @@ export const dateFormat = (date?: string | number | Date) => {
   return format(new Date(date || ""), "HH:mm - dd/MM/yyy");
 };
 
-export const hourFormat = (date: string | number | Date) => {
-  return format(new Date(date), "HH:mm");
+export const hourFormat = (date?: string | number | Date) => {
+  return format(new Date(date || ""), "HH:mm");
 };
 
 export const distanceFormat = (date?: string | number | Date) => {
@@ -28,7 +28,7 @@ export const decodeMedicalRecord = (record: MedicalRecord): MedicalRecord => {
   return {
     ...record,
     id: Number(record.id),
-    data: JSON.parse(record.data as string),
+    data: JSON.parse(String(record.data || "{}")),
     createdAt: Number(record.createdAt),
     updatedAt: Number(record.updatedAt),
   };

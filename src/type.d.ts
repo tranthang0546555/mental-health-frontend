@@ -125,14 +125,14 @@ declare type MedicalRecord = TimeStemp & {
 };
 
 declare type MedicalRecordData = {
-  dayIn: string;
-  diagnostic: string;
-  medicalHistory: string;
-  reason: string;
-  status: string;
-  treatment: string;
-  doctor: Doctor;
-  user: User;
+  dayIn?: string;
+  diagnostic?: string;
+  medicalHistory?: string;
+  reason?: string;
+  status?: string;
+  treatment?: string;
+  doctor?: Doctor;
+  user?: User;
 };
 
 declare type Noti = {
