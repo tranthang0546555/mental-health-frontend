@@ -5,25 +5,19 @@ export default function FAQ() {
     <section id="faq" className="faq section-bg">
       <div className="container">
         <div className="section-title">
-          <h2>Frequently Asked Questions</h2>
-          <p>
-            Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex
-            aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos
-            quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia
-            fugiat sit in iste officiis commodi quidem hic quas.
-          </p>
+          <h2>Các câu hỏi thường gặp</h2>
         </div>
 
         <div className="faq-list">
           <ul>
             <li data-aos="fade-up">
-              <i className="bx bx-help-circle icon-help"></i>{" "}
+              <i className="bx bx-help-circle icon-help"></i>
               <a
                 data-bs-toggle="collapse"
                 className="collapse"
                 data-bs-target="#faq-list-1"
               >
-                Non consectetur a erat nam at lectus urna duis?{" "}
+                Sức khỏe tâm thần là gì?
                 <i className="bx bx-chevron-down icon-show"></i>
                 <i className="bx bx-chevron-up icon-close"></i>
               </a>
@@ -33,21 +27,22 @@ export default function FAQ() {
                 data-bs-parent=".faq-list"
               >
                 <p>
-                  Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id
-                  volutpat lacus laoreet non curabitur gravida. Venenatis lectus
-                  magna fringilla urna porttitor rhoncus dolor purus non.
+                  Là tình trạng cảm xúc, tâm lý và xã hội của một người. Nó ảnh
+                  hưởng đến cách những cá nhân suy nghĩ, cảm nhận và hành động,
+                  và nó cũng ảnh hưởng đến cách họ đối phó với căng thẳng, giao
+                  tiếp với người khác và đưa ra quyết định.
                 </p>
               </div>
             </li>
 
             <li data-aos="fade-up" data-aos-delay="100">
-              <i className="bx bx-help-circle icon-help"></i>{" "}
+              <i className="bx bx-help-circle icon-help"></i>
               <a
                 data-bs-toggle="collapse"
                 data-bs-target="#faq-list-2"
                 className="collapsed"
               >
-                Feugiat scelerisque varius morbi enim nunc?{" "}
+                Những rối loạn sức khỏe tâm thần phổ biến là gì?
                 <i className="bx bx-chevron-down icon-show"></i>
                 <i className="bx bx-chevron-up icon-close"></i>
               </a>
@@ -57,24 +52,24 @@ export default function FAQ() {
                 data-bs-parent=".faq-list"
               >
                 <p>
-                  Dolor sit amet consectetur adipiscing elit pellentesque
-                  habitant morbi. Id interdum velit laoreet id donec ultrices.
-                  Fringilla phasellus faucibus scelerisque eleifend donec
-                  pretium. Est pellentesque elit ullamcorper dignissim. Mauris
-                  ultrices eros in cursus turpis massa tincidunt dui.
+                  Bao gồm trầm cảm, rối loạn lo âu (như rối loạn lo âu chung,
+                  rối loạn hoảng loạn và rối loạn lo âu xã hội), rối loạn lưỡng
+                  cực, rối loạn căng thẳng sau chấn thương (PTSD) và rối loạn ăn
+                  uống (như chứng biếng ăn và chứng ăn quá nhiều), cùng với
+                  những rối loạn khác.
                 </p>
               </div>
             </li>
 
             <li data-aos="fade-up" data-aos-delay="200">
-              <i className="bx bx-help-circle icon-help"></i>{" "}
+              <i className="bx bx-help-circle icon-help"></i>
               <a
                 data-bs-toggle="collapse"
                 data-bs-target="#faq-list-3"
                 className="collapsed"
               >
-                Dolor sit amet consectetur adipiscing elit?{" "}
-                <i className="bx bx-chevron-down icon-show"></i>
+                Những dấu hiệu và triệu chứng của các vấn đề sức khỏe tâm thần
+                là gì? <i className="bx bx-chevron-down icon-show"></i>
                 <i className="bx bx-chevron-up icon-close"></i>
               </a>
               <div
@@ -83,25 +78,25 @@ export default function FAQ() {
                 data-bs-parent=".faq-list"
               >
                 <p>
-                  Eleifend mi in nulla posuere sollicitudin aliquam ultrices
-                  sagittis orci. Faucibus pulvinar elementum integer enim. Sem
-                  nulla pharetra diam sit amet nisl suscipit. Rutrum tellus
-                  pellentesque eu tincidunt. Lectus urna duis convallis
-                  convallis tellus. Urna molestie at elementum eu facilisis sed
-                  odio morbi quis
+                  Những dấu hiệu và triệu chứng của các vấn đề sức khỏe tâm thần
+                  khác nhau tùy thuộc vào rối loạn cụ thể nhưng có thể bao gồm
+                  sự buồn bã hoặc thay đổi tâm trạng liên tục, lo lắng quá mức
+                  hoặc sợ hãi, khó tập trung, thay đổi khẩu phần ăn hoặc mẫu
+                  giấc ngủ, rút lui khỏi các hoạt động hoặc giao tiếp xã hội, và
+                  ý nghĩ tự làm tổn thương hoặc tự sát.
                 </p>
               </div>
             </li>
 
             <li data-aos="fade-up" data-aos-delay="300">
-              <i className="bx bx-help-circle icon-help"></i>{" "}
+              <i className="bx bx-help-circle icon-help"></i>
               <a
                 data-bs-toggle="collapse"
                 data-bs-target="#faq-list-4"
                 className="collapsed"
               >
-                Tempus quam pellentesque nec nam aliquam sem et tortor
-                consequat? <i className="bx bx-chevron-down icon-show"></i>
+                Làm thế nào để hỗ trợ ai đó có một điều kiện sức khỏe tâm thần?
+                <i className="bx bx-chevron-down icon-show"></i>
                 <i className="bx bx-chevron-up icon-close"></i>
               </a>
               <div
@@ -110,23 +105,24 @@ export default function FAQ() {
                 data-bs-parent=".faq-list"
               >
                 <p>
-                  Molestie a iaculis at erat pellentesque adipiscing commodo.
-                  Dignissim suspendisse in est ante in. Nunc vel risus commodo
-                  viverra maecenas accumsan. Sit amet nisl suscipit adipiscing
-                  bibendum est. Purus gravida quis blandit turpis cursus in.
+                  Hỗ trợ ai đó có một điều kiện sức khỏe tâm thần bao gồm thể
+                  hiện sự thông cảm, lắng nghe mà không phán xét, khuyến khích
+                  họ tìm kiếm sự giúp đỡ chuyên nghiệp, và cung cấp sự hỗ trợ
+                  thiết thực. Điều quan trọng là bạn phải tự học về điều kiện
+                  của họ, giao tiếp một cách mở rộng, và kiên nhẫn và thông cảm.
                 </p>
               </div>
             </li>
 
             <li data-aos="fade-up" data-aos-delay="400">
-              <i className="bx bx-help-circle icon-help"></i>{" "}
+              <i className="bx bx-help-circle icon-help"></i>
               <a
                 data-bs-toggle="collapse"
                 data-bs-target="#faq-list-5"
                 className="collapsed"
               >
-                Tortor vitae purus faucibus ornare. Varius vel pharetra vel
-                turpis nunc eget lorem dolor?{" "}
+                Những thực hành chăm sóc bản thân để duy trì sức khỏe tâm thần
+                tốt là gì?
                 <i className="bx bx-chevron-down icon-show"></i>
                 <i className="bx bx-chevron-up icon-close"></i>
               </a>
@@ -136,10 +132,12 @@ export default function FAQ() {
                 data-bs-parent=".faq-list"
               >
                 <p>
-                  Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris
-                  vitae ultricies leo integer malesuada nunc vel. Tincidunt eget
-                  nullam non nisi est sit amet. Turpis nunc eget lorem dolor
-                  sed. Ut venenatis tellus in metus vulputate eu scelerisque.
+                  Những thực hành chăm sóc bản thân để duy trì sức khỏe tâm thần
+                  tốt bao gồm tham gia vào các hoạt động vận động thường xuyên,
+                  thực hành các kỹ thuật thư giãn (như hít thở sâu hoặc thiền),
+                  có đủ giấc ngủ, duy trì một chế độ ăn uống cân bằng, nuôi
+                  dưỡng các mối quan hệ xã hội, thiết lập ranh giới, và tham gia
+                  vào các hoạt động mang lại niềm vui và sự trọn vẹn.
                 </p>
               </div>
             </li>
