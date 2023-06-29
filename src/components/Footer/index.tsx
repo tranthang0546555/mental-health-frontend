@@ -27,7 +27,7 @@ export default function Footer() {
               <ul>
                 <li>
                   <i className="bx bx-chevron-right"></i>
-                  <Link to="#">Trang chủ</Link>
+                  <Link to="/">Trang chủ</Link>
                 </li>
                 <li>
                   <i className="bx bx-chevron-right"></i>
@@ -57,7 +57,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <i className="bx bx-chevron-right"></i>
-                  <Link to="#">Điều khoản dịch vụ</Link>
+                  <Link to="/privacy-policy">Chính sách bảo mật</Link>
                 </li>
                 <li>
                   <i className="bx bx-chevron-right"></i>
