@@ -13,21 +13,26 @@ export default function useContract() {
   const load = async () => {
     try {
       const { ethereum } = window;
-      if (!ethereum) return toast.error("Chưa cài đặt ví Metamask");
+      if (!ethereum)
+        return toast.error(
+          "Chưa cài đặt ví Metamask, vui lòng cài đặt và thử lại."
+        );
       const provider = new ethers.providers.Web3Provider(ethereum);
 
       const chainId = await ethereum.request({ method: "eth_chainId" });
 
       const goerliChainId = "0x5";
       if (chainId !== goerliChainId)
-        return toast.warn("Mạng thử nghiệm Goerly chưa được chọn");
+        return toast.warn(
+          "Mạng thử nghiệm Goerly chưa được chọn, vui lòng thay đổi và thử lại."
+        );
 
       const accounts = await ethereum.request({
         method: "eth_requestAccounts",
       });
 
       if (!accounts[0])
-        return toast.warn("Bạn cần đăng nhập ví Metamask để tiếp tục");
+        return toast.warn("Bạn cần đăng nhập ví Metamask để tiếp tục.");
 
       const signer = provider.getSigner();
 

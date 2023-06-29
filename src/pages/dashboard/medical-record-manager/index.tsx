@@ -27,7 +27,7 @@ export default function MedicalRecords() {
         // const { treatment } = record.data as MedicalRecordData;
         // console.log(record.data, treatment);
       });
-  }, [contract]);
+  }, [!contract]);
 
   return (
     <section className="section">
