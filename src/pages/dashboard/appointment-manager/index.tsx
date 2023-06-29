@@ -65,7 +65,7 @@ export default function AppointmentManager({ option }: Props) {
           return (
             <div className="group-btn">
               <Modal
-                id="accept"
+                id={_id}
                 name="accept"
                 onSubmit={() => handleAccept(_id)}
                 title="Xác nhận lịch khám bệnh"
@@ -77,7 +77,7 @@ export default function AppointmentManager({ option }: Props) {
                 }
               />{" "}
               <Modal
-                id="deny"
+                id={_id}
                 name="deny"
                 onSubmit={(data) => handleDeny(_id, String(data))}
                 title="Hủy lịch khám bệnh"
@@ -105,11 +105,11 @@ export default function AppointmentManager({ option }: Props) {
           return (
             <div className="group-btn">
               <Modal
-                id="accept"
+                id={_id}
                 name="accept"
                 onSubmit={() => handleSuccess(_id)}
-                title="Xác nhận đã khám khám"
-                description="Bạn sẽ được chuyển sang trang viết bệnh án cho bệnh nhân"
+                title={"Xác nhận đã khám"}
+                description="Bạn sẽ được chuyển sang mục viết bệnh án cho bệnh nhân"
                 button={
                   <button className="btn btn-success">
                     <i className="bi bi-check-circle"></i>
