@@ -13,17 +13,14 @@ export default function useContract() {
   const load = async () => {
     try {
       const { ethereum } = window;
-      console.log(ethereum);
       if (!ethereum) return toast.error("Chưa cài đặt ví Metamask");
-      const provider = new (ethers as any).providers.Web3Provider(ethereum);
+      const provider = new ethers.providers.Web3Provider(ethereum);
 
       const chainId = await ethereum.request({ method: "eth_chainId" });
 
       const goerliChainId = "0x5";
-      if (chainId !== goerliChainId) {
-        console.log("ChainId wrong");
+      if (chainId !== goerliChainId)
         return toast.warn("Mạng thử nghiệm Goerly chưa được chọn");
-      }
 
       const accounts = await ethereum.request({
         method: "eth_requestAccounts",
@@ -39,6 +36,7 @@ export default function useContract() {
         MedicalRecord.abi,
         signer
       );
+
       setContract(MedicalRecordContract);
     } catch (error) {
       console.log("Connect error", error);
