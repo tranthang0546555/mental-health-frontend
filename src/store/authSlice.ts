@@ -60,6 +60,11 @@ const authSlice = createSlice({
         state.login = true;
         state.user = action.payload;
       });
+      builder.addCase(getProfile.rejected, (state) => {
+        state.login = false;
+        localStorage.removeItem(LocalStorageKey.ACCESS_TOKEN);
+        toast.error("Tài khoản của bạn đã bị cấm truy cập");
+      });
     }
   },
 });
