@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useAppSelector } from "../../hooks/store";
 import LoginRegisterButton from "../LoginRegisterButton";
 import ThemeSwitch from "../ThemeSwitch";
+import Logo from "./Logo";
 import "./index.css";
 
 const maps: {
@@ -39,7 +40,7 @@ export default function Header() {
       <header id="header" className="fixed-top">
         <div className="container d-flex align-items-center">
           <h1 className="logo me-auto">
-            <a href="/">Mental Health</a>
+            <Logo /> <a href="/">Mental Health</a>
           </h1>
           {/* <a href="/" className="logo me-auto">
             <img
