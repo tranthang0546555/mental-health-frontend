@@ -11,7 +11,7 @@ export default function DoctorItem(props: { data: Doctor }) {
         <h4>{fullName}</h4>
         <span>{description?.degree}</span>
         <p>{description?.experience}</p>
-        <div className="social">
+        {/* <div className="social">
           <a href="">
             <i className="ri-twitter-fill"></i>
           </a>
@@ -24,7 +24,7 @@ export default function DoctorItem(props: { data: Doctor }) {
           <a href="">
             <i className="ri-linkedin-box-fill"></i>
           </a>
-        </div>
+        </div> */}
       </div>
     </div>
   );

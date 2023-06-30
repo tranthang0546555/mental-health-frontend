@@ -35,7 +35,7 @@ export default function Modal(props: Props) {
     if (optional?.input) setOptionalValue(optional.input.defaultValue);
     if (optional?.select)
       setOptionalValue(optional.select.attributes?.defaultValue);
-  });
+  }, []);
 
   const renderOptional = (optional: Optional) => {
     const { input, select } = optional;
