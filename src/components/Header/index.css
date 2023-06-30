@@ -47,13 +47,12 @@
   top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
-  
   width: 65%;
   height: 25%;
   display: flex;
   flex-wrap: nowrap;
-    overflow: hidden;
-    border-radius: 10px;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
 .logo-container .left-eye {
@@ -76,11 +75,16 @@
   height: 70%;
   bottom: 0;
   right: 0;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 @media (max-width: 768px) {
   #header .logo a {
     font-size: 20px;
+  }
+}
+@media (max-width: 600px) {
+  #header .logo .site {
+    display: none;
   }
 }
