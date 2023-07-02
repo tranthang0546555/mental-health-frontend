@@ -53,8 +53,8 @@ export default function Doctor() {
           ]}
         >
           {data?.data.map((doctor) => (
-            <div className="doctor-slider">
-              <DoctorItem data={doctor} key={doctor._id} />
+            <div className="doctor-slider" key={doctor._id}>
+              <DoctorItem data={doctor} />
             </div>
           ))}
         </Slider>
