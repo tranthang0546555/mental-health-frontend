@@ -1,7 +1,11 @@
-import { useEffect, useState } from "react";
-import { DOCTOR_LIST, useApi } from "../../../api";
 import qs from "qs";
+import { useEffect, useState } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import { DOCTOR_LIST, useApi } from "../../../api";
 import DoctorItem from "../../doctor/DoctorItem";
+import "./index.css";
 
 export default function Doctor() {
   const [data, setData] = useState<Data<Doctor>>();
@@ -11,7 +15,7 @@ export default function Doctor() {
   }, []);
 
   const getData = async () => {
-    const query = qs.stringify({ size: 8 });
+    const query = qs.stringify({ size: 12 });
     const data = (await useApi(DOCTOR_LIST + (query ? "?" + query : "")))
       .data as Data<Doctor>;
     setData(data);
@@ -29,14 +33,31 @@ export default function Doctor() {
             chất lượng cao cho khách hàng.
           </p>
         </div>
-
-        <div className="row">
+        <Slider
+          slidesToShow={2}
+          rows={2}
+          slidesToScroll={1}
+          autoplay
+          speed={500}
+          infinite
+          dots
+          responsive={[
+            {
+              breakpoint: 768,
+              settings: {
+                rows: 2,
+                slidesPerRow: 1,
+                slidesToShow: 1,
+              },
+            },
+          ]}
+        >
           {data?.data.map((doctor) => (
-            <div className="col-lg-6 pb-4" key={doctor._id}>
-              <DoctorItem data={doctor} />
+            <div className="doctor-slider">
+              <DoctorItem data={doctor} key={doctor._id} />
             </div>
           ))}
-        </div>
+        </Slider>
       </div>
     </section>
   );

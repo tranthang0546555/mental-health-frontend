@@ -4,6 +4,7 @@
   padding: 30px;
   border-radius: 10px;
   border: 1px solid var(--color-border);
+  min-height: 200px;
 }
 .doctor-card .pic {
   overflow: hidden;
