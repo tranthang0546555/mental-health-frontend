@@ -63,7 +63,7 @@ const authSlice = createSlice({
       builder.addCase(getProfile.rejected, (state) => {
         state.login = false;
         localStorage.removeItem(LocalStorageKey.ACCESS_TOKEN);
-        toast.error("Tài khoản của bạn đã bị cấm truy cập");
+        // toast.error("Tài khoản của bạn đã bị cấm truy cập");
       });
     }
   },
