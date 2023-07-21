@@ -25,7 +25,7 @@ export default function Pagination(props: Props) {
               className={page === p + 1 ? "active" : ""}
               onClick={() => handleChange(p + 1)}
             >
-              <a href="#">{p + 1}</a>
+              <span>{p + 1}</span>
             </li>
           );
         })}

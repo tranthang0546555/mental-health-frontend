@@ -4,34 +4,37 @@ import { useSearchParams } from "react-router-dom";
 import { DOCTOR_LIST, useApi } from "../../api";
 import Pagination from "../../components/Pagination";
 import Search from "../../components/Search";
-
+import { useQuery } from "@tanstack/react-query";
 import DoctorItem from "./DoctorItem";
 import "./index.css";
 
+const fetchData = async (queries: { [key: string]: unknown }) => {
+  Object.keys(queries).forEach((key) => {
+    if (queries[key] === undefined || queries[key] === "") delete queries[key];
+  });
+  const queriesString = qs.stringify(queries);
+  const data = (
+    await useApi.get(DOCTOR_LIST + (queriesString ? "?" + queriesString : ""))
+  ).data as Data<Doctor>;
+  return data;
+};
+
 export default function Doctor() {
-  const [data, setData] = useState<Data<Doctor>>();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [filters, setFilters] = useState<{ keyword?: string }>();
+  const [searchParams] = useSearchParams();
+  const [page, setPage] = useState(1);
+  const [keyword, setKeyword] = useState("");
 
   useEffect(() => {
-    const page = Number(searchParams.get("page")) || 1;
-    const keyword = searchParams.get("keyword") || "";
-    setFilters({ keyword });
-    getData(keyword, page);
+    const searchParamsObject = Object.fromEntries(searchParams);
+    const { _page = 1, _keyword } = searchParamsObject;
+    setPage(Number(_page));
+    setKeyword(_keyword);
   }, []);
 
-  const getData = async (text?: string, page?: number) => {
-    const keyword = (page ? filters?.keyword : text) || "";
-    const query = qs.stringify({ keyword, page });
-    setSearchParams({
-      keyword,
-      page: page?.toString() || "1",
-    });
-    setFilters({ keyword });
-    const data = (await useApi(DOCTOR_LIST + (query ? "?" + query : "")))
-      .data as Data<Doctor>;
-    setData(data);
-  };
+  const { data } = useQuery({
+    queryKey: ["doctors", { page, keyword }],
+    queryFn: () => fetchData({ page, keyword, size: 10 }),
+  });
 
   return (
     <section id="blog" className="blog">
@@ -47,15 +50,18 @@ export default function Doctor() {
             </div>
             <Pagination
               pagination={data as Pagination}
-              onChange={(page) => getData(undefined, page)}
+              onChange={(page) => setPage(page)}
             />
           </div>
 
           <div className="col-lg-3">
             <div className="sidebar">
               <Search
-                defaultValue={filters?.keyword}
-                onChange={(text) => getData(text)}
+                defaultValue={keyword}
+                onChange={(text) => {
+                  setKeyword(text);
+                  setPage(1);
+                }}
               />
             </div>
           </div>
