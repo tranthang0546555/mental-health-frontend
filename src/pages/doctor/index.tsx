@@ -1,39 +1,39 @@
+import { useQuery } from "@tanstack/react-query";
 import qs from "qs";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { DOCTOR_LIST, useApi } from "../../api";
 import Pagination from "../../components/Pagination";
 import Search from "../../components/Search";
-import { useQuery } from "@tanstack/react-query";
 import DoctorItem from "./DoctorItem";
 import "./index.css";
 
-const fetchData = async (queries: { [key: string]: unknown }) => {
-  Object.keys(queries).forEach((key) => {
-    if (queries[key] === undefined || queries[key] === "") delete queries[key];
-  });
-  const queriesString = qs.stringify(queries);
-  const data = (
-    await useApi.get(DOCTOR_LIST + (queriesString ? "?" + queriesString : ""))
-  ).data as Data<Doctor>;
-  return data;
-};
-
 export default function Doctor() {
-  const [searchParams] = useSearchParams();
-  const [page, setPage] = useState(1);
-  const [keyword, setKeyword] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [filters, setFilters] = useState<{ page?: number; keyword?: string }>();
 
   useEffect(() => {
     const searchParamsObject = Object.fromEntries(searchParams);
-    const { _page = 1, _keyword } = searchParamsObject;
-    setPage(Number(_page));
-    setKeyword(_keyword);
+    setFilters(searchParamsObject);
   }, []);
 
+  const fetchData = async (queries?: { [key: string]: unknown }) => {
+    queries &&
+      Object.keys(queries).forEach((key) => {
+        if (queries[key] === undefined || queries[key] === "")
+          delete queries[key];
+      });
+    setSearchParams((prev) => ({ ...prev, ...queries }));
+    const queriesString = qs.stringify(queries);
+    const data = (
+      await useApi.get(DOCTOR_LIST + (queriesString ? "?" + queriesString : ""))
+    ).data as Data<Doctor>;
+    return data;
+  };
+
   const { data } = useQuery({
-    queryKey: ["doctors", { page, keyword }],
-    queryFn: () => fetchData({ page, keyword, size: 10 }),
+    queryKey: ["doctors", filters],
+    queryFn: () => fetchData(filters),
   });
 
   return (
@@ -50,18 +50,15 @@ export default function Doctor() {
             </div>
             <Pagination
               pagination={data as Pagination}
-              onChange={(page) => setPage(page)}
+              onChange={(page) => setFilters((prev) => ({ ...prev, page }))}
             />
           </div>
 
           <div className="col-lg-3">
             <div className="sidebar">
               <Search
-                defaultValue={keyword}
-                onChange={(text) => {
-                  setKeyword(text);
-                  setPage(1);
-                }}
+                defaultValue={filters?.keyword}
+                onChange={(keyword) => setFilters({ keyword, page: 1 })}
               />
             </div>
           </div>

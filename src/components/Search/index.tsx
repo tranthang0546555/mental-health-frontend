@@ -16,7 +16,7 @@ export default function Search(props: Props) {
   return (
     <div className="sidebar-item search-form">
       <h3 className="sidebar-title">Tìm kiếm</h3>
-      <form action="" className="mt-3">
+      <form onSubmit={(event) => event.defaultPrevented} className="mt-3">
         <input
           type="text"
           defaultValue={defaultValue}

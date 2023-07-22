@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import qs from "qs";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -10,35 +11,36 @@ import PostItem from "./Post";
 import "./index.css";
 
 export default function Post() {
-  const [data, setData] = useState<Data<Post>>();
   const [searchParams, setSearchParams] = useSearchParams();
   const [filters, setFilters] = useState<{
+    page?: number;
     keyword?: string;
     category?: string;
   }>();
 
   useEffect(() => {
-    const page = Number(searchParams.get("page")) || 1;
-    const keyword = searchParams.get("keyword") || "";
-    const category = searchParams.get("category") || "";
-    setFilters({ keyword, category });
-    getData(keyword, page, category);
+    const searchParamsObject = Object.fromEntries(searchParams);
+    setFilters(searchParamsObject);
   }, []);
 
-  const getData = async (text?: string, page?: number, cate?: string) => {
-    const keyword = (page ? filters?.keyword : text) || "";
-    const category = (page ? filters?.category : cate) || "";
-    const query = qs.stringify({ keyword, page, category });
-    setSearchParams({
-      keyword,
-      page: page?.toString() || "1",
-      category,
-    });
-    setFilters({ keyword, category });
-    const data = (await useApi(POST_LIST + (query ? "?" + query : "")))
-      .data as Data<Post>;
-    setData(data);
+  const fetchData = async (queries?: { [key: string]: unknown }) => {
+    queries &&
+      Object.keys(queries).forEach((key) => {
+        if (queries[key] === undefined || queries[key] === "")
+          delete queries[key];
+      });
+    const queryString = qs.stringify(queries);
+    setSearchParams((prev) => ({ ...prev, ...queries }));
+    const data = (
+      await useApi(POST_LIST + (queryString ? "?" + queryString : ""))
+    ).data as Data<Post>;
+    return data;
   };
+
+  const { data } = useQuery({
+    queryKey: ["posts", filters],
+    queryFn: () => fetchData(filters),
+  });
 
   return (
     <section id="blog" className="blog">
@@ -55,7 +57,7 @@ export default function Post() {
             </div>
             <Pagination
               pagination={data as Pagination}
-              onChange={(page) => getData(undefined, page)}
+              onChange={(page) => setFilters((prev) => ({ ...prev, page }))}
             />
           </div>
 
@@ -63,11 +65,9 @@ export default function Post() {
             <div className="sidebar">
               <Search
                 defaultValue={filters?.keyword}
-                onChange={(text) => getData(text)}
+                onChange={(keyword) => setFilters({ keyword })}
               />
-              <Categories
-                onChange={(cate) => getData(undefined, undefined, cate)}
-              />
+              <Categories onChange={(category) => setFilters({ category })} />
               <RecentNews />
             </div>
           </div>
