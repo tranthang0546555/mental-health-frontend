@@ -2,7 +2,7 @@
 FROM node:18-alpine AS build-stage
 
 # Declaring env
-ENV VITE_BASE_URL http://localhost:5000
+ENV VITE_BASE_URL http://localhost
 
 # Setting up the work directory
 WORKDIR /app
@@ -22,5 +22,6 @@ FROM nginx:1.25.2-alpine AS production-stage
 
 # Copying built assets from builder
 COPY --from=build-stage /app/dist /usr/share/nginx/html
+COPY --from=build-stage /app/default.conf /etc/nginx/conf.d/default.conf
 
 CMD ["nginx", "-g", "daemon off;"]
