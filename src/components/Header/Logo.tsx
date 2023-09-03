@@ -16,9 +16,9 @@ export default function Logo() {
   }, []);
 
   return (
-    <a href="/" className="logo me-auto">
+    <a href="/" className="logo me-auto" title="logo-home">
       <div className="logo-container">
-        <img src="/assets/logo-animation.png" />
+        <img src="/assets/logo-animation.png" title="logo-animation" />
         <div className="eyes">
           <div className="left-eye">
             <div id="left-eye" className="pupil" />

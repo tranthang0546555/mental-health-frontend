@@ -1,0 +1,34 @@
+.skeleton {
+  margin-top: 8px;
+  display: block;
+  height: 1.2em;
+  background-color: rgb(185, 185, 185);
+  animation: 2s ease-in-out 0.5s infinite normal none running animation-skeleton;
+}
+
+@keyframes animation-skeleton {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* "circular" | "rectangular" | "rounded" | "text"; */
+.circular {
+  border-radius: 50%;
+  height: 30px;
+}
+
+.rectangular {
+  height: 30px;
+}
+
+.rounded {
+  border-radius: 8px;
+  height: 30px;
+}

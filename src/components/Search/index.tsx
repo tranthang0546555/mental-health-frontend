@@ -21,8 +21,9 @@ export default function Search(props: Props) {
           type="text"
           defaultValue={defaultValue}
           onChange={(event) => handleChange(event.target.value)}
+          title="search-text"
         />
-        <button type="submit">
+        <button type="submit" title="search">
           <i className="bi bi-search"></i>
         </button>
       </form>
