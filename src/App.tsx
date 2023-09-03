@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import Layout from "./components/Layout";
-import { preLoadPage } from "./hooks";
+import { usePreLoadPage } from "./hooks";
 import About from "./pages/about";
 import Appointment from "./pages/appointment";
 import Login from "./pages/auth/login";
@@ -222,7 +222,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  preLoadPage();
+  usePreLoadPage();
   return <RouterProvider router={router} />;
 }
 

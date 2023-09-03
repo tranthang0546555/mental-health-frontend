@@ -16,7 +16,7 @@ export default function Doctor() {
 
   const getData = async () => {
     const query = qs.stringify({ size: 12 });
-    const data = (await useApi(DOCTOR_LIST + (query ? "?" + query : "")))
+    const data = (await useApi.get(DOCTOR_LIST + (query ? "?" + query : "")))
       .data as Data<Doctor>;
     setData(data);
   };
