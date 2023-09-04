@@ -9,8 +9,9 @@
 .doctor-card .pic {
   overflow: hidden;
   width: 180px;
-  /* height: 180px; */
+  height: 180px;
   border-radius: 50%;
+  border: 5px solid var(--color-border-2);
 }
 .doctor-card .pic img {
   transition: ease-in-out 0.3s;
@@ -88,13 +89,13 @@
 @media (max-width: 1280px) {
   .doctor-card .pic {
     width: 120px;
-    /* height: 120px; */
+    height: 120px;
   }
 }
 
 @media (max-width: 992px) {
   .doctor-card .pic {
     width: 180px;
-    /* height: 180px; */
+    height: 180px;
   }
 }
