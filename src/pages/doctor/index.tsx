@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import qs from "qs";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { DOCTOR_LIST, useApi } from "../../api";
 import Pagination from "../../components/Pagination";
