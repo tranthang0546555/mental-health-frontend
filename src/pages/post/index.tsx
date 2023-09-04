@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import qs from "qs";
-import { useEffect, useState } from "react";
+import { useDeferredValue, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { POST_LIST, useApi } from "../../api";
 import Categories from "../../components/Categories";
@@ -19,12 +19,9 @@ type Filters = {
 
 export default function Post() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [filters, setFilters] = useState<Filters>();
-
-  useEffect(() => {
-    const searchParamsObject = Object.fromEntries(searchParams);
-    setFilters(searchParamsObject);
-  }, [searchParams]);
+  const [filters, setFilters] = useState<Filters>(
+    Object.fromEntries(searchParams)
+  );
 
   const fetchData = async (queries?: { [key: string]: unknown }) => {
     queries &&

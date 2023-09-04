@@ -8,6 +8,5 @@ export const usePreLoadPage = () => {
   useEffect(() => {
     dispatch(getProfile());
     dispatch(countsInfo());
-    console.log("loaded");
   }, []);
 };

@@ -11,12 +11,9 @@ import "./index.css";
 
 export default function Doctor() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [filters, setFilters] = useState<{ page?: number; keyword?: string }>();
-
-  useEffect(() => {
-    const searchParamsObject = Object.fromEntries(searchParams);
-    setFilters(searchParamsObject);
-  }, [searchParams]);
+  const [filters, setFilters] = useState<{ page?: number; keyword?: string }>(
+    Object.fromEntries(searchParams)
+  );
 
   const fetchData = async (queries?: { [key: string]: unknown }) => {
     queries &&
