@@ -1,3 +1,4 @@
+import Skeleton from "../../components/Skeleton";
 import { avatarPath } from "../../utils";
 
 export default function DoctorItem(props: { data: Doctor }) {
@@ -25,6 +26,19 @@ export default function DoctorItem(props: { data: Doctor }) {
             <i className="ri-linkedin-box-fill"></i>
           </a>
         </div> */}
+      </div>
+    </div>
+  );
+}
+
+export function DoctorItemSkeleton() {
+  return (
+    <div className="doctor-card d-flex align-items-start">
+      <Skeleton variant="circular" height={170} width={170} />
+      <div className="member-info">
+        <Skeleton variant="rounded" />
+        <Skeleton variant="rounded" />
+        <Skeleton variant="rounded" height={100} />
       </div>
     </div>
   );

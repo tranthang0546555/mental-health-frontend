@@ -1,3 +1,4 @@
+import Skeleton from "../../../components/Skeleton";
 import { useAppSelector } from "../../../hooks/store";
 import { numberFormat } from "../../../utils";
 import "./index.css";
@@ -11,7 +12,11 @@ export default function SystemInfo() {
           <div className="col-lg-3 col-md-6">
             <div className="count-box">
               <i className="fas fa-newspaper"></i>
-              <span className="purecounter">{numberFormat(counts?.post)}</span>
+              {counts ? (
+                <span className="purecounter">{numberFormat(counts.post)}</span>
+              ) : (
+                <Skeleton variant="rounded" className="mb-2" />
+              )}
               <p>Bài viết</p>
             </div>
           </div>
@@ -19,9 +24,13 @@ export default function SystemInfo() {
           <div className="col-lg-3 col-md-6 mt-5 mt-md-0">
             <div className="count-box">
               <i className="fas fa-user-md"></i>
-              <span className="purecounter">
-                {numberFormat(counts?.doctor)}
-              </span>
+              {counts ? (
+                <span className="purecounter">
+                  {numberFormat(counts.doctor)}
+                </span>
+              ) : (
+                <Skeleton variant="rounded" className="mb-2" />
+              )}
               <p>Bác sĩ</p>
             </div>
           </div>
@@ -29,7 +38,11 @@ export default function SystemInfo() {
           <div className="col-lg-3 col-md-6 mt-5 mt-lg-0">
             <div className="count-box">
               <i className="fas fa-users"></i>
-              <span className="purecounter">{numberFormat(counts?.user)}</span>
+              {counts ? (
+                <span className="purecounter">{numberFormat(counts.user)}</span>
+              ) : (
+                <Skeleton variant="rounded" className="mb-2" />
+              )}
               <p>Người dùng</p>
             </div>
           </div>
@@ -37,10 +50,13 @@ export default function SystemInfo() {
           <div className="col-lg-3 col-md-6 mt-5 mt-lg-0">
             <div className="count-box">
               <i className="fas fa-eye"></i>
-              {/* <span className="purecounter">{counts?.visitor}</span> */}
-              <span className="purecounter">
-                {numberFormat(counts?.visitor)}
-              </span>
+              {counts ? (
+                <span className="purecounter">
+                  {numberFormat(counts.visitor)}
+                </span>
+              ) : (
+                <Skeleton variant="rounded" className="mb-2" />
+              )}
               <p>Lượt truy cập</p>
             </div>
           </div>

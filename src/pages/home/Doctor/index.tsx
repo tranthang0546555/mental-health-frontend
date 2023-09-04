@@ -4,20 +4,22 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import { DOCTOR_LIST, useApi } from "../../../api";
-import DoctorItem from "../../doctor/DoctorItem";
+import DoctorItem, { DoctorItemSkeleton } from "../../doctor/DoctorItem";
 import "./index.css";
 
 export default function Doctor() {
   const [data, setData] = useState<Data<Doctor>>();
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     getData();
   }, []);
 
   const getData = async () => {
     const query = qs.stringify({ size: 12 });
+    setLoading(true);
     const data = (await useApi.get(DOCTOR_LIST + (query ? "?" + query : "")))
       .data as Data<Doctor>;
+    setLoading(false);
     setData(data);
   };
 
@@ -57,6 +59,10 @@ export default function Doctor() {
               <DoctorItem data={doctor} />
             </div>
           ))}
+          {loading &&
+            [...Array(12)].map(() => {
+              return <DoctorItemSkeleton />;
+            })}
         </Slider>
       </div>
     </section>
