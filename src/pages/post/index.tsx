@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import qs from "qs";
-import { useDeferredValue, useEffect, useState } from "react";
+import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { POST_LIST, useApi } from "../../api";
 import Categories from "../../components/Categories";
