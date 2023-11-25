@@ -31,9 +31,7 @@ export default function Register() {
             <div className="card mb-3">
               <div className="card-body">
                 <div className="pt-4 pb-2">
-                  <h5 className="card-title text-center pb-0 fs-4">
-                    ĐĂNG KÝ TÀI KHOẢN
-                  </h5>
+                  <h5 className="card-title text-center pb-0 fs-4">ĐĂNG KÝ</h5>
                   <p className="text-center small">
                     Nhập thông tin cá nhân của bạn để tạo tài khoản
                   </p>
