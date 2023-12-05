@@ -115,6 +115,14 @@ export default function UserList() {
                         value: ROLE.DOCTOR,
                       },
                       {
+                        name: ROLE.AS,
+                        value: ROLE.AS,
+                      },
+                      {
+                        name: ROLE.OSS,
+                        value: ROLE.OSS,
+                      },
+                      {
                         name: ROLE.ADMIN,
                         value: ROLE.ADMIN,
                       },
@@ -135,28 +143,30 @@ export default function UserList() {
   }, []);
 
   const getData = async () => {
-    const data = (await useApi(USER_LIST)).data as Data<User>;
+    const data = (await useApi.get(USER_LIST)).data as Data<User>;
     setData(data.data);
   };
 
   const lockUserAccount = async (id: string, message: string) => {
-    await useApi(LOCK_USER.replace(":id", id), {
-      method: "PATCH",
-      data: { message },
-    }).then(() => {
-      getData();
-      toast.success("Đã đưa vào danh sách đen");
-    });
+    await useApi
+      .patch(LOCK_USER.replace(":id", id), {
+        message,
+      })
+      .then(() => {
+        getData();
+        toast.success("Đã đưa vào danh sách đen");
+      });
   };
 
   const setRoleAccount = async (id: string, role: Role) => {
-    await useApi(SET_ROLE_ACCOUNT.replace(":id", id), {
-      method: "PATCH",
-      data: { role },
-    }).then(() => {
-      toast.success("Thay đổi thành công");
-      getData();
-    });
+    await useApi
+      .patch(SET_ROLE_ACCOUNT.replace(":id", id), {
+        role,
+      })
+      .then(() => {
+        toast.success("Thay đổi thành công");
+        getData();
+      });
   };
   // if (!data) return <></>;
   return (

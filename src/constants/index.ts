@@ -8,6 +8,8 @@ export enum ROLE {
   ADMIN = "admin",
   DOCTOR = "doctor",
   USER = "user",
+  AS = "appointment staff",
+  OSS = "online support staff",
 }
 
 export const ERROR_ACCOUNT_CODE = {
