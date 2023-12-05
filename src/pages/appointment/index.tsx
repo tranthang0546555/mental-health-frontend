@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
+import LoginCheck from "../../components/LoginCheck";
 import Steps, { StepsProps } from "../../components/Steps";
 import { dateFormat } from "../../utils";
 import DoctorSelect from "./DoctorSelect";
 import TimeSelect from "./TimeSelect";
 import VerifyAppointment from "./VerifyAppointment";
 import Waiting from "./Waiting";
-import LoginCheck from "../../components/LoginCheck";
 
 export default function Appointment() {
   const [step, setStep] = useState(1);
@@ -19,7 +19,7 @@ export default function Appointment() {
     toast.success("Đã hoàn thành bước 2");
   };
 
-  const handleDoctorSelect = (doctor: Doctor) => {
+  const handleDoctorSelect = (doctor?: Doctor) => {
     setDoctorSelected(doctor);
     setStep(2);
     toast.success("Đã hoàn thành bước đầu tiên");
@@ -42,10 +42,6 @@ export default function Appointment() {
       case 2:
         {
           if (step == 4) return toast.info("Không thể quay lại từ bước này");
-          if (!doctorSelected) {
-            toast.error("Vui lòng hoàn thành bước 1");
-            return;
-          }
           setTimeSelected(undefined);
         }
         break;
@@ -65,7 +61,7 @@ export default function Appointment() {
     steps: [
       {
         title: `Bước 1 ${
-          doctorSelected ? ": " + doctorSelected?.fullName : ""
+          doctorSelected ? ": " + doctorSelected?.fullName : ": Bác sĩ bất kỳ"
         }`,
         description: "Chọn bác sĩ muốn đặt lịch khám",
       },
@@ -81,7 +77,7 @@ export default function Appointment() {
       },
       {
         title: "Bước 4",
-        description: "Xác nhận của bác sĩ",
+        description: "Hoàn tất thủ tục",
       },
     ],
   };
@@ -98,7 +94,7 @@ export default function Appointment() {
         return (
           <VerifyAppointment
             doctor={doctorSelected}
-            timeSelect={timeSelected}
+            timeSelect={timeSelected!}
             onSubmit={() => setStep(4)}
           />
         );

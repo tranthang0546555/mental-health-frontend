@@ -5,14 +5,17 @@ export default function Waiting() {
     <div className="appointment-verify">
       <h4>Đặt lịch khám thành công</h4>
       <br />
-      <h6>Vui lòng chờ đợi xác nhận của bác sĩ</h6>
+      <h6>
+        Lịch hẹn chỉ có giá trị trong khung giờ đã đặt <br /> Vui lòng đến trước
+        khung giờ hẹn 15p để làm thủ tục.
+      </h6>
       <br />
       <Link
-        to="/dashboard"
+        to="/dashboard/appointment/progress"
         type="button"
         className="btn btn-success rounded-pill"
       >
-        Dashboard
+        Xem chi tiết
       </Link>
     </div>
   );

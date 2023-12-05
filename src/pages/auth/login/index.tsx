@@ -67,7 +67,7 @@ export default function Login() {
                     </div>
                   </div>
 
-                  <div className="col-12">
+                  {/* <div className="col-12">
                     <div className="form-check">
                       <input
                         className="form-check-input"
@@ -80,7 +80,7 @@ export default function Login() {
                         Ghi nhớ tài khoản
                       </label>
                     </div>
-                  </div>
+                  </div> */}
                   <div className="col-12">
                     <button className="btn btn-primary w-100" type="submit">
                       Đăng nhập

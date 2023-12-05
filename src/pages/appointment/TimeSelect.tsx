@@ -2,7 +2,11 @@ import { addDays, format, sub } from "date-fns";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { PATIENT_REGISTRATION_BOOKED, useApi } from "../../api";
-import { SCHEDULE_TIME_HOOK, SCHEDULE_DAY as SD } from "../../constants";
+import {
+  SCHEDULE_TIME_HOOK,
+  SCHEDULE_DAY as SD,
+  defaultSchedule,
+} from "../../constants";
 import { hourFormat } from "../../utils";
 import "./index.css";
 
@@ -18,7 +22,7 @@ export default function TimeSelect(props: Props) {
   const [tab, setTab] = useState<{ day: string; nextweek: boolean }>();
   const [booked, setBooked] = useState<string[]>([]);
 
-  if (!doctor?.timeServing)
+  if (doctor && !doctor?.timeServing)
     return <h5>Lịch khám bệnh hiện không có hoặc chưa được thiết lập</h5>;
 
   const now = new Date();
@@ -91,7 +95,9 @@ export default function TimeSelect(props: Props) {
       <>
         {Object.keys(SCHEDULE_DAY).map((d, idx) => {
           const day = d as keyof typeof SD;
-          const schedule = doctor?.timeServing?.[day] || [];
+          const schedule = doctor
+            ? doctor?.timeServing?.[day] || []
+            : defaultSchedule[day];
           return (
             <div
               className={`tab-pane fade show ${
@@ -143,7 +149,9 @@ export default function TimeSelect(props: Props) {
         {Object.keys(SCHEDULE_DAY).map((d, i) => {
           const idx = 7 + i;
           const day = d as keyof typeof SD;
-          const schedule = doctor?.timeServing?.[day] || [];
+          const schedule = doctor
+            ? doctor?.timeServing?.[day] || []
+            : defaultSchedule[day];
           return (
             <div
               className={`tab-pane fade show ${
@@ -223,13 +231,13 @@ export default function TimeSelect(props: Props) {
   };
 
   useEffect(() => {
-    getBooked();
+    doctor && getBooked();
     setTab({ day: Object.keys(SCHEDULE_DAY)[currentDay], nextweek: false });
-  }, []);
+  }, [doctor]);
 
   const getBooked = async () => {
     await useApi
-      .get(PATIENT_REGISTRATION_BOOKED.replace(":id", doctor._id || ""))
+      .get(PATIENT_REGISTRATION_BOOKED.replace(":id", doctor?._id || ""))
       .then((res) => {
         setBooked(res.data);
       });

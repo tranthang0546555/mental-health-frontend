@@ -68,7 +68,7 @@ export default function Profile() {
   });
 
   const onSubmit = async (data: Inputs) => {
-    await useApi(USER_PROFILE, { data, method: "PATCH" }).then(() => {
+    await useApi.get(USER_PROFILE, { data, method: "PATCH" }).then(() => {
       dispatch(getProfile());
       toast.success("Đã cập nhật");
     });
