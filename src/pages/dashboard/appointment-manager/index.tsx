@@ -135,23 +135,26 @@ export default function AppointmentManager({ option }: Props) {
   };
 
   const handleAccept = async (id: string) => {
-    await useApi(GET_SCHEDULE.replace(":id", id), {
-      method: "PATCH",
-      data: { status: SCHEDULE_STATUS.PROGRESS },
-    }).then(() => {
-      getData();
-      toast.success("Xác nhận lịch khám thành công");
-    });
+    await useApi
+      .patch(GET_SCHEDULE.replace(":id", id), {
+        status: SCHEDULE_STATUS.PROGRESS,
+      })
+      .then(() => {
+        getData();
+        toast.success("Xác nhận lịch khám thành công");
+      });
   };
 
   const handleDeny = async (id: string, message: string) => {
-    await useApi(GET_SCHEDULE.replace(":id", id), {
-      method: "PATCH",
-      data: { status: SCHEDULE_STATUS.CANCEL, message },
-    }).then(() => {
-      getData();
-      toast.success("Hủy lịch khám thành công");
-    });
+    await useApi
+      .patch(GET_SCHEDULE.replace(":id", id), {
+        status: SCHEDULE_STATUS.CANCEL,
+        message,
+      })
+      .then(() => {
+        getData();
+        toast.success("Hủy lịch khám thành công");
+      });
   };
 
   const handleSuccess = (id: string) => {

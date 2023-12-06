@@ -39,6 +39,8 @@ export const GET_SCHEDULE = "/schedule/:id";
 export const DOCTOR_RATING = "/schedule/rating/:id";
 export const PATIENT_REGISTRATION = "/schedule/patient-registration";
 export const PATIENT_REGISTRATION_BOOKED = "/schedule/booked/:id";
+export const NOT_YET_SCHEDULED = "/schedule/not-yet";
+export const SET_DOCTOR_SCHEDULE = "/schedule/set-doctor/:id";
 
 export const ROOM_ACCESS = "/schedule/room-access/:id";
 

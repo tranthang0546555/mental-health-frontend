@@ -8,8 +8,8 @@ import "./index.css";
 export default function Statistics() {
   const role = useAppSelector((state) => state.auth.user?.role);
 
-  if (role && role === "user")
-    return Navigate({ to: "/dashboard/appointment/progress" });
+  if (role && role !== "doctor") return <></>;
+  // return Navigate({ to: "/dashboard/appointment/progress" });
 
   return (
     <section className="section statistics">

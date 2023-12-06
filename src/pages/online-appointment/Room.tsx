@@ -99,7 +99,7 @@ export default function RoomDetail({ room }: { room: string }) {
   }, [user, navigator.mediaDevices]);
 
   const createPeer = (stream: MediaStream, socketId: string) => {
-    console.log("create peerê- send-signal");
+    console.log("create peer - send-signal");
     const peer = new Peer({ initiator: true, trickle: false, stream: stream });
 
     peer.on("signal", (signal) => {

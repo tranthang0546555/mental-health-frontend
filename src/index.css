@@ -154,6 +154,7 @@ h4,
 h5,
 h6 {
   color: var(--color-title);
+  font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 ::-webkit-scrollbar {

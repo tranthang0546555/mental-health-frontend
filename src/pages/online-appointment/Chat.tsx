@@ -33,11 +33,11 @@ const Chat = forwardRef<RefChat, Props>((props, ref) => {
     },
   }));
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
   };
 
-  const handleEnterPress = (e: any) => {
+  const handleEnterPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       sendMessage();
     }

@@ -88,7 +88,13 @@ declare type RegisterInputs = {
   confirmPassword: string;
 };
 
-declare type Role = "admin" | "doctor" | "user" | undefined;
+declare type Role =
+  | "admin"
+  | "doctor"
+  | "user"
+  | "appointment staff"
+  | "online support staff"
+  | undefined;
 
 declare type CountsInfo = {
   post?: number;

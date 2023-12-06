@@ -30,6 +30,7 @@ import PostDetail from "./pages/post-detail";
 import PrivacyPolicy from "./pages/privacy-policy";
 import MedicalRecords from "./pages/dashboard/medical-record-manager";
 import RecordCreate from "./pages/dashboard/medical-record-manager/RecordCreate";
+import NotYetScheduled from "./pages/dashboard/appointment-manager/NotScheduled";
 
 const router = createBrowserRouter([
   {
@@ -199,6 +200,10 @@ const router = createBrowserRouter([
           {
             path: "cancel",
             element: <AppointmentManager option="CANCEL" />,
+          },
+          {
+            path: "order",
+            element: <NotYetScheduled />,
           },
         ],
       },

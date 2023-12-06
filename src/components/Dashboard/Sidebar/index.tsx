@@ -60,7 +60,7 @@ const sidebarMenus: SidebarMenu[] = [
   {
     name: "Lịch khám",
     path: "/dashboard/appointment",
-    role: ["user", "doctor"],
+    role: ["user", "doctor", "appointment staff"],
     icon: <i className="bi bi-calendar"></i>,
     children: [
       {
@@ -83,6 +83,11 @@ const sidebarMenus: SidebarMenu[] = [
         path: "/cancel",
         role: ["user", "doctor"],
       },
+      {
+        name: "Xếp lịch",
+        path: "/order",
+        role: ["appointment staff"],
+      },
     ],
   },
   {
@@ -100,7 +105,13 @@ const sidebarMenus: SidebarMenu[] = [
   {
     name: "Thông tin",
     path: "/dashboard/profile",
-    role: ["user", "doctor", "admin"],
+    role: [
+      "user",
+      "doctor",
+      "admin",
+      "appointment staff",
+      "online support staff",
+    ],
     icon: <i className="bi bi-person"></i>,
   },
 ];
@@ -132,14 +143,17 @@ export default function SidebarDashboard() {
                     className="nav-content collapse show"
                     data-bs-parent="#sidebar-nav"
                   >
-                    {children.map((child) => (
-                      <li key={name + "_" + child.name}>
-                        <Link to={path + child.path}>
-                          <i className="bi bi-circle"></i>
-                          <span>{child.name}</span>
-                        </Link>
-                      </li>
-                    ))}
+                    {children.map((child) => {
+                      if (!child.role.includes(currentRole)) return;
+                      return (
+                        <li key={name + "_" + child.name}>
+                          <Link to={path + child.path}>
+                            <i className="bi bi-circle"></i>
+                            <span>{child.name}</span>
+                          </Link>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </li>
               );
