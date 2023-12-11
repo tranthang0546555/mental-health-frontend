@@ -46,7 +46,7 @@ export default function RecordUpdate() {
   };
 
   if (!record) return <></>;
-  const { data: _data, user, doctor } = record;
+  const { data: _data, user } = record;
   const data = _data as MedicalRecordData;
 
   return (
