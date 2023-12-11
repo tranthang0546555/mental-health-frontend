@@ -8,7 +8,7 @@ declare type Pagination = {
   totalRecords: number;
 };
 
-declare type Post = TimeStemp & {
+declare type Post = TimeStamp & {
   _id: string;
   id: string;
   slug: string;
@@ -22,13 +22,13 @@ declare type Post = TimeStemp & {
   category: Category;
 };
 
-declare type Category = TimeStemp & {
+declare type Category = TimeStamp & {
   _id: string;
   name: string;
   description: string;
 };
 
-declare type User = TimeStemp & {
+declare type User = TimeStamp & {
   _id?: string;
   fullName?: string;
   name?: {
@@ -50,6 +50,7 @@ declare type User = TimeStemp & {
   lockedAt?: string;
   unlockBy?: User;
   unlockedAt?: string;
+  verify?: boolean;
 };
 
 declare type Schedule = {
@@ -103,7 +104,7 @@ declare type CountsInfo = {
   visitor?: number;
 };
 
-declare type Appointment = TimeStemp & {
+declare type Appointment = TimeStamp & {
   _id: string;
   user: User;
   doctor: Doctor;
@@ -116,18 +117,20 @@ declare type Appointment = TimeStemp & {
   message?: string;
 };
 
-declare type TimeStemp = {
+declare type TimeStamp = {
   createdAt?: string | number;
   updatedAt?: string | number;
 };
 
-declare type MedicalRecord = TimeStemp & {
+declare type MedicalRecord = TimeStamp & {
   id: number;
   data: MedicalRecordData | string;
   doctorId: string;
   userId: string;
   walletId: string;
   isDeleted: boolean;
+  doctor?: Doctor;
+  user?: User;
 };
 
 declare type MedicalRecordData = {
@@ -139,6 +142,9 @@ declare type MedicalRecordData = {
   treatment?: string;
   doctor?: Doctor;
   user?: User;
+  userId?: string;
+  doctorId?: string;
+  scheduleId?: string;
 };
 
 declare type Noti = {

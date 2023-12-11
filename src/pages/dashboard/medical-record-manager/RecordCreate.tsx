@@ -1,19 +1,16 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import * as yup from "yup";
-import { GET_SCHEDULE, useApi } from "../../../api";
-import useContract from "../../../blockchain/useContract";
-import { useAppSelector } from "../../../hooks/store";
+import { GET_SCHEDULE, RECORD_LIST, useApi } from "../../../api";
 import { avatarPath, dateFormat, hourFormat } from "../../../utils";
 
 export default function RecordCreate() {
   const { id = "" } = useParams();
   const [appointment, setAppointment] = useState<Appointment>();
-  const doctor = useAppSelector((state) => state.auth.user);
-  const contract = useContract();
+  const navigate = useNavigate();
 
   useEffect(() => {
     Promise.all([useApi.get(GET_SCHEDULE.replace(":id", id))]).then(([res]) => {
@@ -41,27 +38,15 @@ export default function RecordCreate() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async (d: MedicalRecordData) => {
-    const data = JSON.stringify({
-      dayIn: d.dayIn,
-      user: d.user,
-      doctor: d.doctor,
-      medicalHistory: d.medicalHistory,
-      reason: d.reason,
-      status: d.status,
-      diagnostic: d.diagnostic,
-      treatment: d.treatment,
-    } as MedicalRecordData);
-
-    contract
-      ?.createMedicalRecord(data, d.user?._id!, doctor?._id!)
-      .then((res) => {
-        // TODO
-        console.log(res);
-      })
-      .catch((error) => {
-        toast.error(error.code);
-      });
+  const onSubmit = async (data: MedicalRecordData) => {
+    await useApi.post(RECORD_LIST, {
+      ...data,
+      userId: appointment?.user._id,
+      scheduleId: id,
+    });
+    toast.success("Hoàn tất, dữ liệu sẽ cập nhật trong chốc lát");
+    navigate("/dashboard/medical-record/");
+    // TODO
   };
 
   if (!appointment) return <></>;

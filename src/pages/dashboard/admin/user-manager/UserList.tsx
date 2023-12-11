@@ -63,6 +63,18 @@ export default function UserList() {
         size: 1,
       },
       {
+        header: "Đã xác nhận",
+        accessorKey: "verify",
+        Cell({
+          row: {
+            original: { verify },
+          },
+        }) {
+          return <>{verify ? "T" : "F"}</>;
+        },
+        size: 1,
+      },
+      {
         header: "Thao tác",
         size: 1,
         Cell({ row }) {

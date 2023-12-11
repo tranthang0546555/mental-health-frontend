@@ -57,7 +57,7 @@ export default function PostItem({ data }: { data: Post }) {
             </li>
           </ul>
         </div>
-        <a href="blog-details.html">Read More</a>
+        <Link to={"/post/" + slug}>Read More</Link>
       </div>
     </article>
   );

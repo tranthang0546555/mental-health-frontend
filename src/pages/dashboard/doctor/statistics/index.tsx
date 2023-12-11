@@ -1,4 +1,3 @@
-import { Navigate } from "react-router-dom";
 import { useAppSelector } from "../../../../hooks/store";
 import PostView from "./PostView";
 import ScheduleView from "./ScheduleView";

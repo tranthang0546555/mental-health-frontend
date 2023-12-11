@@ -173,7 +173,7 @@ export default function AppointmentManager({ option }: Props) {
             room: option === "PROGRESS",
             actions: option === "PENDING" && role === "doctor",
             message: option === "CANCEL",
-            success: option === "PROGRESS",
+            success: option === "PROGRESS" && role === "doctor",
           },
         }}
       />

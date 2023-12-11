@@ -42,6 +42,11 @@ export const PATIENT_REGISTRATION_BOOKED = "/schedule/booked/:id";
 export const NOT_YET_SCHEDULED = "/schedule/not-yet";
 export const SET_DOCTOR_SCHEDULE = "/schedule/set-doctor/:id";
 
+export const RECORD_LIST = "/record";
+export const RECORD_DETAIL = "/record/:id";
+export const RECORD_BY_USER = "/record/user/:id";
+export const RECORD_BY_DOCTOR = "/record/doctor/:id";
+
 export const ROOM_ACCESS = "/schedule/room-access/:id";
 
 export const VIEW_POSTS_CHART = "/post/chart/all";

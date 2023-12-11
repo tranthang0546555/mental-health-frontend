@@ -31,6 +31,7 @@ import PrivacyPolicy from "./pages/privacy-policy";
 import MedicalRecords from "./pages/dashboard/medical-record-manager";
 import RecordCreate from "./pages/dashboard/medical-record-manager/RecordCreate";
 import NotYetScheduled from "./pages/dashboard/appointment-manager/NotScheduled";
+import RecordDetail from "./pages/dashboard/medical-record-manager/RecordDetail";
 
 const router = createBrowserRouter([
   {
@@ -215,6 +216,7 @@ const router = createBrowserRouter([
         path: "medical-record",
         children: [
           { index: true, element: <MedicalRecords /> },
+          { path: ":id", element: <RecordDetail /> },
           { path: "create/:id", element: <RecordCreate /> },
         ],
       },

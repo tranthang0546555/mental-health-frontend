@@ -1,7 +1,7 @@
 import { format, formatDistance } from "date-fns";
 
-export const dateFormat = (date?: string | number | Date) => {
-  return format(new Date(date || ""), "HH:mm - dd/MM/yyy");
+export const dateFormat = (date?: string | number | Date, _format?: string) => {
+  return format(new Date(date || ""), _format || "HH:mm - dd/MM/yyy");
 };
 
 export const hourFormat = (date?: string | number | Date) => {

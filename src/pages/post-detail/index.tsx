@@ -14,7 +14,7 @@ export default function PostDetail() {
   }, []);
 
   const getData = async (slug: string) => {
-    const data = (await useApi(POST_DETAIL.replace(":slug", slug)))
+    const data = (await useApi.get(POST_DETAIL.replace(":slug", slug)))
       .data as Post;
     setData(data);
   };
@@ -34,7 +34,7 @@ export default function PostDetail() {
       <div className="container" data-aos="fade-up">
         <div className="row g-5">
           <div className="col-lg-8">
-            <h1>{title}</h1>
+            <h2>{title}</h2>
             <div className="counter">
               <span>
                 <i className="bi bi-person"></i> {createdBy.name?.firstName}
