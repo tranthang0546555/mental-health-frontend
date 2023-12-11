@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import * as yup from "yup";
 import { RECORD_DETAIL, useApi } from "../../../api";
-import { avatarPath, hourFormat } from "../../../utils";
+import { avatarPath, dateFormat } from "../../../utils";
 
 export default function RecordUpdate() {
   const { id = "" } = useParams();
@@ -90,7 +90,7 @@ export default function RecordUpdate() {
                       className="form-control"
                       placeholder="DD/MM/YYYY"
                       disabled
-                      value={hourFormat(data.dayIn)}
+                      value={dateFormat(data.dayIn)}
                     />
                   </div>
                 </div>
