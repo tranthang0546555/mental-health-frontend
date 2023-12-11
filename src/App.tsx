@@ -32,6 +32,7 @@ import MedicalRecords from "./pages/dashboard/medical-record-manager";
 import RecordCreate from "./pages/dashboard/medical-record-manager/RecordCreate";
 import NotYetScheduled from "./pages/dashboard/appointment-manager/NotScheduled";
 import RecordDetail from "./pages/dashboard/medical-record-manager/RecordDetail";
+import RecordUpdate from "./pages/dashboard/medical-record-manager/RecordUpdate";
 
 const router = createBrowserRouter([
   {
@@ -218,6 +219,7 @@ const router = createBrowserRouter([
           { index: true, element: <MedicalRecords /> },
           { path: ":id", element: <RecordDetail /> },
           { path: "create/:id", element: <RecordCreate /> },
+          { path: "update/:id", element: <RecordUpdate /> },
         ],
       },
     ],

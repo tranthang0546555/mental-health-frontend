@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { RECORD_DETAIL, useApi } from "../../../api";
 import { dateFormat } from "../../../utils";
+import "./index.css";
 
 export default function RecordDetail() {
   const { id = "" } = useParams();
@@ -19,6 +20,15 @@ export default function RecordDetail() {
   const data = _data as MedicalRecordData;
   return (
     <section className="section record-detail">
+      <div className="text-end p-3">
+        <Link
+          to={`/dashboard/medical-record/update/${record.id}`}
+          type="submit"
+          className="btn btn-primary"
+        >
+          Chỉnh sửa
+        </Link>
+      </div>
       <div className="card">
         <div className="card-body pt-3">
           <h4 className="text-center">BỆNH ÁN TÂM THẦN</h4>
@@ -44,7 +54,7 @@ export default function RecordDetail() {
           </ul>
           <hr />
           <h5>BỆNH SỬ</h5>
-
+          <p>{data.medicalHistory}</p>
           <h5>Lý do khám bệnh</h5>
           <p>{data.reason}</p>
           <h5>Tình trạng ban đầu</h5>
