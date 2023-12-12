@@ -103,6 +103,24 @@ const sidebarMenus: SidebarMenu[] = [
     icon: <i className="bi bi-clock"></i>,
   },
   {
+    name: "Phương pháp trị liệu",
+    path: "/dashboard/treatment",
+    role: ["doctor", "admin"],
+    icon: <i className="bi bi-bandaid"></i>,
+    children: [
+      {
+        name: "Danh sách",
+        path: "/",
+        role: ["admin", "doctor"],
+      },
+      {
+        name: "Thêm mới",
+        path: "/create",
+        role: ["admin", "doctor"],
+      }
+    ],
+  },
+  {
     name: "Thông tin",
     path: "/dashboard/profile",
     role: [

@@ -12,6 +12,7 @@ const maps: {
   { path: "/", name: "Trang chủ" },
   { path: "/post", name: "Bài viết" },
   { path: "/doctor", name: "Bác sĩ" },
+  { path: "/treatment", name: "Trị liệu" },
   { path: "/contact", name: "Liên hệ" },
 ];
 export default function Header() {

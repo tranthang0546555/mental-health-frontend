@@ -60,8 +60,8 @@ export default function Doctor() {
             </div>
           ))}
           {loading &&
-            [...Array(12)].map(() => {
-              return <DoctorItemSkeleton />;
+            [...Array(12)].map((_, index) => {
+              return <DoctorItemSkeleton key={index} />;
             })}
         </Slider>
       </div>

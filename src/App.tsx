@@ -33,6 +33,9 @@ import RecordCreate from "./pages/dashboard/medical-record-manager/RecordCreate"
 import NotYetScheduled from "./pages/dashboard/appointment-manager/NotScheduled";
 import RecordDetail from "./pages/dashboard/medical-record-manager/RecordDetail";
 import RecordUpdate from "./pages/dashboard/medical-record-manager/RecordUpdate";
+import Treatment from "./pages/treatment";
+import TreatmentManager from "./pages/dashboard/treatment-manager";
+import TreatmentCreate from "./pages/dashboard/treatment-manager/TreatmentCreate";
 
 const router = createBrowserRouter([
   {
@@ -222,7 +225,22 @@ const router = createBrowserRouter([
           { path: "update/:id", element: <RecordUpdate /> },
         ],
       },
+      {
+        path: "treatment",
+        children: [
+          { index: true, element: <TreatmentManager /> },
+          { path: "create", element: <TreatmentCreate /> },
+        ],
+      },
     ],
+  },
+  {
+    path: "treatment",
+    element: (
+      <Layout title="Trị liệu">
+        <Treatment />
+      </Layout>
+    )
   },
   {
     path: "*",

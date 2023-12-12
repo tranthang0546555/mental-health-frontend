@@ -47,6 +47,8 @@ export const RECORD_DETAIL = "/record/:id";
 export const RECORD_BY_USER = "/record/user/:id";
 export const RECORD_BY_DOCTOR = "/record/doctor/:id";
 
+export const TREATMENT_LIST = "/treatment";
+
 export const ROOM_ACCESS = "/schedule/room-access/:id";
 
 export const VIEW_POSTS_CHART = "/post/chart/all";

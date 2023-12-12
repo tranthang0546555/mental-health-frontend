@@ -159,3 +159,10 @@ declare type Noti = {
 };
 
 type NotiType = "success" | "danger" | "warning" | "info";
+
+declare type Treatment = {
+  _id: string;
+  title: string;
+  description?: string
+  file: string;
+} & TimeStamp 
