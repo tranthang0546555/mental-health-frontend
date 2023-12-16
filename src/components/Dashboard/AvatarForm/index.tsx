@@ -9,7 +9,7 @@ export default function AvatarForm() {
   const avatar = useAppSelector((state) => state.auth.user?.avatar);
   const dispatch = useAppDispatch();
   const handleChange = async (e: any) => {
-    let file = e.target.files[0];
+    const file = e.target.files[0];
 
     const formData = new FormData();
     formData.append("file", file);

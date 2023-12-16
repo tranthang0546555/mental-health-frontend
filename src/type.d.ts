@@ -163,6 +163,8 @@ type NotiType = "success" | "danger" | "warning" | "info";
 declare type Treatment = {
   _id: string;
   title: string;
-  description?: string
+  description?: string;
   file: string;
-} & TimeStamp 
+  duration: number;
+  type: "video" | "audio";
+} & TimeStamp;

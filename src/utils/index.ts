@@ -17,7 +17,10 @@ export const numberFormat = (number = 0) =>
 
 export const imagePath = (name?: string) =>
   import.meta.env.VITE_BASE_URL + "/images/" + name;
-
+export const videoPath = (name?: string) =>
+  import.meta.env.VITE_BASE_URL + "/videos/" + name;
+export const audioPath = (name?: string) =>
+  import.meta.env.VITE_BASE_URL + "/audios/" + name;
 export const avatarPath = (name?: string) =>
   import.meta.env.VITE_BASE_URL + "/avatars/" + name;
 
