@@ -36,6 +36,9 @@ import RecordUpdate from "./pages/dashboard/medical-record-manager/RecordUpdate"
 import Treatment from "./pages/treatment";
 import TreatmentManager from "./pages/dashboard/treatment-manager";
 import TreatmentCreate from "./pages/dashboard/treatment-manager/TreatmentCreate";
+import ForgotPassword from "./pages/auth/forgot";
+import ChangePassword from "./pages/auth/change";
+import AccountActive from "./pages/auth/active";
 
 const router = createBrowserRouter([
   {
@@ -115,6 +118,30 @@ const router = createBrowserRouter([
     element: (
       <Layout title="Đăng ký">
         <Register />
+      </Layout>
+    ),
+  },
+  {
+    path: "forgot-password",
+    element: (
+      <Layout title="Quên mật khẩu">
+        <ForgotPassword />
+      </Layout>
+    ),
+  },
+  {
+    path: "change-password",
+    element: (
+      <Layout title="Thay đổi mật khẩu">
+        <ChangePassword />
+      </Layout>
+    ),
+  },
+  {
+    path: "account-active",
+    element: (
+      <Layout title="Kích hoạt tài khoản">
+        <AccountActive />
       </Layout>
     ),
   },

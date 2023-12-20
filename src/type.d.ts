@@ -89,6 +89,17 @@ declare type RegisterInputs = {
   confirmPassword: string;
 };
 
+declare type ForgotPasswordInputs = {
+  email: string;
+};
+
+declare type ChangePasswordInputs = {
+  email: string;
+  oldPassword: string;
+  newPassword: string;
+  retypePassword: string;
+};
+
 declare type Role =
   | "admin"
   | "doctor"

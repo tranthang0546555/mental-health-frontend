@@ -25,7 +25,7 @@ export default function Login() {
                     ĐĂNG NHẬP
                   </h5>
                   <p className="text-center small">
-                    Nhập email và mật khẩu của bạn để đăng nhập
+                    Nhập email và mật khẩu của bạn
                   </p>
                 </div>
 
@@ -66,30 +66,21 @@ export default function Login() {
                       Vui lòng nhập mật khẩu của bạn!
                     </div>
                   </div>
-
-                  {/* <div className="col-12">
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        name="remember"
-                        value="true"
-                        id="rememberMe"
-                      />
-                      <label className="form-check-label" htmlFor="rememberMe">
-                        Ghi nhớ tài khoản
-                      </label>
-                    </div>
-                  </div> */}
                   <div className="col-12">
                     <button className="btn btn-primary w-100" type="submit">
                       Đăng nhập
                     </button>
                   </div>
                   <div className="col-12">
-                    <p className="small mb-0">
-                      Không có tài khoản?{" ==> "}
-                      <Link to="/register">Tạo một tài khoản</Link>
+                    <p className="small mb-0 d-flex justify-content-between">
+                      <Link to="/register" className="text-primary">Đăng ký tài khoản?</Link>
+                      <div style={{ textAlign: 'right' }}>
+                        <Link to="/forgot-password" className="text-primary">Quên mật khẩu?</Link>
+                        <br />
+                        <Link to="/change-password" className="text-primary">Đổi mật khẩu?</Link>
+                        <br />
+                        <Link to="/account-active" className="text-primary">Tài khoản chưa kích hoạt?</Link>
+                      </div>
                     </p>
                   </div>
                 </form>
@@ -97,7 +88,7 @@ export default function Login() {
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </div >
+    </section >
   );
 }
