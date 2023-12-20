@@ -7,6 +7,7 @@ import {
   SCHEDULE_DAY as SD,
   defaultSchedule,
 } from "../../constants";
+import { useAppSelector } from "../../hooks/store";
 import { hourFormat } from "../../utils";
 import "./index.css";
 
@@ -21,6 +22,7 @@ export default function TimeSelect(props: Props) {
   const { doctor, onSelect } = props;
   const [tab, setTab] = useState<{ day: string; nextweek: boolean }>();
   const [booked, setBooked] = useState<string[]>([]);
+  const role = useAppSelector(state => state.auth.user?.role)
 
   if (doctor && !doctor?.timeServing)
     return <h5>Lịch khám bệnh hiện không có hoặc chưa được thiết lập</h5>;
@@ -43,9 +45,8 @@ export default function TimeSelect(props: Props) {
           return (
             <li className="nav-item" role="presentation">
               <button
-                className={`nav-link ${
-                  tab?.day === day && tab.nextweek === false ? "active" : ""
-                }`}
+                className={`nav-link ${tab?.day === day && tab.nextweek === false ? "active" : ""
+                  }`}
                 id={`day-tab-${idx}`}
                 data-bs-toggle="tab"
                 data-bs-target={`#day-${idx}`}
@@ -67,9 +68,8 @@ export default function TimeSelect(props: Props) {
           return (
             <li className="nav-item" role="presentation">
               <button
-                className={`nav-link ${
-                  tab?.day === day && tab.nextweek === true ? "active" : ""
-                }`}
+                className={`nav-link ${tab?.day === day && tab.nextweek === true ? "active" : ""
+                  }`}
                 id={`day-tab-${idx}`}
                 data-bs-toggle="tab"
                 data-bs-target={`#day-${idx}`}
@@ -100,9 +100,8 @@ export default function TimeSelect(props: Props) {
             : defaultSchedule[day];
           return (
             <div
-              className={`tab-pane fade show ${
-                tab?.day === day && tab.nextweek === false ? "active" : ""
-              }`}
+              className={`tab-pane fade show ${tab?.day === day && tab.nextweek === false ? "active" : ""
+                }`}
               id={`day-${idx}`}
               role="tabpanel"
               aria-labelledby={`day-tab-${idx}`}
@@ -154,9 +153,8 @@ export default function TimeSelect(props: Props) {
             : defaultSchedule[day];
           return (
             <div
-              className={`tab-pane fade show ${
-                tab?.day === day && tab.nextweek === true ? "active" : ""
-              }`}
+              className={`tab-pane fade show ${tab?.day === day && tab.nextweek === true ? "active" : ""
+                }`}
               id={`day-${idx}`}
               role="tabpanel"
               aria-labelledby={`day-tab-${idx}`}
@@ -211,6 +209,9 @@ export default function TimeSelect(props: Props) {
   };
 
   const handleSelect = (schedule: Schedule, nextweek?: boolean) => {
+    if (role !== 'user') return toast.warn(
+      "Chỉ bệnh nhận mới có thể đặt lịch khám, vui lòng kiểm tra lại!"
+    );
     const bookingFrom = addDays(
       new Date(toDay.getTime() + schedule.from),
       currentTab - currentDay

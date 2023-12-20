@@ -6,15 +6,8 @@ import { dateFormat } from "../../../utils";
 
 export default function TreatmentManager() {
     const [data, setData] = useState<Treatment[]>([]);
-
     const columns = useMemo<MRT_ColumnDef<Treatment>[]>(
         () => [
-            {
-                header: "Bài viết",
-                accessorFn: (originalRow) => (
-                    <span className="text-line-clamp-2">{originalRow.title}</span>
-                ),
-            },
             {
                 header: "Tiêu đề",
                 accessorKey: "title",
@@ -25,10 +18,6 @@ export default function TreatmentManager() {
                 accessorKey: "description",
                 size: 1,
             },
-            // {
-            //     header: "Người tạo",
-            //     accessorFn: (originalRow) => originalRow.createdBy.name?.firstName,
-            // },
             {
                 header: "Tạo",
                 accessorFn: (originalRow) => dateFormat(originalRow.createdAt),
@@ -47,7 +36,6 @@ export default function TreatmentManager() {
         setData(data.data);
     };
 
-    // if (!data) return <></>;
     return (
         <section className="section">
             <MaterialReactTable

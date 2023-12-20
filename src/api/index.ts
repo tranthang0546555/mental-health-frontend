@@ -17,6 +17,7 @@ export const CATEGORY_DETAIL = "/category/:id";
 export const GROUP_LIST = "group";
 
 export const DOCTOR_LIST = "doctor";
+export const DOCTOR_DETAIL = "/doctor/:id";
 export const DOCTOR_POST_LIST = "/doctor/post";
 export const DOCTOR_TIME_SERVING = "/doctor/time-serving";
 

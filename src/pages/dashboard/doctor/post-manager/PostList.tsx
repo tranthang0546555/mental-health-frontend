@@ -12,7 +12,7 @@ export default function PostList() {
       {
         header: "Bài viết",
         accessorFn: (originalRow) => (
-          <span className="text-line-clamp-2">{originalRow.title}</span>
+          <a href={"/post/" + originalRow.slug} target="_blank" className="text-line-clamp-2">{originalRow.title}</a>
         ),
       },
       {
@@ -54,6 +54,7 @@ export default function PostList() {
       },
       {
         header: "Thao tác",
+        accessorKey: 'id',
         size: 1,
         Cell({ row }) {
           const { _id, slug, title } = row.original;
@@ -145,6 +146,8 @@ export default function PostList() {
         data={data}
         enableFilters={false}
         enableRowNumbers
+        enablePinning
+        initialState={{ columnPinning: { right: ['id']}}}
       />
     </section>
   );

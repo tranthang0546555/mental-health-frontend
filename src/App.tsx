@@ -39,6 +39,7 @@ import TreatmentCreate from "./pages/dashboard/treatment-manager/TreatmentCreate
 import ForgotPassword from "./pages/auth/forgot";
 import ChangePassword from "./pages/auth/change";
 import AccountActive from "./pages/auth/active";
+import DoctorDetail from "./pages/doctor-detail";
 
 const router = createBrowserRouter([
   {
@@ -70,6 +71,14 @@ const router = createBrowserRouter([
     element: (
       <Layout title="Bác sĩ">
         <Doctor />
+      </Layout>
+    ),
+  },
+  {
+    path: "doctor/:id",
+    element: (
+      <Layout title="Bác sĩ">
+        <DoctorDetail />
       </Layout>
     ),
   },

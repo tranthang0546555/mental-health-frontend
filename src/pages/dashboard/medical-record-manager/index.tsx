@@ -23,6 +23,11 @@ export default function MedicalRecords() {
           role === "user" ? doctor?.fullName : user?.fullName,
       },
       {
+        header: "Email",
+        accessorFn: ({ user, doctor }) =>
+          role === "user" ? doctor?.email : user?.email,
+      },
+      {
         header: "Tạo",
         accessorFn: ({ createdAt }) => dateFormat(createdAt),
       },

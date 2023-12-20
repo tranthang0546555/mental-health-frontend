@@ -18,7 +18,7 @@ export default function UserOverView() {
   return (
     <div className="user-overview">
       <div className="row">
-        <div className="col-md-12">
+        <div className="col-md-12 p-5">
           <div className="row">
             <div className="col-md-6">
               <div className="card info-card sales-card">

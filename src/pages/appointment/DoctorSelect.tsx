@@ -51,7 +51,7 @@ export default function DoctorSelect(props: Props) {
             style={{ cursor: "copy" }}
             onClick={() => props.onSelect(doctor)}
           >
-            <DoctorItem data={doctor} />
+            <DoctorItem data={doctor} disableNavigate/>
           </div>
         ))}
       </div>

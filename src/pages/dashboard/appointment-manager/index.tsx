@@ -40,15 +40,14 @@ export default function AppointmentManager({ option }: Props) {
         },
         size: 1,
       },
-      role === "doctor"
-        ? {
-            header: "Bệnh nhân",
-            accessorFn: (originalRow) => originalRow.user.fullName,
-          }
-        : {
-            header: "Bác sĩ",
-            accessorFn: (originalRow) => originalRow.doctor.fullName,
-          },
+      {
+        header: role === "doctor" ? "Bệnh nhân" : "Bác sĩ",
+        accessorFn: (originalRow) => role === "doctor" ? originalRow.user.fullName : originalRow.doctor.fullName,
+      },
+      {
+        header: "Email",
+        accessorFn: (originalRow) => role === "doctor" ? originalRow.user.email : originalRow.doctor.email,
+      },
       {
         header: "Tạo",
         accessorFn: (originalRow) => dateFormat(originalRow.createdAt),

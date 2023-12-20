@@ -9,7 +9,7 @@ import {
 } from "../../../../api";
 import Modal from "../../../../components/Modal";
 import { ROLE } from "../../../../constants";
-import { avatarPath, dateFormat } from "../../../../utils";
+import { avatarPath } from "../../../../utils";
 
 export default function UserList() {
   const [data, setData] = useState<User[]>([]);
@@ -50,19 +50,6 @@ export default function UserList() {
         size: 1,
       },
       {
-        header: "Tạo",
-        accessorKey: "createdAt",
-        Cell({
-          row: {
-            original: { createdAt },
-          },
-        }) {
-          if (!createdAt) return <></>;
-          return <>{dateFormat(createdAt)}</>;
-        },
-        size: 1,
-      },
-      {
         header: "Đã xác nhận",
         accessorKey: "verify",
         Cell({
@@ -76,6 +63,7 @@ export default function UserList() {
       },
       {
         header: "Thao tác",
+        accessorKey: "actions",
         size: 1,
         Cell({ row }) {
           const { _id = "", name, role } = row.original;
@@ -88,7 +76,7 @@ export default function UserList() {
                 description={`Chuyển người dùng "${name?.firstName}" vào danh sách đen và người dùng sẽ không thể truy cập vào hệ thống được nữa!`}
                 onSubmit={(data) => lockUserAccount(_id, String(data))}
                 button={
-                  <button type="button" className="btn btn-danger">
+                  <button type="button" className="btn btn-danger p-2">
                     <i className="bi bi-lock"></i>
                   </button>
                 }
@@ -109,7 +97,7 @@ export default function UserList() {
                 onSubmit={(data) => setRoleAccount(_id, data as Role)}
                 title="Quyền truy cập"
                 button={
-                  <button type="button" className="btn btn-info">
+                  <button type="button" className="btn btn-info p-2">
                     <i className="bi bi-gear"></i>
                   </button>
                 }
@@ -188,6 +176,7 @@ export default function UserList() {
         data={data}
         enableFilters={false}
         enableRowNumbers
+        initialState={{ columnPinning: { right: ["actions"] } }}
       />
     </section>
   );
