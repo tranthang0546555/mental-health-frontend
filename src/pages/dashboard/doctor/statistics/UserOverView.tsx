@@ -82,7 +82,7 @@ export default function UserOverView() {
             </div>
           </div>
         </div>
-        <div className="col-md-12 chart pt-5">
+        <div className="col-md-12 chart">
           <DoughnutChart
             title="Người dùng có tài khoản trong hệ thống"
             label="Tài khoản"
