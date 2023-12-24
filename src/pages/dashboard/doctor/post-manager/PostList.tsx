@@ -12,7 +12,13 @@ export default function PostList() {
       {
         header: "Bài viết",
         accessorFn: (originalRow) => (
-          <a href={"/post/" + originalRow.slug} target="_blank" className="text-line-clamp-2">{originalRow.title}</a>
+          <a
+            href={"/post/" + originalRow.slug}
+            target="_blank"
+            className="text-line-clamp-2"
+          >
+            {originalRow.title}
+          </a>
         ),
       },
       {
@@ -54,7 +60,7 @@ export default function PostList() {
       },
       {
         header: "Thao tác",
-        accessorKey: 'id',
+        accessorKey: "_id",
         size: 1,
         Cell({ row }) {
           const { _id, slug, title } = row.original;
@@ -125,17 +131,15 @@ export default function PostList() {
   }, []);
 
   const getData = async () => {
-    const data = (await useApi(DOCTOR_POST_LIST)).data as Data<Post>;
+    const data = (await useApi.get(DOCTOR_POST_LIST)).data as Data<Post>;
     setData(data.data);
   };
 
   const deletePost = async (id: string) => {
-    await useApi(POST_DETAIL.replace(":slug", id), { method: "DELETE" }).then(
-      () => {
-        // TODO notification
-        getData();
-      }
-    );
+    await useApi.delete(POST_DETAIL.replace(":slug", id)).then(() => {
+      // TODO notification
+      getData();
+    });
   };
 
   // if (!data) return <></>;
@@ -147,7 +151,6 @@ export default function PostList() {
         enableFilters={false}
         enableRowNumbers
         enablePinning
-        initialState={{ columnPinning: { right: ['id']}}}
       />
     </section>
   );

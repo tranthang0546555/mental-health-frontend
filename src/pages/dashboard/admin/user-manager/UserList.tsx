@@ -176,7 +176,6 @@ export default function UserList() {
         data={data}
         enableFilters={false}
         enableRowNumbers
-        initialState={{ columnPinning: { right: ["actions"] } }}
       />
     </section>
   );

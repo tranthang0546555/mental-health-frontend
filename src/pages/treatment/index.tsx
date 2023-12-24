@@ -36,15 +36,19 @@ export default function Treatment() {
                   <div className="col-4 p-3 " key={item._id}>
                     <div className="card">
                       <div className="preview">
-                        <video
-                          src={
-                            item.type === "video"
-                              ? videoPath(item.file)
-                              : audioPath(item.file)
-                          }
-                          className="card-img-top"
-                          controls
-                        ></video>
+                        {item?.link ? (
+                          <iframe src={item.link} className="card-img-top" />
+                        ) : (
+                          <video
+                            src={
+                              item.type === "video"
+                                ? videoPath(item.file)
+                                : audioPath(item.file)
+                            }
+                            className="card-img-top"
+                            controls
+                          ></video>
+                        )}
                       </div>
 
                       <div className="card-body">

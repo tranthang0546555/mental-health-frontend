@@ -11,6 +11,7 @@ type Inputs = {
   description?: string;
   category?: string;
   file?: File;
+  link?: string;
 };
 
 const videoValid = ["video/mp4", "video/ogg", "video/mpeg"];
@@ -25,7 +26,8 @@ export default function TreatmentCreate() {
       title: yup.string().required("Không để trống"),
       description: yup.string().required("Không để trống"),
       category: yup.string(),
-      file: yup.mixed().required("Chọn file tải lên"),
+      file: yup.mixed(),
+      link: yup.string(),
     })
     .required();
 
@@ -42,22 +44,30 @@ export default function TreatmentCreate() {
   });
 
   const onSubmit = async (data: Inputs) => {
-    const formData = new FormData();
-    formData.append("file", data.file!);
-    formData.append("title", data.title!);
-    formData.append("description", data.description!);
-    formData.append("duration", `${duration}`);
-    formData.append("category", data.category!);
+    if (!data.link) {
+      const formData = new FormData();
+      formData.append("file", data.file!);
+      formData.append("title", data.title!);
+      formData.append("description", data.description!);
+      formData.append("duration", `${duration}`);
+      formData.append("category", data.category!);
 
-    const url = TREATMENT_LIST + "/" + type;
-    await useApi
-      .post(url, formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      })
-      .then(() => {
+      const url = TREATMENT_LIST + "/" + type;
+      await useApi
+        .post(url, formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        })
+        .then(() => {
+          toast.success("Đã thêm mới");
+          reset();
+        });
+    } else {
+      const url = TREATMENT_LIST + "/" + "link";
+      await useApi.post(url, data).then(() => {
         toast.success("Đã thêm mới");
         reset();
       });
+    }
   };
 
   const handleFileChange = (
@@ -99,6 +109,28 @@ export default function TreatmentCreate() {
                 {errors.file && (
                   <span className="form-error-message">
                     {errors.file.message}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            <div className="row mb-3">
+              <label
+                htmlFor="link"
+                className="col-md-2 col-lg-2 col-form-label"
+              >
+                Đường dẫn
+              </label>
+              <div className="col-md-10 col-lg-10">
+                <input
+                  type="text"
+                  id="link"
+                  className="form-control"
+                  {...register("link")}
+                />
+                {errors.link && (
+                  <span className="form-error-message">
+                    {errors.link.message}
                   </span>
                 )}
               </div>

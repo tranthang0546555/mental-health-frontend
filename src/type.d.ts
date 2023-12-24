@@ -178,4 +178,5 @@ declare type Treatment = {
   file: string;
   duration: number;
   type: "video" | "audio";
+  link?: string;
 } & TimeStamp;

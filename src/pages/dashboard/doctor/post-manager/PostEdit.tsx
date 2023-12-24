@@ -40,14 +40,14 @@ export default function PostEdit() {
   });
 
   const getCategoriest = async () => {
-    await useApi(CATEGORY_LIST).then((res) => {
+    await useApi.get(CATEGORY_LIST).then((res) => {
       const data = res.data as Data<Category>;
       setCategories(data.data);
     });
   };
 
   const getPost = async () => {
-    await useApi(POST_DETAIL.replace(":slug", slug)).then((res) => {
+    await useApi.get(POST_DETAIL.replace(":slug", slug)).then((res) => {
       const data = res.data as Post;
       reset({
         title: data.title,
@@ -59,10 +59,7 @@ export default function PostEdit() {
   };
 
   const onSubmit = async (data: PostInputs) => {
-    await useApi(POST_DETAIL.replace(":slug", slug), {
-      method: "PATCH",
-      data: data,
-    }).then(() => {
+    await useApi.patch(POST_DETAIL.replace(":slug", slug), data).then(() => {
       toast.success("Thay đổi đã được lưu");
     });
   };

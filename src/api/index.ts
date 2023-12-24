@@ -49,6 +49,7 @@ export const RECORD_BY_USER = "/record/user/:id";
 export const RECORD_BY_DOCTOR = "/record/doctor/:id";
 
 export const TREATMENT_LIST = "/treatment";
+export const TREATMENT_DETAIL = "/treatment/:id";
 
 export const ROOM_ACCESS = "/schedule/room-access/:id";
 
