@@ -1,19 +1,9 @@
-import { useEffect, useState } from "react";
-import { HOME_SYSTEM_INFO, useApi } from "../../../../api";
 import { DoughnutChart } from "../../../../components/Chart";
+import { useAppSelector } from "../../../../hooks/store";
 import { numberFormat } from "../../../../utils";
 
 export default function UserOverView() {
-  const [data, setData] = useState<CountsInfo>();
-  useEffect(() => {
-    getData();
-  }, []);
-
-  const getData = async () => {
-    await useApi.get(HOME_SYSTEM_INFO).then((res) => {
-      setData(res.data);
-    });
-  };
+  const { counts } = useAppSelector((state) => state.info);
 
   return (
     <div className="user-overview">
@@ -29,7 +19,7 @@ export default function UserOverView() {
                       <i className="bi bi-person"></i>
                     </div>
                     <div className="ps-3">
-                      <h6>{numberFormat(data?.user)}</h6>
+                      <h6>{numberFormat(counts?.user)}</h6>
                     </div>
                   </div>
                 </div>
@@ -44,7 +34,7 @@ export default function UserOverView() {
                       <i className="bi bi-person"></i>
                     </div>
                     <div className="ps-3">
-                      <h6>{numberFormat(data?.doctor)}</h6>
+                      <h6>{numberFormat(counts?.doctor)}</h6>
                     </div>
                   </div>
                 </div>
@@ -59,7 +49,7 @@ export default function UserOverView() {
                       <i className="bi bi-person"></i>
                     </div>
                     <div className="ps-3">
-                      <h6>{numberFormat(data?.post)}</h6>
+                      <h6>{numberFormat(counts?.post)}</h6>
                     </div>
                   </div>
                 </div>
@@ -74,7 +64,7 @@ export default function UserOverView() {
                       <i className="bi bi-person"></i>
                     </div>
                     <div className="ps-3">
-                      <h6>{numberFormat(data?.visitor)}</h6>
+                      <h6>{numberFormat(counts?.visitor)}</h6>
                     </div>
                   </div>
                 </div>
@@ -88,7 +78,7 @@ export default function UserOverView() {
             label="Tài khoản"
             data={{
               labels: ["Bệnh nhân", "Bác sĩ"],
-              data: [data?.user || 0, data?.doctor || 0],
+              data: [counts?.user || 0, counts?.doctor || 0],
             }}
           />
         </div>

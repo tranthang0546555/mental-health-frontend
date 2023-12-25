@@ -2,7 +2,10 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { HOME_SYSTEM_INFO, useApi } from "../api";
 
 export const countsInfo = createAsyncThunk("info/count", async () => {
-  const response = await useApi(HOME_SYSTEM_INFO);
+  const defaultTheme = localStorage.getItem("theme");
+  let url = HOME_SYSTEM_INFO;
+  if (!defaultTheme) url += "?newUser=true";
+  const response = await useApi(url);
   return response.data;
 });
 

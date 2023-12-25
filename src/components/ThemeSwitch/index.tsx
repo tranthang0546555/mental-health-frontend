@@ -5,17 +5,19 @@ export default function ThemeSwitch() {
   const [theme, setTheme] = useState<string>("light");
 
   useEffect(() => {
-    const defaultTheme = localStorage.getItem("theme");
-    if (defaultTheme) {
-      handleChange(defaultTheme);
-      return setTheme(defaultTheme);
-    }
-    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-      .matches
-      ? "dark"
-      : "light";
-    setTheme(systemTheme);
-    handleChange(systemTheme);
+    setTimeout(() => {
+      const defaultTheme = localStorage.getItem("theme");
+      if (defaultTheme) {
+        handleChange(defaultTheme);
+        return setTheme(defaultTheme);
+      }
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+        .matches
+        ? "dark"
+        : "light";
+      setTheme(systemTheme);
+      handleChange(systemTheme);
+    }, 0)
   }, []);
 
   const handleChange = (theme: string) => {
