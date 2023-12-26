@@ -1,3 +1,22 @@
 .record-detail p {
   padding: 16px;
 }
+
+.record-detail .header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.record-detail .header .history {
+  cursor: pointer;
+  text-decoration: underline;
+  padding-right: 20px;
+}
+
+.record-detail .header .active {
+  color: var(--bs-primary);
+}
+
+.record-detail .header .btn {
+  height: fit-content;
+}

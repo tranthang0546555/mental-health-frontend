@@ -144,6 +144,18 @@ declare type MedicalRecord = TimeStamp & {
   user?: User;
 };
 
+declare type MedicalRecordHistory = MedicalRecord & {
+  recordId: number;
+  pushedAt?: string;
+}
+
+declare type MedicalRecordWithHistory = {
+  record: MedicalRecord;
+  histories: MedicalRecordHistory[];
+  doctor?: Doctor;
+  user?: User;
+}
+
 declare type MedicalRecordData = {
   dayIn?: string;
   diagnostic?: string;

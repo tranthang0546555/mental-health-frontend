@@ -1,5 +1,5 @@
 import { MRT_ColumnDef, MaterialReactTable } from "material-react-table";
-import { useLayoutEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { GET_SCHEDULE, PATIENT_REGISTRATION, useApi } from "../../../api";
@@ -16,10 +16,9 @@ export default function AppointmentManager({ option }: Props) {
   const [data, setData] = useState<Appointment[]>([]);
   const role = useAppSelector((state) => state.auth.user?.role) as Role;
   const navigate = useNavigate();
-  useLayoutEffect(() => {
-    setData([]);
+  useEffect(() => {
     getData();
-  }, [option]);
+  }, []);
 
   const columns = useMemo<MRT_ColumnDef<Appointment>[]>(
     () => [

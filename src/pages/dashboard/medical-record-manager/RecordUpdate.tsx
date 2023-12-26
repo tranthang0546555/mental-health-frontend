@@ -9,13 +9,13 @@ import { avatarPath, dateFormat } from "../../../utils";
 
 export default function RecordUpdate() {
   const { id = "" } = useParams();
-  const [record, setRecord] = useState<MedicalRecord>();
   const navigate = useNavigate();
+  const [state, setState] = useState<MedicalRecordWithHistory>();
 
   useEffect(() => {
     (async () => {
       const data = await useApi.get(RECORD_DETAIL.replace(":id", id));
-      setRecord(data.data);
+      setState(data.data);
       reset(data.data?.data as MedicalRecordData);
     })();
   }, []);
@@ -45,9 +45,9 @@ export default function RecordUpdate() {
     navigate("/dashboard/medical-record/");
   };
 
-  if (!record) return <></>;
-  const { data: _data, user } = record;
-  const data = _data as MedicalRecordData;
+  if (!state) return <></>;
+  const { record, user } = state;
+  const data = record.data as MedicalRecordData;
 
   return (
     <section className="section profile">

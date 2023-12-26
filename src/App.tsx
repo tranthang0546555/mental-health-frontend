@@ -228,19 +228,19 @@ const router = createBrowserRouter([
           {
             index: true,
             path: "progress",
-            element: <AppointmentManager option="PROGRESS" />,
+            element: <AppointmentManager option="PROGRESS" key="progress" />,
           },
           {
             path: "pending",
-            element: <AppointmentManager option="PENDING" />,
+            element: <AppointmentManager option="PENDING" key="pending" />,
           },
           {
             path: "completed",
-            element: <AppointmentManager option="COMPLETED" />,
+            element: <AppointmentManager option="COMPLETED" key="completed" />,
           },
           {
             path: "cancel",
-            element: <AppointmentManager option="CANCEL" />,
+            element: <AppointmentManager option="CANCEL" key="cancel" />,
           },
           {
             path: "order",
