@@ -6,6 +6,42 @@
   min-height: calc(100vh - 440px);
 }
 
+.contact-icon {
+  z-index: 1030;
+  position: fixed;
+  right: 2rem;
+  bottom: 3rem;
+  cursor: pointer;
+  background-color: #1977cc;
+  color: white;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 50px;
+}
+
+.scroll-top {
+  z-index: 1030;
+  position: fixed;
+  right: 2rem;
+  bottom: 7rem;
+  cursor: pointer;
+  background-color: #1977cc;
+  color: white;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 50px;
+}
+
+.contact-icon:hover,
+.scroll-top:hover {
+  transform: scale(1.1);
+  color: white;
+}
+
 @media (max-width: 768px) {
   .inner-page {
     padding: 0;
