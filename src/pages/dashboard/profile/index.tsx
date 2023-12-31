@@ -21,6 +21,9 @@ type Inputs = {
   address?: string;
   degree?: string;
   experience?: string;
+  fullNameRelative?: string;
+  phoneRelative?: string;
+  addressRelative?: string;
 };
 
 export default function Profile() {
@@ -80,6 +83,7 @@ export default function Profile() {
         <div className="col-xl-12">
           <div className="card" id="profile-edit">
             <div className="card-body pt-3">
+              <h4>Thông tin cá nhân</h4>
               <form
                 onSubmit={handleSubmit(onSubmit, (invalid) =>
                   console.log(invalid)
@@ -102,7 +106,7 @@ export default function Profile() {
                     htmlFor="fullName"
                     className="col-md-4 col-lg-3 col-form-label"
                   >
-                    Họ và tên
+                    Họ và tên *
                   </label>
                   <div className="col-md-8 col-lg-9">
                     <input
@@ -124,7 +128,7 @@ export default function Profile() {
                     htmlFor="firstName"
                     className="col-md-4 col-lg-3 col-form-label"
                   >
-                    Tên / Họ
+                    Tên / Họ *
                   </label>
                   <div className="col-md-8 col-lg-9">
                     <div className="row gy-3">
@@ -162,21 +166,22 @@ export default function Profile() {
 
                 <div className="row mb-3">
                   <label
-                    htmlFor="phone"
+                    htmlFor="birthday"
                     className="col-md-4 col-lg-3 col-form-label"
                   >
-                    Số điện thoại
+                    Ngày sinh *
                   </label>
                   <div className="col-md-8 col-lg-9">
                     <input
-                      type="tel"
-                      id="phone"
+                      type="date"
+                      id="birthday"
                       className="form-control"
-                      {...register("phone")}
+                      placeholder="DD/MM/YYYY"
+                      {...register("birthday")}
                     />
-                    {errors.phone && (
+                    {errors.birthday && (
                       <span className="form-error-message">
-                        {errors.phone.message}
+                        {errors.birthday.message}
                       </span>
                     )}
                   </div>
@@ -187,7 +192,7 @@ export default function Profile() {
                     htmlFor="gender"
                     className="col-md-4 col-lg-3 col-form-label"
                   >
-                    Giới tính
+                    Giới tính *
                   </label>
                   <div className="col-md-8 col-lg-9">
                     <select
@@ -213,7 +218,7 @@ export default function Profile() {
                     htmlFor="numberId"
                     className="col-md-4 col-lg-3 col-form-label"
                   >
-                    Mã định danh
+                    CCCD / CMND *
                   </label>
                   <div className="col-md-8 col-lg-9">
                     <input
@@ -232,22 +237,21 @@ export default function Profile() {
 
                 <div className="row mb-3">
                   <label
-                    htmlFor="birthday"
+                    htmlFor="phone"
                     className="col-md-4 col-lg-3 col-form-label"
                   >
-                    Ngày sinh
+                    Số điện thoại *
                   </label>
                   <div className="col-md-8 col-lg-9">
                     <input
-                      type="date"
-                      id="birthday"
+                      type="tel"
+                      id="phone"
                       className="form-control"
-                      placeholder="DD/MM/YYYY"
-                      {...register("birthday")}
+                      {...register("phone")}
                     />
-                    {errors.birthday && (
+                    {errors.phone && (
                       <span className="form-error-message">
-                        {errors.birthday.message}
+                        {errors.phone.message}
                       </span>
                     )}
                   </div>
@@ -258,7 +262,7 @@ export default function Profile() {
                     htmlFor="address"
                     className="col-md-4 col-lg-3 col-form-label"
                   >
-                    Địa chỉ
+                    Địa chỉ *
                   </label>
                   <div className="col-md-8 col-lg-9">
                     <input
@@ -299,27 +303,101 @@ export default function Profile() {
                   </div>
                 )}
 
-                <div className="row mb-3">
-                  <label
-                    htmlFor="experience"
-                    className="col-md-4 col-lg-3 col-form-label"
-                  >
-                    Giới thiệu bản thân
-                  </label>
-                  <div className="col-md-8 col-lg-9">
-                    <textarea
-                      className="form-control"
-                      id="experience"
-                      style={{ height: "100px" }}
-                      {...register("experience")}
-                    />
-                    {errors.experience && (
-                      <span className="form-error-message">
-                        {errors.experience.message}
-                      </span>
-                    )}
+                {profile?.role === "doctor" && (
+                  <div className="row mb-3">
+                    <label
+                      htmlFor="experience"
+                      className="col-md-4 col-lg-3 col-form-label"
+                    >
+                      Giới thiệu bản thân *
+                    </label>
+                    <div className="col-md-8 col-lg-9">
+                      <textarea
+                        className="form-control"
+                        id="experience"
+                        style={{ height: "100px" }}
+                        {...register("experience")}
+                      />
+                      {errors.experience && (
+                        <span className="form-error-message">
+                          {errors.experience.message}
+                        </span>
+                      )}
+                    </div>
                   </div>
-                </div>
+                )}
+
+                {profile?.role === "user" && (
+                  <>
+                    <hr />
+                    <h4>Thông tin người thân</h4>
+                    <div className="row mb-3">
+                      <label
+                        htmlFor="fullNameRelative"
+                        className="col-md-4 col-lg-3 col-form-label"
+                      >
+                        Họ và tên
+                      </label>
+                      <div className="col-md-8 col-lg-9">
+                        <input
+                          type="text"
+                          id="fullNameRelative"
+                          className="form-control"
+                          {...register("fullNameRelative")}
+                        />
+                        {errors.fullNameRelative && (
+                          <span className="form-error-message">
+                            {errors.fullNameRelative.message}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="row mb-3">
+                      <label
+                        htmlFor="phoneRelative"
+                        className="col-md-4 col-lg-3 col-form-label"
+                      >
+                        Số điện thoại
+                      </label>
+                      <div className="col-md-8 col-lg-9">
+                        <input
+                          type="text"
+                          id="phoneRelative"
+                          className="form-control"
+                          {...register("phoneRelative")}
+                        />
+                        {errors.phoneRelative && (
+                          <span className="form-error-message">
+                            {errors.phoneRelative.message}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="row mb-3">
+                      <label
+                        htmlFor="addressRelative"
+                        className="col-md-4 col-lg-3 col-form-label"
+                      >
+                        Địa chỉ
+                      </label>
+                      <div className="col-md-8 col-lg-9">
+                        <input
+                          type="text"
+                          id="addressRelative"
+                          className="form-control"
+                          {...register("addressRelative")}
+                        />
+                        {errors.addressRelative && (
+                          <span className="form-error-message">
+                            {errors.addressRelative.message}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </>
+                )}
 
                 <div className="text-center">
                   <button type="submit" className="btn btn-primary">
