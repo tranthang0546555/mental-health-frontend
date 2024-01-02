@@ -50,7 +50,10 @@ const authSlice = createSlice({
         const token = action.payload.accessToken;
         state.accessToken = token;
         localStorage.setItem(LocalStorageKey.ACCESS_TOKEN, token);
-        location.assign("/dashboard");
+        const searchParams = new URLSearchParams(location.search);
+        const navigatePath = searchParams.get("navigate");
+        if (navigatePath) location.assign("/" + navigatePath);
+        else location.assign("/dashboard");
       });
       builder.addCase(login.rejected, (_, action) => {
         const payload: any = action.payload;

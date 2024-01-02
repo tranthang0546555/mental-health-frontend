@@ -36,7 +36,7 @@ export default function Contact() {
               <div className="email">
                 <i className="bi bi-envelope"></i>
                 <h4>Email:</h4>
-                <p>tnthang.18it5@vku.udn.vn</p>
+                <p>tnthang.xxxxx@vku.udn.vn</p>
               </div>
 
               <div className="phone">
@@ -49,8 +49,6 @@ export default function Contact() {
           {/* TODO */}
           <div className="col-lg-8 mt-5 mt-lg-0">
             <form
-              action="forms/contact.php"
-              method="post"
               role="form"
               className="php-email-form"
             >

@@ -77,6 +77,9 @@ export default function HeaderDashboard() {
               <li className="dropdown-header">
                 <Link to="/dashboard/profile">
                   <h6>{user?.fullName}</h6>
+                  <span>
+                    {user?.email}
+                  </span>
                 </Link>
               </li>
               <li>

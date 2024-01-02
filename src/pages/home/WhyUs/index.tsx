@@ -52,7 +52,7 @@ export default function WhyUs() {
                 <div className="col-xl-4 d-flex align-items-stretch">
                   <div className="icon-box mt-4 mt-xl-0">
                     <i className="bx bx-brain"></i>
-                    <h4>Nghiên cứu & Giáo dục</h4>
+                    <h4>Nghiên cứu & giáo dục</h4>
                     <p>
                       Tìm ra những phương pháp điều trị hiệu quả và cải thiện sự
                       hiểu biết

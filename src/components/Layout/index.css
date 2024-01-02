@@ -46,4 +46,12 @@
   .inner-page {
     padding: 0;
   }
+
+  .scroll-top,
+  .contact-icon {
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    right: 1rem;
+  }
 }
