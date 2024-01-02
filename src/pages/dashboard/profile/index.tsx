@@ -56,6 +56,9 @@ export default function Profile() {
         degree: profile?.description?.degree,
         experience: profile?.description?.experience,
         birthday: profile?.birthday,
+        fullNameRelative: profile?.fullNameRelative,
+        phoneRelative: profile?.phoneRelative,
+        addressRelative: profile?.addressRelative,
       };
       reset(defaultValues);
     }

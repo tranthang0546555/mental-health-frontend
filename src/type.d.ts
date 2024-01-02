@@ -51,6 +51,10 @@ declare type User = TimeStamp & {
   unlockBy?: User;
   unlockedAt?: string;
   verify?: boolean;
+
+  fullNameRelative?: string;
+  phoneRelative?: string;
+  addressRelative?: string;
 };
 
 declare type Schedule = {
