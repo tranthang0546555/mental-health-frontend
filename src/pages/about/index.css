@@ -56,7 +56,7 @@
   font-size: 14px;
 }
 .about .video-box {
-  background: url("/assets/img/about.jpg") center center no-repeat;
+  background: url('/assets/img/about.jpg') center center no-repeat;
   background-size: cover;
   min-height: 500px;
 }
@@ -72,7 +72,7 @@
   overflow: hidden;
 }
 .about .play-btn::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 50%;
   top: 50%;
@@ -86,7 +86,7 @@
   transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 .about .play-btn::before {
-  content: "";
+  content: '';
   position: absolute;
   width: 120px;
   height: 120px;
@@ -112,7 +112,7 @@
   transform: scale(20);
 }
 .about .play-btn:hover::before {
-  content: "";
+  content: '';
   position: absolute;
   left: 50%;
   top: 50%;

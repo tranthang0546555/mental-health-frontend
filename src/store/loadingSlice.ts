@@ -1,18 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit'
 
 const loadingSlice = createSlice({
-  name: "loading",
+  name: 'loading',
   initialState: {
-    isLoading: false,
+    isLoading: false
   },
   reducers: {
     addLoading: (state) => {
-      state.isLoading = true;
+      state.isLoading = true
     },
     removeLoading: (state) => {
-      state.isLoading = false;
-    },
-  },
-});
-export const { addLoading, removeLoading } = loadingSlice.actions;
-export default loadingSlice.reducer;
+      state.isLoading = false
+    }
+  }
+})
+export const { addLoading, removeLoading } = loadingSlice.actions
+export default loadingSlice.reducer

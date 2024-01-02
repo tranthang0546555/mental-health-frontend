@@ -1,12 +1,12 @@
 .theme-btn {
-    border: 2px solid var(--color-border-2);
-    width: 30px;
-    height: 30px;
-    border-radius: 10px;
-    background: transparent;
-    color: var(--color-title);
-    margin-left: 10px;;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  border: 2px solid var(--color-border-2);
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--color-title);
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

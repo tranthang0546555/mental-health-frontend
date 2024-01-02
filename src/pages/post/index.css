@@ -166,7 +166,7 @@
 }
 
 .blog .blog-details .content blockquote:after {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   top: 0;
@@ -253,7 +253,7 @@
 .blog .blog-details .meta-bottom .tags li + li::before {
   padding-right: 6px;
   color: var(--color-default);
-  content: ",";
+  content: ',';
 }
 
 .blog .blog-details .meta-bottom .share {

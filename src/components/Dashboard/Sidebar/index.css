@@ -56,7 +56,7 @@
   }
 }
 
-@media (max-width: 720px){
+@media (max-width: 720px) {
   #main-dashboard {
     margin-top: 0 !important;
     padding: 10px !important;

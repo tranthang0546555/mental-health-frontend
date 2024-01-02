@@ -19,7 +19,7 @@
   top: 0;
   bottom: 0;
   position: absolute;
-  content: " ";
+  content: ' ';
   width: 2px;
   background: var(--color-title);
   left: 100%;
@@ -43,7 +43,7 @@
 }
 .timeline > li:before,
 .timeline > li:after {
-  content: " ";
+  content: ' ';
   display: table;
 }
 .timeline > li:after {
@@ -51,7 +51,7 @@
 }
 .timeline > li:before,
 .timeline > li:after {
-  content: " ";
+  content: ' ';
   display: table;
 }
 .timeline > li:after {
@@ -77,7 +77,7 @@
   border-left: 15px solid #dcdcdc;
   border-right: 0 solid #dcdcdc;
   border-bottom: 15px solid transparent;
-  content: " ";
+  content: ' ';
 }
 .timeline > li > .timeline-panel:after {
   position: absolute;
@@ -88,7 +88,7 @@
   border-left: 14px solid var(--color-background-card);
   border-right: 0 solid var(--color-background-card);
   border-bottom: 14px solid transparent;
-  content: " ";
+  content: ' ';
 }
 .timeline > li > .timeline-badge {
   color: #ffffff;

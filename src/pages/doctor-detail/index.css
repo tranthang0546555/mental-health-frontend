@@ -1,71 +1,70 @@
 .box-profile {
-    height: fit-content;
-    border-radius: 10px;
-    padding: 10px;
-    text-align: center;
-    box-shadow: 0px 2px 15px rgba(44, 73, 100, 0.08);
-    border: 1px solid var(--color-border);
+  height: fit-content;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0px 2px 15px rgba(44, 73, 100, 0.08);
+  border: 1px solid var(--color-border);
 }
 
 .box-profile .content {
-    margin: 15px 2px;
+  margin: 15px 2px;
 }
 
 .box-profile .image img {
-    height: auto;
-    width: 120px;
-    border-radius: 50%;
+  height: auto;
+  width: 120px;
+  border-radius: 50%;
 
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
 }
 
 .box-profile .level {
-    font-size: 0.7em;
-    background-color: rgb(164, 189, 183, 0.5);
-    width: 50px;
-    padding: 3px;
-    border-radius: 5px;
-    font-weight: bolder;
-    letter-spacing: 1px;
-    display: block;
-    margin: 0px auto 10px;
+  font-size: 0.7em;
+  background-color: rgb(164, 189, 183, 0.5);
+  width: 50px;
+  padding: 3px;
+  border-radius: 5px;
+  font-weight: bolder;
+  letter-spacing: 1px;
+  display: block;
+  margin: 0px auto 10px;
 }
 
 .box-profile .name {
-    font-size: 20px;
-    font-weight: bolder;
-    letter-spacing: 1px;
+  font-size: 20px;
+  font-weight: bolder;
+  letter-spacing: 1px;
 }
 
 .box-profile .text .info {
-    margin: auto;
-    width: fit-content;
-    text-align: left;
-    padding: 20px;
+  margin: auto;
+  width: fit-content;
+  text-align: left;
+  padding: 20px;
 }
 
 .box-profile .job_title {
-    font-size: 14px;
-    font-weight: bolder;
+  font-size: 14px;
+  font-weight: bolder;
 }
 
 .box-profile .job_discription {
-    font-size: 0.7em;
-    margin: 10px 30px 20px;
+  font-size: 0.7em;
+  margin: 10px 30px 20px;
 }
 
 .box-profile .icons {
-    margin: 0px 30px;
-    font-size: 1.5em;
-    display: flex;
-    justify-content: space-around;
+  margin: 0px 30px;
+  font-size: 1.5em;
+  display: flex;
+  justify-content: space-around;
 }
 
-
 .box-info {
-    text-align: left;
-    padding: 30px;
+  text-align: left;
+  padding: 30px;
 }
