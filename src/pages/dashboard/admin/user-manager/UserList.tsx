@@ -66,14 +66,14 @@ export default function UserList() {
         accessorKey: "actions",
         size: 1,
         Cell({ row }) {
-          const { _id = "", name, role } = row.original;
+          const { _id = "", name, role, email } = row.original;
           return (
             <>
               <Modal
                 id={_id}
                 name="lock"
                 title=" Đưa vào danh sách đen"
-                description={`Chuyển người dùng "${name?.firstName}" vào danh sách đen và người dùng sẽ không thể truy cập vào hệ thống được nữa!`}
+                description={`Chuyển người dùng "${name?.firstName || email}" vào danh sách đen và người dùng sẽ không thể truy cập vào hệ thống được nữa!`}
                 onSubmit={(data) => lockUserAccount(_id, String(data))}
                 button={
                   <button type="button" className="btn btn-danger p-2">
@@ -101,7 +101,7 @@ export default function UserList() {
                     <i className="bi bi-gear"></i>
                   </button>
                 }
-                description={`Lựa chọn quyền truy cập cho người dùng "${name?.firstName}"`}
+                description={`Lựa chọn quyền truy cập cho người dùng "${name?.firstName || email}"`}
                 optional={{
                   select: {
                     attributes: { defaultValue: role || ROLE.USER },

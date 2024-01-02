@@ -119,7 +119,7 @@ export default function TreatmentCreate() {
                 htmlFor="link"
                 className="col-md-2 col-lg-2 col-form-label"
               >
-                Đường dẫn
+                Hoặc đường dẫn (Youtube)
               </label>
               <div className="col-md-10 col-lg-10">
                 <input
@@ -141,7 +141,7 @@ export default function TreatmentCreate() {
                 htmlFor="title"
                 className="col-md-2 col-lg-2 col-form-label"
               >
-                Tiêu đề
+                Tiêu đề *
               </label>
               <div className="col-md-10 col-lg-10">
                 <input
@@ -163,7 +163,7 @@ export default function TreatmentCreate() {
                 htmlFor="description"
                 className="col-md-2 col-lg-2 col-form-label"
               >
-                Mô tả
+                Mô tả *
               </label>
               <div className="col-md-10 col-lg-10">
                 <input

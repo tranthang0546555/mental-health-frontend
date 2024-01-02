@@ -141,7 +141,7 @@ export default function HeaderDashboard() {
                   onClick={() => dispatch(logOut())}
                 >
                   <i className="bi bi-box-arrow-right"></i>
-                  <span>Log Out</span>
+                  <span>Đăng xuất</span>
                 </button>
               </li>
             </ul>
