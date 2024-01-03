@@ -22,19 +22,7 @@ export const avatarPath = (name?: string) => import.meta.env.VITE_BASE_URL + '/a
 export const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
 
-export const decodeMedicalRecord = (record: MedicalRecord): MedicalRecord => {
-  return {
-    ...record,
-    id: Number(record.id),
-    data: JSON.parse(String(record.data || '{}')),
-    createdAt: Number(record.createdAt),
-    updatedAt: Number(record.updatedAt)
-  }
-}
-
-export const encodeMedicalRecord = (record: MedicalRecord): MedicalRecord => {
-  return {
-    ...record,
-    data: JSON.stringify(record.data)
-  }
+export const getQuery = (name: string) => {
+  const searchParams = new URLSearchParams(location.search)
+  return searchParams.get(name)
 }

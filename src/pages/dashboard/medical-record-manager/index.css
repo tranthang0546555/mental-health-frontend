@@ -20,3 +20,12 @@
 .record-detail .header .btn {
   height: fit-content;
 }
+
+.record-list .search-box {
+  max-width: 500px;
+  padding: 10px 10px;
+}
+
+.record-list > div {
+  background-color: white;
+}

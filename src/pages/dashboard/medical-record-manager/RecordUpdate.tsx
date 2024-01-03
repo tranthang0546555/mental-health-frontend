@@ -16,7 +16,7 @@ export default function RecordUpdate() {
     ;(async () => {
       const data = await useApi.get(RECORD_DETAIL.replace(':id', id))
       setState(data.data)
-      reset(data.data?.data as MedicalRecordData)
+      reset(data.data?.record.data)
     })()
   }, [])
 
@@ -46,8 +46,10 @@ export default function RecordUpdate() {
   }
 
   if (!state) return <></>
-  const { record, user } = state
-  const data = record.data as MedicalRecordData
+  const {
+    record: { data },
+    user
+  } = state
 
   return (
     <section className='section profile'>
@@ -81,25 +83,6 @@ export default function RecordUpdate() {
                   </div>
                 </div>
 
-                {/* <div className="row mb-3">
-                  <label
-                    htmlFor="dayIn"
-                    className="col-md-4 col-lg-3 col-form-label"
-                  >
-                    Phòng
-                  </label>
-                  <div className="col-md-8 col-lg-9">
-                    <input
-                      type="text"
-                      id="dayIn"
-                      className="form-control"
-                      placeholder="DD/MM/YYYY"
-                      disabled
-                      value={appointment.code}
-                    />
-                  </div>
-                </div> */}
-
                 <hr />
 
                 <div className='row mb-3'>
@@ -130,8 +113,7 @@ export default function RecordUpdate() {
                       className='form-select'
                       aria-label='Default select example'
                       disabled
-                      value={user?.gender}
-                    >
+                      value={user?.gender}>
                       <option value='1'>Nam</option>
                       <option value='2'>Nữ</option>
                       <option value='3'>Ẩn</option>

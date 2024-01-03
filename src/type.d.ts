@@ -133,7 +133,7 @@ declare type TimeStamp = {
 
 declare type MedicalRecord = TimeStamp & {
   id: number
-  data: MedicalRecordData | string
+  data: MedicalRecordData
   doctorId: string
   userId: string
   walletId: string

@@ -46,6 +46,7 @@ export const SET_DOCTOR_SCHEDULE = '/schedule/set-doctor/:id'
 export const RECORD_LIST = '/record'
 export const RECORD_DETAIL = '/record/:id'
 export const RECORD_BY_USER = '/record/user/:id'
+export const RECORD_BY_NUMBERID = '/record/user/numberId/:id'
 export const RECORD_BY_DOCTOR = '/record/doctor/:id'
 
 export const TREATMENT_LIST = '/treatment'
