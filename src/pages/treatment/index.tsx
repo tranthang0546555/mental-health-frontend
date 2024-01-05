@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
+import { Link } from 'react-router-dom'
 import { TREATMENT_LIST, useApi } from '../../api'
 import Skeleton from '../../components/Skeleton'
 import { audioPath, videoPath } from '../../utils'
@@ -22,7 +23,7 @@ export default function Treatment() {
         <div className='row'>
           {isLoading ? (
             Array.from(new Array(6)).map((_, idx) => (
-              <div className='col-lg-6' key={idx}>
+              <div className='col-lg-4' key={idx}>
                 <Skeleton variant='rounded' height='120px' />
                 <Skeleton variant='rounded' />
                 <Skeleton variant='text' />
@@ -33,26 +34,29 @@ export default function Treatment() {
             <>
               {data?.data.map((item) => {
                 return (
-                  <div className='col-4 p-3 ' key={item._id}>
+                  <div className='col-lg-4 p-3 ' key={item._id}>
                     <div className='card'>
                       <div className='preview'>
                         {item?.link ? (
-                          <iframe src={item.link} className='card-img-top' />
+                          <iframe
+                            src={item.link + '&autoplay=0&showinfo=0&controls=0&autohide=1'}
+                            className='card-img-top'
+                          />
                         ) : (
                           <video
                             src={item.type === 'video' ? videoPath(item.file) : audioPath(item.file)}
                             className='card-img-top'
-                            controls
-                          ></video>
+                            controls></video>
                         )}
                       </div>
-
                       <div className='card-body'>
-                        <h5 className='card-title'>{item.title}</h5>
+                        <h5 className='card-title'>
+                          <Link to={`/treatment/watch?id=${item._id}`}>{item.title}</Link>
+                        </h5>
                         <p className='card-text'>{item.description}</p>
-                        <a href='#' className='btn btn-primary'>
+                        <Link to={`/treatment/watch?id=${item._id}`} className='btn btn-primary'>
                           Phát ngay
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>

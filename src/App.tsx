@@ -40,6 +40,7 @@ import ForgotPassword from './pages/auth/forgot'
 import ChangePassword from './pages/auth/change'
 import AccountActive from './pages/auth/active'
 import DoctorDetail from './pages/doctor-detail'
+import Watch from './pages/treatment/Watch'
 
 const router = createBrowserRouter([
   {
@@ -275,6 +276,14 @@ const router = createBrowserRouter([
     element: (
       <Layout title='Trị liệu'>
         <Treatment />
+      </Layout>
+    )
+  },
+  {
+    path: 'treatment/watch',
+    element: (
+      <Layout title='Trị liệu'>
+        <Watch />
       </Layout>
     )
   },
