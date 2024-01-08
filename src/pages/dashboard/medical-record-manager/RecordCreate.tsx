@@ -91,14 +91,7 @@ export default function RecordCreate() {
                     Phòng
                   </label>
                   <div className='col-md-8 col-lg-9'>
-                    <input
-                      type='text'
-                      id='dayIn'
-                      className='form-control'
-                      placeholder='DD/MM/YYYY'
-                      disabled
-                      value={appointment.code}
-                    />
+                    <input type='text' id='dayIn' className='form-control' disabled value={appointment.room} />
                   </div>
                 </div>
 
@@ -132,8 +125,7 @@ export default function RecordCreate() {
                       className='form-select'
                       aria-label='Default select example'
                       disabled
-                      {...register('user.gender')}
-                    >
+                      {...register('user.gender')}>
                       <option value='1'>Nam</option>
                       <option value='2'>Nữ</option>
                       <option value='3'>Ẩn</option>
