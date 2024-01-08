@@ -16,7 +16,8 @@ export default function VerifyAppointment(props: Props) {
     const data = {
       doctorId: doctor ? doctor._id : undefined,
       from: new Date(timeSelect.from),
-      to: new Date(timeSelect.to)
+      to: new Date(timeSelect.to),
+      room: timeSelect.room
     }
 
     await useApi

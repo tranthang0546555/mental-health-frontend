@@ -20,6 +20,7 @@ export const DOCTOR_LIST = 'doctor'
 export const DOCTOR_DETAIL = '/doctor/:id'
 export const DOCTOR_POST_LIST = '/doctor/post'
 export const DOCTOR_TIME_SERVING = '/doctor/time-serving'
+export const DOCTOR_WORKING_ROOMS = '/doctor/working-rooms'
 
 export const USER_LIST = 'user'
 export const LOCKED_USER_LIST = 'user/locked'

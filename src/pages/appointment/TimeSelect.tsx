@@ -42,8 +42,7 @@ export default function TimeSelect(props: Props) {
                 role='tab'
                 aria-controls={`day-${idx}`}
                 aria-selected='true'
-                onClick={() => setTab({ day, nextweek: false })}
-              >
+                onClick={() => setTab({ day, nextweek: false })}>
                 {SCHEDULE_DAY[day] + ' - ' + format(sub(toDay, { days: now.getDay() - idx }), 'dd/MM')}
               </button>
             </li>
@@ -62,8 +61,7 @@ export default function TimeSelect(props: Props) {
                 role='tab'
                 aria-controls={`day-${idx}`}
                 aria-selected='true'
-                onClick={() => setTab({ day, nextweek: true })}
-              >
+                onClick={() => setTab({ day, nextweek: true })}>
                 {SCHEDULE_DAY[day] + ' - ' + format(sub(toDay, { days: now.getDay() - idx }), 'dd/MM')}
               </button>
             </li>
@@ -84,12 +82,11 @@ export default function TimeSelect(props: Props) {
               className={`tab-pane fade show ${tab?.day === day && tab.nextweek === false ? 'active' : ''}`}
               id={`day-${idx}`}
               role='tabpanel'
-              aria-labelledby={`day-tab-${idx}`}
-            >
+              aria-labelledby={`day-tab-${idx}`}>
               {schedule.map((time) => {
                 const from = SCHEDULE_TIME_HOOK.getTime() + time.from
                 const to = SCHEDULE_TIME_HOOK.getTime() + time.to
-                const label = hourFormat(from) + ' - ' + hourFormat(to)
+                const label = hourFormat(from) + ' - ' + hourFormat(to) + (time?.room ? ` [${time?.room}] ` : '')
 
                 const isBooked = booked.some(
                   (v) =>
@@ -101,8 +98,7 @@ export default function TimeSelect(props: Props) {
                     {isBooked ? (
                       <span
                         onClick={() => toast.warn('Đã có ai đó đặt lịch vào thời gian này')}
-                        className='time-chip time-chip-error badge bg-danger'
-                      >
+                        className='time-chip time-chip-error badge bg-danger'>
                         {label}
                       </span>
                     ) : (
@@ -125,12 +121,11 @@ export default function TimeSelect(props: Props) {
               className={`tab-pane fade show ${tab?.day === day && tab.nextweek === true ? 'active' : ''}`}
               id={`day-${idx}`}
               role='tabpanel'
-              aria-labelledby={`day-tab-${idx}`}
-            >
+              aria-labelledby={`day-tab-${idx}`}>
               {schedule.map((time) => {
                 const from = SCHEDULE_TIME_HOOK.getTime() + time.from + 7 * 24 * 60 * 60 * 1000
                 const to = SCHEDULE_TIME_HOOK.getTime() + time.to + 7 * 24 * 60 * 60 * 1000
-                const label = hourFormat(from) + ' - ' + hourFormat(to)
+                const label = hourFormat(from) + ' - ' + hourFormat(to) + (time?.room ? ` [${time?.room}] ` : '')
                 console.log('booked', booked)
                 const isBooked = booked.some(
                   (v) =>
@@ -142,8 +137,7 @@ export default function TimeSelect(props: Props) {
                     {isBooked ? (
                       <span
                         onClick={() => toast.warn('Đã có ai đó đặt lịch vào thời gian này')}
-                        className='time-chip time-chip-error badge bg-danger'
-                      >
+                        className='time-chip time-chip-error badge bg-danger'>
                         {label}
                       </span>
                     ) : (
@@ -168,7 +162,7 @@ export default function TimeSelect(props: Props) {
 
     if (bookingFrom.getTime() < now.getTime() + 24 * 60 * 60 * 1000 && !nextweek)
       return toast.warn('Bạn phải đặt sớm hơn ít nhất hai ngày, vui lòng chọn thời gian khác')
-    onSelect({ from: bookingFrom.getTime(), to: bookingTo.getTime() })
+    onSelect({ from: bookingFrom.getTime(), to: bookingTo.getTime(), room: schedule.room })
   }
 
   useEffect(() => {

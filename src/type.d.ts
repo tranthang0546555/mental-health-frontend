@@ -60,6 +60,7 @@ declare type User = TimeStamp & {
 declare type Schedule = {
   from: number
   to: number
+  room?: string
 }
 
 declare type TimeServing = {
@@ -72,6 +73,8 @@ declare type TimeServing = {
   sat: Schedule[]
 }
 
+declare type WorkingRooms = { rooms: string[]; default?: number }
+
 declare type Doctor = User & {
   description?: {
     experience?: string
@@ -80,6 +83,7 @@ declare type Doctor = User & {
   rating?: number
   ratingCount?: number
   timeServing?: TimeServing
+  workingRooms?: WorkingRooms
 }
 
 declare type LoginInputs = {
@@ -119,6 +123,7 @@ declare type Appointment = TimeStamp & {
   doctor: Doctor
   code: string
   from: string
+  room: string
   to: string
   status: string
   writeRecord?: boolean

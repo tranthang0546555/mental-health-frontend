@@ -27,8 +27,12 @@ export default function AppointmentManager({ option }: Props) {
         accessorFn: (originalRow) => hourFormat(originalRow.from) + ' - ' + dateFormat(originalRow.to)
       },
       {
-        id: 'room',
-        header: 'Phòng',
+        header: 'Phòng khám',
+        accessorKey: 'room'
+      },
+      {
+        id: 'room-online',
+        header: 'Phòng online',
         accessorFn({ code }) {
           return (
             <Link to={`/online-appointment/${code}`}>
@@ -167,7 +171,6 @@ export default function AppointmentManager({ option }: Props) {
         enableRowNumbers
         state={{
           columnVisibility: {
-            room: option === 'PROGRESS',
             actions: option === 'PENDING' && role === 'doctor',
             message: option === 'CANCEL',
             success: option === 'PROGRESS' && role === 'doctor'

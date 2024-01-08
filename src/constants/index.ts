@@ -67,63 +67,78 @@ export const TIMELINE_OPTION: Record<string, string> = {
 const defaultTime = [
   {
     from: 28800000,
-    to: 30600000
+    to: 30600000,
+    room: undefined
   },
   {
     from: 30600000,
-    to: 32400000
+    to: 32400000,
+    room: undefined
   },
   {
     from: 32400000,
-    to: 34200000
+    to: 34200000,
+    room: undefined
   },
   {
     from: 34200000,
-    to: 36000000
+    to: 36000000,
+    room: undefined
   },
   {
     from: 36000000,
-    to: 37800000
+    to: 37800000,
+    room: undefined
   },
   {
     from: 37800000,
-    to: 39600000
+    to: 39600000,
+    room: undefined
   },
   {
     from: 39600000,
-    to: 41400000
+    to: 41400000,
+    room: undefined
   },
   {
     from: 50400000,
-    to: 52200000
+    to: 52200000,
+    room: undefined
   },
   {
     from: 52200000,
-    to: 54000000
+    to: 54000000,
+    room: undefined
   },
   {
     from: 54000000,
-    to: 55800000
+    to: 55800000,
+    room: undefined
   },
   {
     from: 55800000,
-    to: 57600000
+    to: 57600000,
+    room: undefined
   },
   {
     from: 57600000,
-    to: 59400000
+    to: 59400000,
+    room: undefined
   },
   {
     from: 59400000,
-    to: 61200000
+    to: 61200000,
+    room: undefined
   },
   {
     from: 61200000,
-    to: 63000000
+    to: 63000000,
+    room: undefined
   },
   {
     from: 63000000,
-    to: 64800000
+    to: 64800000,
+    room: undefined
   }
 ]
 
