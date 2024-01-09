@@ -29,19 +29,17 @@ type Inputs = {
 export default function Profile() {
   const profile = useAppSelector((state) => state.auth.user)
   const dispatch = useAppDispatch()
-  const schema = yup
-    .object<Inputs>({
-      fullName: yup.string().required('Không để trống'),
-      firstName: yup.string().required('Không để trống'),
-      lastName: yup.string().required('Không để trống'),
-      phone: yup.string().matches(phoneRegExp, 'Số điện thoại không hợp lệ'),
-      numberId: yup.string().required('Không để trống'),
-      gender: yup.string().required('Không để trống'),
-      birthday: yup.string().required('Không để trống'),
-      address: yup.string().required('Không để trống'),
-      experience: yup.string()
-    })
-    .required()
+  const schema = yup.object<Inputs>({
+    fullName: yup.string().required('Không để trống'),
+    firstName: yup.string().required('Không để trống'),
+    lastName: yup.string().required('Không để trống'),
+    phone: yup.string().matches(phoneRegExp, 'Số điện thoại không hợp lệ'),
+    numberId: yup.string().required('Không để trống'),
+    gender: yup.string().required('Không để trống'),
+    birthday: yup.string().required('Không để trống'),
+    address: yup.string().required('Không để trống'),
+    experience: yup.string()
+  })
 
   useEffect(() => {
     if (profile) {
