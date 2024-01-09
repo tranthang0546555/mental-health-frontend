@@ -38,7 +38,7 @@ export default function Profile() {
     gender: yup.string().required('Không để trống'),
     birthday: yup.string().required('Không để trống'),
     address: yup.string().required('Không để trống'),
-    experience: yup.string()
+    experience: yup.string().nullable()
   })
 
   useEffect(() => {
