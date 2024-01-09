@@ -1,5 +1,6 @@
 .record-detail p {
   padding: 16px;
+  white-space: pre-line;
 }
 
 .record-detail .header {
