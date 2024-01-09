@@ -2,7 +2,7 @@ import { MRT_ColumnDef, MaterialReactTable } from 'material-react-table'
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { GET_SCHEDULE, PATIENT_REGISTRATION, useApi } from '../../../api'
+import { CANCEL_SCHEDULE, GET_SCHEDULE, PATIENT_REGISTRATION, useApi } from '../../../api'
 import Modal from '../../../components/Modal'
 import { SCHEDULE_STATUS } from '../../../constants'
 import { useAppSelector } from '../../../hooks/store'
@@ -27,8 +27,9 @@ export default function AppointmentManager({ option }: Props) {
         accessorFn: (originalRow) => hourFormat(originalRow.from) + ' - ' + dateFormat(originalRow.to)
       },
       {
+        id: 'room',
         header: 'Phòng khám',
-        accessorKey: 'room'
+        accessorFn: (originalRow) => originalRow.room || '-'
       },
       {
         id: 'room-online',
@@ -44,11 +45,16 @@ export default function AppointmentManager({ option }: Props) {
       },
       {
         header: role === 'doctor' ? 'Bệnh nhân' : 'Bác sĩ',
-        accessorFn: (originalRow) => (role === 'doctor' ? originalRow.user.fullName : originalRow.doctor.fullName)
+        accessorFn: (originalRow) =>
+          role === 'doctor' ? originalRow.user?.fullName : originalRow.doctor?.fullName || '-'
       },
       {
         header: 'Email',
-        accessorFn: (originalRow) => (role === 'doctor' ? originalRow.user.email : originalRow.doctor.email)
+        accessorFn: (originalRow) => (role === 'doctor' ? originalRow.user?.email : originalRow.doctor?.email || '-')
+      },
+      {
+        header: 'Hủy',
+        accessorFn: (originalRow) => (originalRow?.canceledAt ? dateFormat(originalRow.canceledAt) : '')
       },
       {
         header: 'Tạo',
@@ -65,22 +71,26 @@ export default function AppointmentManager({ option }: Props) {
         accessorFn({ _id }) {
           return (
             <div className='group-btn'>
-              <Modal
-                id={_id}
-                name='accept'
-                onSubmit={() => handleAccept(_id)}
-                title='Xác nhận lịch khám bệnh'
-                description='Xác nhận lịch khám này'
-                button={
-                  <button className='btn btn-success'>
-                    <i className='bi bi-check-circle'></i>
-                  </button>
-                }
-              />{' '}
+              {role === 'doctor' && (
+                <Modal
+                  id={_id}
+                  name='accept'
+                  onSubmit={() => handleAccept(_id)}
+                  title='Xác nhận lịch khám bệnh'
+                  description='Xác nhận lịch khám này'
+                  button={
+                    <button className='btn btn-success'>
+                      <i className='bi bi-check-circle'></i>
+                    </button>
+                  }
+                />
+              )}
               <Modal
                 id={_id}
                 name='deny'
-                onSubmit={(data) => handleDeny(_id, String(data))}
+                onSubmit={(data) =>
+                  role === 'doctor' ? handleDeny(_id, String(data)) : handleCancel(_id, String(data))
+                }
                 title='Hủy lịch khám bệnh'
                 description='Xác nhận hủy lịch khám này và bạn không thể khôi phục như ban đầu?'
                 button={
@@ -158,6 +168,17 @@ export default function AppointmentManager({ option }: Props) {
       })
   }
 
+  const handleCancel = async (id: string, message: string) => {
+    await useApi
+      .patch(CANCEL_SCHEDULE.replace(':id', id), {
+        message
+      })
+      .then(() => {
+        getData()
+        toast.success('Hủy lịch khám thành công')
+      })
+  }
+
   const handleSuccess = (id: string) => {
     navigate('/dashboard/medical-record/create/' + id)
   }
@@ -171,9 +192,11 @@ export default function AppointmentManager({ option }: Props) {
         enableRowNumbers
         state={{
           columnVisibility: {
-            actions: option === 'PENDING' && role === 'doctor',
+            actions: option === 'PENDING' && (role === 'doctor' || role === 'user'),
             message: option === 'CANCEL',
-            success: option === 'PROGRESS' && role === 'doctor'
+            success: option === 'PROGRESS' && role === 'doctor',
+            'room-online': option !== 'CANCEL',
+            room: option !== 'CANCEL'
           }
         }}
       />

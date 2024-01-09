@@ -134,6 +134,7 @@ declare type Appointment = TimeStamp & {
 declare type TimeStamp = {
   createdAt?: string | number
   updatedAt?: string | number
+  canceledAt?: string | number
 }
 
 declare type MedicalRecord = TimeStamp & {

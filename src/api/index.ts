@@ -43,6 +43,7 @@ export const PATIENT_REGISTRATION = '/schedule/patient-registration'
 export const PATIENT_REGISTRATION_BOOKED = '/schedule/booked/:id'
 export const NOT_YET_SCHEDULED = '/schedule/not-yet'
 export const SET_DOCTOR_SCHEDULE = '/schedule/set-doctor/:id'
+export const CANCEL_SCHEDULE = '/schedule/cancel/:id'
 
 export const RECORD_LIST = '/record'
 export const RECORD_DETAIL = '/record/:id'
