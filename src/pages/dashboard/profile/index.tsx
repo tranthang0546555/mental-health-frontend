@@ -39,7 +39,7 @@ export default function Profile() {
       gender: yup.string().required('Không để trống'),
       birthday: yup.string().required('Không để trống'),
       address: yup.string().required('Không để trống'),
-      experience: yup.string().required('Không để trống')
+      experience: yup.string()
     })
     .required()
 
@@ -162,8 +162,7 @@ export default function Profile() {
                       id='gender'
                       className='form-select'
                       aria-label='Default select example'
-                      {...register('gender')}
-                    >
+                      {...register('gender')}>
                       <option value='1'>Nam</option>
                       <option value='2'>Nữ</option>
                       <option value='3'>Ẩn</option>
