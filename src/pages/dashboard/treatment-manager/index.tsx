@@ -9,18 +9,17 @@ export default function TreatmentManager() {
     () => [
       {
         header: 'Tiêu đề',
-        accessorKey: 'title',
-        size: 1
+        accessorKey: 'title'
       },
       {
         header: 'Mô tả',
-        accessorKey: 'description',
-        size: 1
+        Cell({ row }) {
+          return <span className='text-line-clamp-5'>{row.original.description}</span>
+        }
       },
       {
         header: 'Đường dẫn',
-        accessorKey: 'link',
-        size: 1
+        accessorKey: 'link'
       },
       {
         header: 'Tạo',
@@ -40,8 +39,7 @@ export default function TreatmentManager() {
                 id={'modal-' + _id}
                 tabIndex={-1}
                 aria-labelledby='modalLabel'
-                aria-hidden='true'
-              >
+                aria-hidden='true'>
                 <div className='modal-dialog'>
                   <div className='modal-content'>
                     <div className='modal-header'>
@@ -59,8 +57,7 @@ export default function TreatmentManager() {
                         type='button'
                         className='btn btn-danger'
                         data-bs-dismiss='modal'
-                        onClick={() => deleteTreatment(_id)}
-                      >
+                        onClick={() => deleteTreatment(_id)}>
                         Xoá
                       </button>
                     </div>

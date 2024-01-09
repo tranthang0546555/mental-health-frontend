@@ -31,12 +31,15 @@ export default function RecordDetail() {
           <span>
             {histories.map((record, idx) => {
               return (
-                <span
-                  onClick={() => setHistoryIndex(idx)}
-                  className={`history ${historyIndex === idx && 'active'}`}
-                  key={idx}>
-                  {dateFormat(record.pushedAt)}
-                </span>
+                <>
+                  <b>{`[${idx + 1}] `}</b>
+                  <span
+                    onClick={() => setHistoryIndex(idx)}
+                    className={`history ${historyIndex === idx && 'active'}`}
+                    key={idx}>
+                    {dateFormat(record.pushedAt)}
+                  </span>
+                </>
               )
             })}
             <span
@@ -61,7 +64,7 @@ export default function RecordDetail() {
       </div>
       <div className='card'>
         <div className='card-body pt-3'>
-          <h4 className='text-center'>BỆNH ÁN TÂM THẦN</h4>
+          <h4 className='text-center'>BỆNH ÁN TÂM THẦN {historyIndex != undefined && `[${historyIndex + 1}]`}</h4>
           <h5>THÔNG TIN CÁ NHÂN</h5>
           <ul className='p-3'>
             <ol className='row g-3'>
@@ -83,7 +86,7 @@ export default function RecordDetail() {
             </ol>
           </ul>
           <hr />
-          <h5>BỆNH SỬ</h5>
+          <h5>Bệnh sử</h5>
           <p>{data.medicalHistory}</p>
           <h5>Lý do khám bệnh</h5>
           <p>{data.reason}</p>
