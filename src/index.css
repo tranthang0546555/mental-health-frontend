@@ -222,6 +222,11 @@ h6 {
   display: flex;
   gap: 5px;
 }
+
+#main-dashboard section {
+  padding: 60px 0;
+  overflow: hidden;
+}
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
