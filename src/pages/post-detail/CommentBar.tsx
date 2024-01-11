@@ -154,7 +154,7 @@ const Comment = (props: CommentProps) => {
                 onClick={() => {
                   setShowComment((prev) => !prev)
                 }}>
-                <i className={`bi ${showReply ? 'bi-caret-down-fill' : 'bi-caret-up-fill'}`} />
+                <i className={`bi ${!showComment ? 'bi-caret-down-fill' : 'bi-caret-up-fill'}`} />
                 {` ${count} phản hồi...`}
               </span>
             )}
