@@ -75,10 +75,10 @@
 }
 
 .comment .child {
-  border: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
   padding: 10px;
   margin-left: 50px;
-  border-radius: 8px;
+  border-radius: 20px;
   margin-bottom: 10px;
 }
 
