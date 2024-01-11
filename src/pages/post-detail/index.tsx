@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { POST_DETAIL, useApi } from '../../api'
 import RecentNews from '../../components/RecentNews'
 import { dateFormat } from '../../utils'
+import { CommentBar } from './CommentBar'
 import './index.css'
 
 export default function PostDetail() {
@@ -49,6 +50,7 @@ export default function PostDetail() {
             <h5>{description}</h5>
             <br />
             <article dangerouslySetInnerHTML={{ __html: content }} />
+            <CommentBar postId={data._id} />
           </div>
 
           <div className='col-lg-4'>

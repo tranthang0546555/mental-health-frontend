@@ -1,4 +1,5 @@
 import { format, formatDistance } from 'date-fns'
+import vi from 'date-fns/locale/vi'
 
 export const dateFormat = (date?: string | number | Date, _format?: string) => {
   return format(new Date(date || ''), _format || 'HH:mm - dd/MM/yyy')
@@ -9,7 +10,7 @@ export const hourFormat = (date?: string | number | Date) => {
 }
 
 export const distanceFormat = (date?: string | number | Date) => {
-  return formatDistance(new Date(date || ''), new Date(), { addSuffix: true })
+  return formatDistance(new Date(date || ''), new Date(), { addSuffix: true, locale: vi })
 }
 
 export const numberFormat = (number = 0) => Intl.NumberFormat('en-US').format(number)
