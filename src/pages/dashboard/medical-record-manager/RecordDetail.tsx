@@ -50,11 +50,13 @@ export default function RecordDetail() {
           </span>
           <br />
           <br />
-          <Link to={`/dashboard/medical-record?numberId=${user?.numberId}`}>
-            <u>
-              <i>Xem tất cả bệnh án của bệnh nhân</i>
-            </u>
-          </Link>
+          {role === 'doctor' && (
+            <Link to={`/dashboard/medical-record?numberId=${user?.numberId}`}>
+              <u>
+                <i>Xem tất cả bệnh án của bệnh nhân</i>
+              </u>
+            </Link>
+          )}
         </div>
         {role === 'doctor' && (
           <Link to={`/dashboard/medical-record/update/${record.id}`} type='submit' className='btn btn-primary'>
