@@ -4,9 +4,7 @@ Personal project: Mental health support system
 
 ## Demo
 
-Link demo
-
-https://mh-fe-prod.onrender.com
+Link demo: https://mh-fe-prod.onrender.com
 
 ## Installation
 
@@ -34,9 +32,7 @@ To visit app: http://localhost:4000
 
 To run this project, you will need to add the following environment variables to your .env file
 
-`VITE_BASE_URL = https://mh-be.onrender.com`
-
-`VITE_CONTRACT_ADDRESS = 0x96Be97aCb5e029233E22A02830B0aB513812D301`
+`VITE_BASE_URL = http://localhost:5000`
 
 ## Authors
 
